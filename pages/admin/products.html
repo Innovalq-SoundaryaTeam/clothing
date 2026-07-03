@@ -36,49 +36,43 @@
       <!-- Products Table: localStorage-backed product management UI -->
 <section class="admin-card"><div class="d-flex justify-content-between align-items-center mb-3"><h2>Products Management</h2><button class="btn-boutique" type="button" id="addProductBtn"><i class="fa-solid fa-plus"></i> Add Product</button></div><table class="admin-table"><thead><tr><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Status</th><th>Action</th></tr></thead><tbody id="adminProductsTable"></tbody></table></section>
 
-      <!-- Add / Edit Product Modal -->
-      <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true" aria-labelledby="productModalTitle">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="productModalTitle">Add Product</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <!-- Add / Edit Product Overlay: plain, self-contained (no Bootstrap JS modal) -->
+      <div class="admin-overlay" id="productModal">
+        <div class="admin-overlay-box">
+          <button type="button" class="admin-overlay-close" id="productModalClose" aria-label="Close">&times;</button>
+          <h5 id="productModalTitle" class="mb-3">Add Product</h5>
+          <form id="productForm" novalidate>
+            <input type="hidden" id="productId">
+            <div class="mb-3">
+              <label class="form-label" for="productName">Product Name</label>
+              <input class="form-control" id="productName" type="text" required>
             </div>
-            <div class="modal-body">
-              <form id="productForm" novalidate>
-                <input type="hidden" id="productId">
-                <div class="mb-3">
-                  <label class="form-label" for="productName">Product Name</label>
-                  <input class="form-control" id="productName" type="text" required>
-                </div>
-                <div class="mb-3">
-                  <label class="form-label" for="productCategory">Category</label>
-                  <select class="form-select" id="productCategory">
-                    <option value="Women">Women</option>
-                    <option value="Men">Men</option>
-                    <option value="Kids">Kids</option>
-                    <option value="Accessories">Accessories</option>
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <label class="form-label" for="productPrice">Price (₹)</label>
-                  <input class="form-control" id="productPrice" type="number" min="0" required>
-                </div>
-                <div class="mb-3">
-                  <label class="form-label" for="productStock">Stock</label>
-                  <input class="form-control" id="productStock" type="number" min="0" required>
-                </div>
-                <div class="mb-3">
-                  <label class="form-label" for="productStatus">Status</label>
-                  <select class="form-select" id="productStatus">
-                    <option value="Active">Active</option>
-                    <option value="Inactive">Inactive</option>
-                  </select>
-                </div>
-                <button class="btn-boutique w-100" type="submit">Save Product</button>
-              </form>
+            <div class="mb-3">
+              <label class="form-label" for="productCategory">Category</label>
+              <select class="form-select" id="productCategory">
+                <option value="Women">Women</option>
+                <option value="Men">Men</option>
+                <option value="Kids">Kids</option>
+                <option value="Accessories">Accessories</option>
+              </select>
             </div>
-          </div>
+            <div class="mb-3">
+              <label class="form-label" for="productPrice">Price (₹)</label>
+              <input class="form-control" id="productPrice" type="number" min="0" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="productStock">Stock</label>
+              <input class="form-control" id="productStock" type="number" min="0" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="productStatus">Status</label>
+              <select class="form-select" id="productStatus">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+            </div>
+            <button class="btn-boutique w-100" type="submit">Save Product</button>
+          </form>
         </div>
       </div>
     </main>

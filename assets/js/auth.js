@@ -814,9 +814,9 @@ function setupAdminProductActions() {
   const modalEl = document.getElementById("productModal");
   const addBtn = document.getElementById("addProductBtn");
   const form = document.getElementById("productForm");
-  if (!modalEl || !addBtn || !form || typeof bootstrap === "undefined") return;
+  const closeBtn = document.getElementById("productModalClose");
+  if (!modalEl || !addBtn || !form) return;
 
-  const modal = new bootstrap.Modal(modalEl);
   const titleEl = document.getElementById("productModalTitle");
   const idField = document.getElementById("productId");
   const nameField = document.getElementById("productName");
@@ -825,11 +825,17 @@ function setupAdminProductActions() {
   const stockField = document.getElementById("productStock");
   const statusField = document.getElementById("productStatus");
 
+  /* Plain, self-contained overlay: no Bootstrap JS modal component involved,
+     so there is no dependency on the CDN bundle loading correctly or any
+     stacking-context conflict with the rest of the page. Just a CSS class. */
+  function showModal() { modalEl.classList.add("show"); }
+  function hideModal() { modalEl.classList.remove("show"); }
+
   function openForAdd() {
     form.reset();
     idField.value = "";
     titleEl.textContent = "Add Product";
-    modal.show();
+    showModal();
   }
 
   function openForEdit(id) {
@@ -842,20 +848,20 @@ function setupAdminProductActions() {
     stockField.value = product.stock;
     statusField.value = product.status;
     titleEl.textContent = "Edit Product";
-    modal.show();
+    showModal();
   }
 
   addBtn.addEventListener("click", openForAdd);
+  if (closeBtn) closeBtn.addEventListener("click", hideModal);
 
-  /* Explicit close handling: don't rely solely on Bootstrap's data-bs-dismiss
-     auto-wiring, since it can silently no-op if the modal instance wasn't
-     picked up correctly. Binding directly to modal.hide() guarantees the
-     X button (and any other [data-bs-dismiss="modal"] element) works. */
-  modalEl.querySelectorAll('[data-bs-dismiss="modal"]').forEach((closeBtn) => {
-    closeBtn.addEventListener("click", (event) => {
-      event.preventDefault();
-      modal.hide();
-    });
+  /* Click on the dark backdrop (outside the box) closes it */
+  modalEl.addEventListener("click", (event) => {
+    if (event.target === modalEl) hideModal();
+  });
+
+  /* Escape key closes it */
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modalEl.classList.contains("show")) hideModal();
   });
 
   document.addEventListener("click", (event) => {
@@ -898,7 +904,7 @@ function setupAdminProductActions() {
 
     saveData(PRODUCT_KEY, products);
     renderAdminProducts();
-    modal.hide();
+    hideModal();
   });
 }
 
