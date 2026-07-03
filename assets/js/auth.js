@@ -772,6 +772,125 @@ function renderAdminOrders() {
   });
 }
 
+/* ==============================
+   Admin Products Management
+   Stores products the admin adds/edits/deletes in localStorage so the
+   Products page actually works instead of being static placeholder text.
+============================== */
+const PRODUCT_KEY = "boutiqueAdminProducts";
+
+function setupDefaultProducts() {
+  if (!document.getElementById("adminProductsTable")) return;
+  const products = getData(PRODUCT_KEY);
+  if (products.length === 0) {
+    saveData(PRODUCT_KEY, [
+      { id: "p1", name: "Silk Blend Blazer", category: "Women", price: 2499, stock: 24, status: "Active" },
+      { id: "p2", name: "Linen Casual Shirt", category: "Men", price: 1699, stock: 18, status: "Active" },
+      { id: "p3", name: "Pearl Mini Bag", category: "Accessories", price: 999, stock: 35, status: "Active" }
+    ]);
+  }
+}
+
+function renderAdminProducts() {
+  const table = document.getElementById("adminProductsTable");
+  if (!table) return;
+  const products = getData(PRODUCT_KEY);
+  if (products.length === 0) {
+    table.innerHTML = '<tr><td colspan="6" class="text-muted-custom">No products yet. Click "Add Product" to create one.</td></tr>';
+    return;
+  }
+  table.innerHTML = products.map((product) => `
+    <tr>
+      <td>${product.name}</td>
+      <td>${product.category}</td>
+      <td>₹${Number(product.price).toLocaleString("en-IN")}</td>
+      <td>${product.stock}</td>
+      <td><span class="status-badge">${product.status}</span></td>
+      <td><a href="#" data-edit-product="${product.id}">Edit</a> / <a href="#" data-delete-product="${product.id}">Delete</a></td>
+    </tr>`).join("");
+}
+
+function setupAdminProductActions() {
+  const modalEl = document.getElementById("productModal");
+  const addBtn = document.getElementById("addProductBtn");
+  const form = document.getElementById("productForm");
+  if (!modalEl || !addBtn || !form || typeof bootstrap === "undefined") return;
+
+  const modal = new bootstrap.Modal(modalEl);
+  const titleEl = document.getElementById("productModalTitle");
+  const idField = document.getElementById("productId");
+  const nameField = document.getElementById("productName");
+  const categoryField = document.getElementById("productCategory");
+  const priceField = document.getElementById("productPrice");
+  const stockField = document.getElementById("productStock");
+  const statusField = document.getElementById("productStatus");
+
+  function openForAdd() {
+    form.reset();
+    idField.value = "";
+    titleEl.textContent = "Add Product";
+    modal.show();
+  }
+
+  function openForEdit(id) {
+    const product = getData(PRODUCT_KEY).find((item) => item.id === id);
+    if (!product) return;
+    idField.value = product.id;
+    nameField.value = product.name;
+    categoryField.value = product.category;
+    priceField.value = product.price;
+    stockField.value = product.stock;
+    statusField.value = product.status;
+    titleEl.textContent = "Edit Product";
+    modal.show();
+  }
+
+  addBtn.addEventListener("click", openForAdd);
+
+  document.addEventListener("click", (event) => {
+    const editLink = event.target.closest("[data-edit-product]");
+    if (editLink) {
+      event.preventDefault();
+      openForEdit(editLink.dataset.editProduct);
+      return;
+    }
+    const deleteLink = event.target.closest("[data-delete-product]");
+    if (deleteLink) {
+      event.preventDefault();
+      if (window.confirm("Delete this product? This cannot be undone.")) {
+        saveData(PRODUCT_KEY, getData(PRODUCT_KEY).filter((item) => item.id !== deleteLink.dataset.deleteProduct));
+        renderAdminProducts();
+      }
+    }
+  });
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const name = nameField.value.trim();
+    if (!name) { nameField.focus(); return; }
+
+    const products = getData(PRODUCT_KEY);
+    const payload = {
+      name,
+      category: categoryField.value,
+      price: Number(priceField.value) || 0,
+      stock: Number(stockField.value) || 0,
+      status: statusField.value
+    };
+
+    if (idField.value) {
+      const existing = products.find((item) => item.id === idField.value);
+      if (existing) Object.assign(existing, payload);
+    } else {
+      products.push({ id: "p" + Date.now(), ...payload });
+    }
+
+    saveData(PRODUCT_KEY, products);
+    renderAdminProducts();
+    modal.hide();
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   setupDefaultAdmin();
   setupDefaultCustomer();
@@ -787,6 +906,9 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCheckoutPage();
   setupCheckoutPayment();
   renderAdminOrders();
+  setupDefaultProducts();
+  renderAdminProducts();
+  setupAdminProductActions();
   renderProfileNav();
   renderCustomerProfilePage();
   setupMobileProfileDropdown();
