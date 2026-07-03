@@ -1259,7 +1259,8 @@ h3 {
 }
 
 .profile-nav-wrapper:hover .profile-dropdown,
-.profile-nav-wrapper:focus-within .profile-dropdown {
+.profile-nav-wrapper:focus-within .profile-dropdown,
+.profile-nav-wrapper.profile-dropdown-open .profile-dropdown {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);

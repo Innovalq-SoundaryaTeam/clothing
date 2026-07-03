@@ -214,6 +214,33 @@ function renderProfileNav() {
   });
 }
 
+/* Profile dropdown only opens on hover/focus by default, which touch screens
+   never trigger. On mobile, tapping the avatar used to just navigate straight
+   to the default link and the login options were never seen. This makes the
+   first tap open the dropdown (so Customer/Admin Login are visible) and a
+   second tap or an outside tap continues/closes as normal. */
+function setupMobileProfileDropdown() {
+  document.addEventListener("click", (event) => {
+    const isMobile = window.matchMedia("(max-width: 991.98px)").matches;
+    const trigger = event.target.closest("[data-profile-link]");
+    const wrapper = event.target.closest(".profile-nav-wrapper");
+
+    if (isMobile && trigger) {
+      const parentWrapper = trigger.closest(".profile-nav-wrapper");
+      if (parentWrapper && !parentWrapper.classList.contains("profile-dropdown-open")) {
+        event.preventDefault();
+        document.querySelectorAll(".profile-nav-wrapper").forEach((w) => w.classList.remove("profile-dropdown-open"));
+        parentWrapper.classList.add("profile-dropdown-open");
+        return;
+      }
+    }
+
+    if (!wrapper) {
+      document.querySelectorAll(".profile-nav-wrapper").forEach((w) => w.classList.remove("profile-dropdown-open"));
+    }
+  });
+}
+
 function renderCustomerProfilePage() {
   if (!document.body.dataset.profilePage) return;
   const customer = getCustomerSession();
@@ -762,4 +789,5 @@ document.addEventListener("DOMContentLoaded", () => {
   renderAdminOrders();
   renderProfileNav();
   renderCustomerProfilePage();
+  setupMobileProfileDropdown();
 });
