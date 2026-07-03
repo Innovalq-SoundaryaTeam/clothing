@@ -909,6 +909,111 @@ function setupAdminProductActions() {
 }
 
 /* ==============================
+   Admin Messages / Enquiries
+   Stores enquiries in localStorage so "Reply" is a real, working action
+   instead of static text, and marks a message as Replied once sent.
+============================== */
+const MESSAGE_KEY = "boutiqueMessages";
+
+function setupDefaultMessages() {
+  if (!document.getElementById("adminMessagesTable")) return;
+  const messages = getData(MESSAGE_KEY);
+  if (messages.length === 0) {
+    saveData(MESSAGE_KEY, [
+      { id: "m1", name: "Sarath", email: "sarath@example.com", subject: "Size Help", message: "Need help with blazer size.", replied: false, replyText: "" },
+      { id: "m2", name: "Priya", email: "priya@example.com", subject: "Order", message: "When will my order ship?", replied: false, replyText: "" }
+    ]);
+  }
+}
+
+function renderAdminMessages() {
+  const table = document.getElementById("adminMessagesTable");
+  if (!table) return;
+  const messages = getData(MESSAGE_KEY);
+  if (messages.length === 0) {
+    table.innerHTML = '<tr><td colspan="5" class="text-muted-custom">No messages yet.</td></tr>';
+    return;
+  }
+  table.innerHTML = messages.map((msg) => `
+    <tr>
+      <td>${msg.name}</td>
+      <td>${msg.email}</td>
+      <td>${msg.subject}</td>
+      <td>${msg.message}</td>
+      <td>${msg.replied
+        ? '<span class="status-badge">Replied</span>'
+        : `<a href="#" data-reply-message="${msg.id}">Reply</a>`}</td>
+    </tr>`).join("");
+}
+
+function setupAdminMessageActions() {
+  const modalEl = document.getElementById("messageReplyModal");
+  const form = document.getElementById("messageReplyForm");
+  const closeBtn = document.getElementById("messageReplyClose");
+  if (!modalEl || !form) return;
+
+  const idField = document.getElementById("replyMessageId");
+  const nameEl = document.getElementById("replyToName");
+  const emailEl = document.getElementById("replyToEmail");
+  const subjectEl = document.getElementById("replySubject");
+  const originalEl = document.getElementById("replyOriginalMessage");
+  const replyField = document.getElementById("replyText");
+  const statusBox = document.getElementById("messageReplyStatus");
+
+  function showModal() { modalEl.classList.add("show"); }
+  function hideModal() { modalEl.classList.remove("show"); }
+
+  function openReply(id) {
+    const msg = getData(MESSAGE_KEY).find((item) => item.id === id);
+    if (!msg) return;
+    idField.value = msg.id;
+    nameEl.textContent = msg.name;
+    emailEl.textContent = msg.email;
+    subjectEl.textContent = "Subject: " + msg.subject;
+    originalEl.textContent = msg.message;
+    replyField.value = msg.replyText || "";
+    showModal();
+  }
+
+  if (closeBtn) closeBtn.addEventListener("click", hideModal);
+  modalEl.addEventListener("click", (event) => { if (event.target === modalEl) hideModal(); });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modalEl.classList.contains("show")) hideModal();
+  });
+
+  document.addEventListener("click", (event) => {
+    const replyLink = event.target.closest("[data-reply-message]");
+    if (replyLink) {
+      event.preventDefault();
+      openReply(replyLink.dataset.replyMessage);
+    }
+  });
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const text = replyField.value.trim();
+    if (!text) { replyField.focus(); return; }
+
+    const messages = getData(MESSAGE_KEY);
+    const msg = messages.find((item) => item.id === idField.value);
+    if (msg) {
+      msg.replied = true;
+      msg.replyText = text;
+      saveData(MESSAGE_KEY, messages);
+    }
+
+    renderAdminMessages();
+    hideModal();
+
+    if (statusBox) {
+      statusBox.classList.remove("d-none");
+      statusBox.textContent = `Reply sent successfully to ${msg ? msg.name : "customer"}.`;
+      setTimeout(() => { statusBox.classList.add("d-none"); }, 3000);
+    }
+  });
+}
+
+/* ==============================
    Admin Store Settings
    Persists the Settings page fields to localStorage so "Save Settings"
    actually saves instead of being a static, non-functional button.
@@ -970,6 +1075,9 @@ document.addEventListener("DOMContentLoaded", () => {
   setupDefaultProducts();
   renderAdminProducts();
   setupAdminProductActions();
+  setupDefaultMessages();
+  renderAdminMessages();
+  setupAdminMessageActions();
   setupStoreSettingsForm();
   renderProfileNav();
   renderCustomerProfilePage();

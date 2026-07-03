@@ -34,7 +34,25 @@
         <button class="logout-btn" data-logout type="button"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
       </div>
       <!-- Messages Table: contact enquiries received from customers -->
-<section class="admin-card"><h2>Messages / Enquiries</h2><table class="admin-table"><thead><tr><th>Name</th><th>Email</th><th>Subject</th><th>Message</th><th>Action</th></tr></thead><tbody><tr><td>Sarath</td><td>sarath@example.com</td><td>Size Help</td><td>Need help with blazer size.</td><td>Reply</td></tr><tr><td>Priya</td><td>priya@example.com</td><td>Order</td><td>When will my order ship?</td><td>Reply</td></tr></tbody></table></section>
+<section class="admin-card"><h2>Messages / Enquiries</h2><div id="messageReplyStatus" class="form-success d-none mb-3"></div><table class="admin-table"><thead><tr><th>Name</th><th>Email</th><th>Subject</th><th>Message</th><th>Action</th></tr></thead><tbody id="adminMessagesTable"></tbody></table></section>
+
+      <!-- Reply Overlay: plain, self-contained (matches Products overlay pattern) -->
+      <div class="admin-overlay" id="messageReplyModal">
+        <div class="admin-overlay-box">
+          <button type="button" class="admin-overlay-close" id="messageReplyClose" aria-label="Close">&times;</button>
+          <h5 class="mb-1">Reply to <span id="replyToName"></span></h5>
+          <p class="text-muted-custom mb-3" id="replyToEmail"></p>
+          <p class="mb-3"><strong id="replySubject"></strong><br><span id="replyOriginalMessage" class="text-muted-custom"></span></p>
+          <form id="messageReplyForm" novalidate>
+            <input type="hidden" id="replyMessageId">
+            <div class="mb-3">
+              <label class="form-label" for="replyText">Your Reply</label>
+              <textarea class="form-control" id="replyText" rows="4" required></textarea>
+            </div>
+            <button class="btn-boutique w-100" type="submit">Send Reply</button>
+          </form>
+        </div>
+      </div>
     </main>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
