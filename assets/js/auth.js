@@ -891,6 +891,50 @@ function setupAdminProductActions() {
   });
 }
 
+/* ==============================
+   Admin Store Settings
+   Persists the Settings page fields to localStorage so "Save Settings"
+   actually saves instead of being a static, non-functional button.
+============================== */
+const STORE_SETTINGS_KEY = "boutiqueStoreSettings";
+
+function setupStoreSettingsForm() {
+  const form = document.getElementById("storeSettingsForm");
+  if (!form) return;
+
+  const nameField = document.getElementById("settingsStoreName");
+  const emailField = document.getElementById("settingsEmail");
+  const phoneField = document.getElementById("settingsPhone");
+  const addressField = document.getElementById("settingsAddress");
+  const message = document.getElementById("settingsMessage");
+
+  let storedSettings = null;
+  try { storedSettings = JSON.parse(localStorage.getItem(STORE_SETTINGS_KEY)); } catch { storedSettings = null; }
+
+  if (storedSettings) {
+    if (nameField && storedSettings.name) nameField.value = storedSettings.name;
+    if (emailField && storedSettings.email) emailField.value = storedSettings.email;
+    if (phoneField && storedSettings.phone) phoneField.value = storedSettings.phone;
+    if (addressField && storedSettings.address) addressField.value = storedSettings.address;
+  }
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const settings = {
+      name: nameField ? nameField.value.trim() : "",
+      email: emailField ? emailField.value.trim() : "",
+      phone: phoneField ? phoneField.value.trim() : "",
+      address: addressField ? addressField.value.trim() : ""
+    };
+    localStorage.setItem(STORE_SETTINGS_KEY, JSON.stringify(settings));
+    if (message) {
+      message.classList.remove("d-none");
+      message.textContent = "Settings saved successfully.";
+      setTimeout(() => { message.classList.add("d-none"); }, 2500);
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   setupDefaultAdmin();
   setupDefaultCustomer();
@@ -909,6 +953,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupDefaultProducts();
   renderAdminProducts();
   setupAdminProductActions();
+  setupStoreSettingsForm();
   renderProfileNav();
   renderCustomerProfilePage();
   setupMobileProfileDropdown();

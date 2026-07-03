@@ -33,8 +33,8 @@
         <div><span class="eyebrow">Admin panel</span><h1>Settings</h1><p class="mb-0 text-muted-custom">Welcome, <strong data-admin-name>Sarath</strong></p></div>
         <button class="logout-btn" data-logout type="button"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
       </div>
-      <!-- Settings Form: static store settings UI -->
-<section class="admin-card"><h2>Store Settings</h2><form class="admin-form row g-3"><div class="col-md-6"><label>Store Name</label><input class="form-control" value="Rose & Thread"></div><div class="col-md-6"><label>Email</label><input class="form-control" value="hello@roseandthread.com"></div><div class="col-md-6"><label>Phone</label><input class="form-control" value="+91 90000 00000"></div><div class="col-md-6"><label>Address</label><input class="form-control" value="12 Fashion Street, Coimbatore"></div><div class="col-12"><button class="btn-boutique" type="button">Save Settings</button></div></form></section>
+      <!-- Settings Form: localStorage-backed store settings UI -->
+<section class="admin-card"><h2>Store Settings</h2><div id="settingsMessage" class="form-success d-none mb-3"></div><form class="admin-form row g-3" id="storeSettingsForm"><div class="col-md-6"><label for="settingsStoreName">Store Name</label><input class="form-control" id="settingsStoreName" value="Rose & Thread"></div><div class="col-md-6"><label for="settingsEmail">Email</label><input class="form-control" id="settingsEmail" type="email" value="hello@roseandthread.com"></div><div class="col-md-6"><label for="settingsPhone">Phone</label><input class="form-control" id="settingsPhone" value="+91 90000 00000"></div><div class="col-md-6"><label for="settingsAddress">Address</label><input class="form-control" id="settingsAddress" value="12 Fashion Street, Coimbatore"></div><div class="col-12"><button class="btn-boutique" type="submit">Save Settings</button></div></form></section>
     </main>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
