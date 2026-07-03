@@ -2475,6 +2475,14 @@ body.dark-mode .breadcrumb-section {
     background: var(--premium-dark-gradient);
 }
 
+/* The unconditional white overlay further down (.breadcrumb-section::before)
+   washes out the dark gradient above and lightens hero/header sections on
+   every page, making already-light dark-mode text look faded/low-contrast.
+   Replace it with a dark-tinted overlay so it stays properly dark instead. */
+body.dark-mode .breadcrumb-section::before {
+    background: linear-gradient(90deg, rgba(0, 0, 0, .55), rgba(0, 0, 0, .25));
+}
+
 body.dark-mode .collection-hero-enhanced h1,
 body.dark-mode .breadcrumb-section h1 {
     background: linear-gradient(90deg, #fff, var(--color-accent), #fff);
