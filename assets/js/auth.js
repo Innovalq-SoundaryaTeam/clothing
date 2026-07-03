@@ -847,6 +847,17 @@ function setupAdminProductActions() {
 
   addBtn.addEventListener("click", openForAdd);
 
+  /* Explicit close handling: don't rely solely on Bootstrap's data-bs-dismiss
+     auto-wiring, since it can silently no-op if the modal instance wasn't
+     picked up correctly. Binding directly to modal.hide() guarantees the
+     X button (and any other [data-bs-dismiss="modal"] element) works. */
+  modalEl.querySelectorAll('[data-bs-dismiss="modal"]').forEach((closeBtn) => {
+    closeBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+      modal.hide();
+    });
+  });
+
   document.addEventListener("click", (event) => {
     const editLink = event.target.closest("[data-edit-product]");
     if (editLink) {
