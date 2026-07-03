@@ -1,0 +1,1 @@
+Placeholder WebP images. Replace with real fashion photos before final submission.

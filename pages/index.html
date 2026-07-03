@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head><!-- Head Section: page title, meta description, fonts, Bootstrap, Font Awesome and project CSS files -->
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Rose &amp; Thread Boutique | Fashion Store</title>
+    <meta
+        content="Shop elegant boutique clothing for women, men, kids, and accessories with new arrivals, lookbook inspiration, size guide, and store details."
+        name="description" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Lato:wght@400;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <link href="../assets/css/dark-mode.css" rel="stylesheet" />
+    <link href="../assets/css/rtl.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- SEO JSON-LD: helps search engines understand this boutique store -->
+    <script
+        type="application/ld+json">{"@context":"https://schema.org","@type":"ClothingStore","name":"STYLEhub Boutique","address":{"@type":"PostalAddress","streetAddress":"12 Fashion Street","addressLocality":"Coimbatore","addressCountry":"IN"},"url":"https://example.com","telephone":"+91-90000-00000","priceRange":"₹₹"}</script>
+    <!-- ================= Navigation Bar ================= -->
+    <!-- Top Offer Banner: this banner is placed above the navbar -->
+    <div aria-label="Store offer banner" class="top-offer-banner" role="region">
+        <div
+            class="container d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 text-center">
+            <span><i aria-hidden="true" class="fa-solid fa-truck-fast"></i> Free shipping on orders above ₹2,999</span>
+            <span class="offer-divider d-none d-md-inline">|</span>
+            <span>New boutique collection is live now</span>
+        </div>
+    </div><!-- Navigation Bar: logo, menu links, dark mode button and cart icon -->
+    <nav aria-label="Main navigation" class="navbar navbar-expand-lg sticky-top">
+        <div class="container"><a class="navbar-brand" href="index.html">
+                Rose &amp; <span class="brand-thread">Thread</span></a><button aria-controls="mainNav"
+                aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#mainNav"
+                data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
+                    <li class="nav-item"><a class="nav-link" href="lookbook.html">Lookbook</a></li>
+                    <li class="nav-item"><a class="nav-link" href="size-guide.html">Size Guide</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex gap-2 ms-lg-3 align-items-center navbar-actions"><button
+                        aria-label="Toggle dark mode" class="nav-icon-btn" data-theme-toggle=""><i
+                            class="fa-regular fa-moon"></i></button><button aria-label="Toggle text direction"
+                        class="nav-icon-btn" data-rtl-toggle type="button"><i
+                            class="fa-solid fa-right-left"></i> RTL</button><span class="profile-nav-wrapper"
+                        data-profile-nav="">
+                        <a aria-label="View profile" class="nav-icon-btn profile-nav-btn" data-profile-link=""
+                            href="profile.html" title="View profile">
+                            <span class="profile-avatar" data-profile-avatar=""><i
+                                    class="fa-regular fa-user"></i></span>
+                        </a>
+                        <div class="profile-dropdown" data-profile-dropdown="">
+                            <span class="profile-dropdown-label" data-profile-status="">Guest Profile</span>
+                            <strong data-profile-name="">Guest User</strong>
+                            <small data-profile-email="">Login to view your profile</small>
+                            <div class="profile-dropdown-actions" data-profile-actions=""><a
+                                    href="auth.html?role=customer&amp;mode=login">Customer Login</a><a
+                                    href="auth.html?role=admin&amp;mode=login">Admin Login</a></div>
+                        </div>
+                    </span>
+                    <span class="cart-nav-wrapper">
+                        <a aria-label="View cart" class="nav-icon-btn" href="cart.html"><i
+                                class="fa-solid fa-bag-shopping"></i></a>
+                        <span aria-label="Cart items" class="cart-count-badge" id="cartCount">0</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Main Content: all visible page sections are written inside main tag -->
+    <main>
+        <!-- ================= Hero Section ================= -->
+        <!-- Section: Style that feels elegant every day. -->
+        <section class="hero">
+            <div class="container">
+                <div class="row align-items-center g-5 justify-content-between">
+                    <div class="col-lg-6"><span class="eyebrow">New season 2026</span>
+                        <h1>Style that feels elegant every day.</h1>
+                        <p class="lead text-muted-custom">Discover boutique outfits for women, men, kids, and special
+                            occasions with soft blush details and premium tailoring.</p>
+                        <div class="d-flex flex-wrap gap-3 mt-4"><a class="btn-boutique" href="collections.html">Shop
+                                New Arrivals</a><a class="btn-outline-boutique" href="lookbook.html">View Lookbook</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6"><img alt="Fashion model wearing elegant boutique outfit"
+                            class="hero-img img-fluid" src="../assets/images/hero-home-custom.jpg" /></div>
+                </div>
+            </div>
+        </section>
+        <!-- ================= Season Sale Banner ================= -->
+        <!-- Section: Up to 40% off curated occasion wear -->
+        <section class="container">
+            <div class="sale-banner">
+                <div class="row align-items-center">
+                    <div class="col-lg-8"><span class="eyebrow text-white">Season Sale</span>
+                        <h2 class="text-white">Up to 40% off curated occasion wear</h2>
+                        <p>Limited-time boutique sale on elegant dresses, shirts, accessories, and wardrobe staples.</p>
+                    </div>
+                    <div class="col-lg-4 text-lg-end"><a class="btn-outline-boutique text-white border-white"
+                            href="collections.html">Explore Sale</a></div>
+                </div>
+            </div>
+        </section>
+        <!-- ================= Shop By Category ================= -->
+        <!-- Section: Shop by Category -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-title text-center"><span class="eyebrow">Discover</span>
+                    <h2>Shop by Category</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3"><a class="category-card d-block"
+                            href="collections.html?category=Women">
+                            <img alt="Women clothing category" src="../assets/images/category-women.webp" />
+                            <div class="overlay">
+                                <h3>Women</h3>
+                            </div>
+                        </a></div>
+                    <div class="col-md-6 col-lg-3"><a class="category-card d-block"
+                            href="collections.html?category=men">
+                            <img alt="Men clothing category" src="../assets/images/category-men.webp" />
+                            <div class="overlay">
+                                <h3>Mens</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-3"><a class="category-card d-block"
+                            href="collections.html?category=kids">
+                            <img alt="Kids clothing category" src="../assets/images/category-kids.webp" />
+                            <div class="overlay">
+                                <h3>kids</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-3"><a class="category-card d-block"
+                            href="collections.html?category=accessorie">
+                            <img alt="Accessories clothing category" src="../assets/images/category-accessories.webp" />
+                            <div class="overlay">
+                                <h3>Accessories</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ================= New Arrivals ================= -->
+        <!-- Section: New Arrivals -->
+        <section class="section-padding bg-card">
+            <div class="container">
+                <div class="section-title"><span class="eyebrow">Fresh edit</span>
+                    <h2>New Arrivals</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <article class="product-card">
+                            <div class="image-wrap"><img alt="Silk Blend Blazer fashion product"
+                                    src="../assets/images/arrival-silk-blazer.webp" /></div>
+                            <div class="product-body"><span class="category-pill">men</span>
+                                <h3>Silk Blend Blazer</h3>
+                                <p class="price">₹2,499</p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <a class="btn-boutique" href="product-details.html?id=silk-blazer-001">View
+                                        Product</a>
+                                    <button class="btn-outline-boutique add-to-cart" data-id="silk-blazer-001"
+                                        data-image="../assets/images/arrival-silk-blazer.webp"
+                                        data-name="Silk Blend Blazer" data-price="2499"><i
+                                            class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <article class="product-card">
+                            <div class="image-wrap"><img alt="Evening Rose Dress fashion product"
+                                    src="../assets/images/arrival-evening-dress.webp" /></div>
+                            <div class="product-body"><span class="category-pill">Women</span>
+                                <h3>Evening Rose Dress</h3>
+                                <p class="price">₹3,199</p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <a class="btn-boutique" href="product-details.html?id=evening-dress-001">View
+                                        Product</a>
+                                    <button class="btn-outline-boutique add-to-cart" data-id="evening-dress-001"
+                                        data-image="../assets/images/arrival-evening-dress.webp"
+                                        data-name="Evening Rose Dress" data-price="3199"><i
+                                            class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <article class="product-card">
+                            <div class="image-wrap"><img alt="Linen Casual Shirt fashion product"
+                                    src="../assets/images/arrival-linen-shirt.webp" /></div>
+                            <div class="product-body"><span class="category-pill">Men</span>
+                                <h3>Linen Casual Shirt</h3>
+                                <p class="price">₹1,699</p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <a class="btn-boutique" href="product-details.html?id=linen-shirt-001">View
+                                        Product</a>
+                                    <button class="btn-outline-boutique add-to-cart" data-id="linen-shirt-001"
+                                        data-image="../assets/images/arrival-linen-shirt.webp"
+                                        data-name="Linen Casual Shirt" data-price="1699"><i
+                                            class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <article class="product-card">
+                            <div class="image-wrap"><img alt="Kids Weekend Set fashion product"
+                                    src="../assets/images/arrival-kids-set.webp" /></div>
+                            <div class="product-body"><span class="category-pill">Kids</span>
+                                <h3>Kids Weekend Set</h3>
+                                <p class="price">₹1,299</p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <a class="btn-boutique" href="product-details.html?id=kids-set-001">View Product</a>
+                                    <button class="btn-outline-boutique add-to-cart" data-id="kids-set-001"
+                                        data-image="../assets/images/arrival-kids-set.webp" data-name="Kids Weekend Set"
+                                        data-price="1299"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Section: Trending Now -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-title"><span class="eyebrow">Trending</span>
+                    <h2>Trending Now</h2>
+                </div>
+                <div class="scroll-strip">
+                    <div class="scroll-item">
+                        <article class="product-card">
+                            <div class="image-wrap trending-img-wrap"><img alt="Velvet Dress fashion product"
+                                    src="../assets/images/trend-velvet-dress.webp" /></div>
+                            <div class="product-body"><span class="category-pill">Occasion</span>
+                                <h3>Velvet Dress</h3>
+                                <p class="price">₹2,899</p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <a class="btn-boutique" href="product-details.html?id=velvet-dress-001">View</a>
+                                    <button class="btn-outline-boutique add-to-cart" data-id="velvet-dress-001"
+                                        data-image="../assets/images/trend-velvet-dress.webp" data-name="Velvet Dress"
+                                        data-price="2899"><i class="fa-solid fa-bag-shopping"></i> Add</button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="scroll-item">
+                        <article class="product-card">
+                            <div class="image-wrap trending-img-wrap"><img alt="Classic Trench fashion product"
+                                    src="../assets/images/trend-trench-coat.webp" /></div>
+                            <div class="product-body"><span class="category-pill">Outerwear</span>
+                                <h3>Classic Trench</h3>
+                                <p class="price">₹3,499</p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <a class="btn-boutique" href="product-details.html?id=trench-coat-001">View</a>
+                                    <button class="btn-outline-boutique add-to-cart" data-id="trench-coat-001"
+                                        data-image="../assets/images/trend-trench-coat.webp" data-name="Classic Trench"
+                                        data-price="3499"><i class="fa-solid fa-bag-shopping"></i> Add</button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="scroll-item">
+                        <article class="product-card">
+                            <div class="image-wrap trending-img-wrap"><img alt="Pearl Mini Bag fashion product"
+                                    src="../assets/images/trend-pearl-bag.webp" /></div>
+                            <div class="product-body"><span class="category-pill">Accessories</span>
+                                <h3>Pearl Mini Bag</h3>
+                                <p class="price">₹999</p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <a class="btn-boutique" href="product-details.html?id=pearl-mini-001">View</a>
+                                    <button class="btn-outline-boutique add-to-cart" data-id="pearl-mini-001"
+                                        data-image="../assets/images/trend-pearl-bag.webp" data-name="Pearl Mini Bag"
+                                        data-price="999"><i class="fa-solid fa-bag-shopping"></i> Add</button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="scroll-item">
+                        <article class="product-card">
+                            <div class="image-wrap trending-img-wrap"><img alt="Tailored Pants fashion product"
+                                    src="../assets/images/trend-tailored-pants.webp" /></div>
+                            <div class="product-body"><span class="category-pill">Men</span>
+                                <h3>Tailored Pants</h3>
+                                <p class="price">₹1,899</p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <a class="btn-boutique" href="product-details.html?id=tailored-pants-001">View</a>
+                                    <button class="btn-outline-boutique add-to-cart" data-id="tailored-pants-001"
+                                        data-image="../assets/images/trend-tailored-pants.webp"
+                                        data-name="Tailored Pants" data-price="1899"><i
+                                            class="fa-solid fa-bag-shopping"></i> Add</button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="scroll-item">
+                        <article class="product-card">
+                            <div class="image-wrap trending-img-wrap"><img alt="Summer Co-ord fashion product"
+                                    src="../assets/images/trend-summer-set.webp" /></div>
+                            <div class="product-body"><span class="category-pill">Men</span>
+                                <h3>Summer Co-ord</h3>
+                                <p class="price">₹2,299</p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <a class="btn-boutique" href="product-details.html?id=summer-coord-001">View</a>
+                                    <button class="btn-outline-boutique add-to-cart" data-id="summer-coord-001"
+                                        data-image="../assets/images/trend-summer-set.webp" data-name="Summer Co-ord"
+                                        data-price="2299"><i class="fa-solid fa-bag-shopping"></i> Add</button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="scroll-item">
+                        <article class="product-card">
+                            <div class="image-wrap trending-img-wrap"><img alt="Leather Sandal fashion product"
+                                    src="../assets/images/trend-leather-sandal.webp" /></div>
+                            <div class="product-body"><span class="category-pill">Footwear</span>
+                                <h3>Leather Sandal</h3>
+                                <p class="price">₹1,499</p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    <a class="btn-boutique" href="product-details.html?id=leather-sandal-001">View</a>
+                                    <button class="btn-outline-boutique add-to-cart" data-id="leather-sandal-001"
+                                        data-image="../assets/images/trend-leather-sandal.webp"
+                                        data-name="Leather Sandal" data-price="1499"><i
+                                            class="fa-solid fa-bag-shopping"></i> Add</button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Section: Style Blog 
+        <section class="section-padding">
+            <div class="container">
+                <div class="section-title"><span class="eyebrow">Journal</span>
+                    <h2>Style Blog</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <article class="blog-card">
+                            <div class="image-wrap"><img alt="How to Build a Capsule Wardrobe blog image"
+                                    src="../assets/images/blog-capsule.webp" /></div>
+                            <div class="card-body-custom"><span class="category-pill">Style Guide</span>
+                                <h3>How to Build a Capsule Wardrobe</h3>
+                                <p class="text-muted-custom">Simple boutique styling tips for a polished everyday look.
+                                </p><a class="btn-outline-boutique" href="blog-details.html">Read More</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-4">
+                        <article class="blog-card">
+                            <div class="image-wrap"><img alt="Blush Color Pairings for Events blog image"
+                                    src="../assets/images/blog-color.webp" /></div>
+                            <div class="card-body-custom"><span class="category-pill">Style Guide</span>
+                                <h3>Blush Color Pairings for Events</h3>
+                                <p class="text-muted-custom">Simple boutique styling tips for a polished everyday look.
+                                </p><a class="btn-outline-boutique" href="blog-details.html">Read More</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-4">
+                        <article class="blog-card">
+                            <div class="image-wrap"><img alt="How to Care for Premium Fabrics blog image"
+                                    src="../assets/images/blog-care.webp" /></div>
+                            <div class="card-body-custom"><span class="category-pill">Style Guide</span>
+                                <h3>How to Care for Premium Fabrics</h3>
+                                <p class="text-muted-custom">Simple boutique styling tips for a polished everyday look.
+                                </p><a class="btn-outline-boutique" href="blog-details.html">Read More</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>-->
+        <!-- Section: Pb 5 -->
+        <section class="pb-5">
+            <div class="container">
+                <div class="brand-strip">
+                    <div class="brand-logo">Luna</div>
+                    <div class="brand-logo">Zara</div>
+                    <div class="brand-logo">VogueLine</div>
+                    <div class="brand-logo">Silk &amp; Co</div>
+                    <div class="brand-logo">US polo</div>
+                </div>
+            </div>
+        </section>
+        <!-- Section: Join the inner circle -->
+        <section class="pb-5">
+            <div class="container">
+                <!-- Form Section: user input fields and submit button -->
+                <form id="subscribeForm" class="newsletter row g-3 align-items-center" method="post">
+                    <div class="col-lg-6">
+                        <h2>Join the inner circle</h2>
+                        <p class="mb-0 text-muted-custom">Mailchimp-ready signup for arrivals, sales, and styling notes.
+                        </p>
+                    </div>
+                    <div class="col-lg-4"><label class="visually-hidden" for="newsletterEmail">Email</label><input
+                            class="form-control" id="newsletterEmail" placeholder="Email address" required=""
+                            type="email" />
+                    </div>
+                    <div class="col-lg-2"><button class="btn-boutique w-100" type="submit">Subscribe</button></div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <!-- ================= Footer ================= -->
+    <!-- Footer Section: brand details, quick links, support links and store info -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <h3>Rose &amp; Thread</h3>
+                    <p class="opacity-75">Elegant clothing boutique for modern wardrobes, crafted with premium fabrics
+                        and thoughtful silhouettes.</p>
+                    <div class="social-icons"><a aria-label="Instagram" href="https://www.instagram.com/roseandthread/" target="_blank"><i
+                                class="fa-brands fa-instagram"></i></a><a aria-label="Facebook" href="https://www.facebook.com/roseandthread/" target="_blank"><i
+                                class="fa-brands fa-facebook-f"></i></a><a aria-label="Pinterest" href="https://www.pinterest.com/roseandthread/" target="_blank"><i
+                                class="fa-brands fa-pinterest-p"></i></a></div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>Shop</h4><a href="collections.html?category=Women">Women</a><a href="collections.html?category=Men">Men</a><a
+                        href="collections.html?category=Kids">Kids</a><a href="collections.html?category=Accessories">Accessories</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>Support</h4><a href="size-guide.html">Size Guide</a><a href="contact.html">Contact</a><a
+                        href="product-details.html">Shipping Info</a><a href="404.html">Returns</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>Visit Store</h4>
+                    <p class="opacity-75 mb-1">12 Fashion Street, Coimbatore</p>
+                    <p class="opacity-75 mb-1">Mon - Sat: 10 AM - 8 PM</p><a
+                        href="mailto:hello@roseandthread.com">hello@roseandthread.com</a>
+                </div>
+            </div>
+            <hr class="border-secondary my-4" />
+            <div class="d-flex flex-column flex-md-row justify-content-between">
+                <p class="mb-0 opacity-75">© 2026 Rose &amp; Thread. All rights reserved.</p>
+                <p class="mb-0 opacity-75">Bootstrap 5 HTML Template</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap JavaScript: navbar toggle, dropdowns and built-in Bootstrap components -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Main JavaScript -->
+    <!-- Main JavaScript: dark mode, form validation and common interactions -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/auth.js"></script>
+</body>
+
+</html>

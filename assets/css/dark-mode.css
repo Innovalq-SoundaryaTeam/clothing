@@ -1,0 +1,469 @@
+/* Dark theme overrides using body class and CSS variables */
+body.dark-mode{--color-bg:#0f0f0f;--color-text:#f7f7f7;--color-card-bg:#1a1a1a;--color-border:#2b2b2b;--color-muted:#c5c5c5;--color-footer:#000000;--color-footer-text:#ffffff;--color-focus:#E8B4B8;background:var(--color-bg);color:var(--color-text)}
+body.dark-mode .boutique-card,body.dark-mode .product-card,body.dark-mode .blog-card,body.dark-mode .icon-box{background:#151515;color:#f7f7f7}body.dark-mode .navbar{background:var(--color-bg)}body.dark-mode .navbar-brand,body.dark-mode .nav-link{color:var(--color-text)!important}body.dark-mode .nav-link::after{background:var(--color-accent)}body.dark-mode .btn-outline-boutique{border-color:#fff;color:#fff}body.dark-mode .btn-outline-boutique:hover{background:#fff;color:#000}body.dark-mode .form-control,body.dark-mode .form-select{background:#151515;color:#fff;border-color:var(--color-border)}body.dark-mode .table{color:#fff}body.dark-mode .brand-logo{background:#151515;color:#fff}
+@media (prefers-color-scheme: dark){body.auto-dark{--color-bg:#0f0f0f;--color-text:#f7f7f7;--color-card-bg:#1a1a1a;--color-border:#2b2b2b;--color-muted:#c5c5c5}}
+
+/* =====================================================
+   Dark Mode Visibility Fix
+   Fixes: top banner text, buttons, links, cards, forms,
+   tables and all common text areas in dark theme.
+===================================================== */
+body.dark-mode{
+  background:#0f0f0f;
+  color:#f7f7f7;
+}
+
+body.dark-mode main,
+body.dark-mode section,
+body.dark-mode .section-padding,
+body.dark-mode .breadcrumb-section,
+body.dark-mode .auth-section,
+body.dark-mode .auth-portal-wrap,
+body.dark-mode .admin-body,
+body.dark-mode .admin-main{
+  background-color:var(--color-bg);
+  color:var(--color-text);
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode p,
+body.dark-mode li,
+body.dark-mode label,
+body.dark-mode small,
+body.dark-mode strong,
+body.dark-mode td,
+body.dark-mode th{
+  color:var(--color-text);
+}
+
+body.dark-mode .text-muted,
+body.dark-mode .text-muted-custom,
+body.dark-mode .auth-note,
+body.dark-mode .eyebrow,
+body.dark-mode .old-price,
+body.dark-mode .cart-product small,
+body.dark-mode .summary-row span,
+body.dark-mode .trust-item,
+body.dark-mode .cart-table thead th,
+body.dark-mode .btn-clear-cart{
+  color:var(--color-muted)!important;
+}
+
+/* Top offer banner text should stay visible in dark mode */
+body.dark-mode .top-offer-banner{
+  background:#4e284e;
+  color:#817f7f;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+body.dark-mode .top-offer-banner span,
+body.dark-mode .top-offer-banner p,
+body.dark-mode .top-offer-banner a{
+  color:#ffffff!important;
+}
+body.dark-mode .top-offer-banner i,
+body.dark-mode .top-offer-banner .offer-divider{
+  color:var(--color-accent)!important;
+}
+
+/* Navbar and toggle buttons */
+body.dark-mode .navbar{
+  background:#0f0f0f;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+body.dark-mode .navbar-brand,
+body.dark-mode .nav-link,
+body.dark-mode .navbar-toggler,
+body.dark-mode [data-rtl-toggle]{
+  color:#ffffff!important;
+}
+body.dark-mode [data-rtl-toggle]{
+  background:#1a1a1a!important;
+  border-color:#333333!important;
+}
+body.dark-mode .nav-icon-btn{
+  color:#ffffff;
+  border-color:#333333;
+  background:#1a1a1a;
+}
+body.dark-mode .nav-icon-btn:hover,
+body.dark-mode [data-rtl-toggle]:hover{
+  background:#ffffff!important;
+  color:#000000!important;
+  border-color:#ffffff!important;
+}
+body.dark-mode .navbar-toggler-icon{
+  filter:invert(1);
+}
+ 
+
+/* Cards / boxes / sections */
+body.dark-mode .boutique-card,
+body.dark-mode .product-card,
+body.dark-mode .blog-card,
+body.dark-mode .icon-box,
+body.dark-mode .sidebar-box,
+body.dark-mode .newsletter,
+body.dark-mode .filter-bar,
+body.dark-mode .brand-logo,
+body.dark-mode .auth-card,
+body.dark-mode .auth-portal-card,
+body.dark-mode .admin-topbar,
+body.dark-mode .admin-card,
+body.dark-mode .accordion-item,
+body.dark-mode .cart-table-wrap,
+body.dark-mode .cart-summary,
+body.dark-mode .empty-cart-box,
+body.dark-mode .promo-box,
+body.dark-mode .trust-strip{
+  background:#151515!important;
+  color:#f7f7f7!important;
+  border-color:#2b2b2b!important;
+}
+
+body.dark-mode .card-body-custom,
+body.dark-mode .product-body{
+  color:#f7f7f7;
+}
+
+/* Buttons and primary colored elements */
+body.dark-mode .btn-boutique{
+  background:#ffffff;
+  border-color:#ffffff;
+  color:#000000!important;
+}
+body.dark-mode .btn-boutique:hover{
+  background:var(--color-accent);
+  border-color:var(--color-accent);
+  color:#000000!important;
+}
+body.dark-mode .btn-outline-boutique{
+  background:transparent;
+  border-color:#ffffff;
+  color:#ffffff!important;
+}
+body.dark-mode .btn-outline-boutique:hover,
+body.dark-mode .share-btn:hover,
+body.dark-mode .qty-btn:hover,
+body.dark-mode .qty-btn:focus,
+body.dark-mode .logout-btn:hover{
+  background:#ffffff;
+  border-color:#ffffff;
+  color:#000000!important;
+}
+body.dark-mode .logout-btn{
+  border-color:#ffffff;
+  color:#ffffff;
+}
+
+/* Links/icons that used black primary color in light mode */
+body.dark-mode .breadcrumb-item a,
+body.dark-mode .pagination .page-link,
+body.dark-mode .password-toggle,
+body.dark-mode .mode-tab.active,
+body.dark-mode .trust-item i,
+body.dark-mode .payment-icons i:hover,
+body.dark-mode .icon-box i{
+  color:var(--color-accent)!important;
+}
+body.dark-mode .mode-tab.active{
+  border-bottom-color:var(--color-accent)!important;
+}
+body.dark-mode .role-btn.active{
+  background:#ffffff!important;
+  color:#000000!important;
+}
+body.dark-mode .role-btn:not(.active):hover{
+  background:#2b2b2b!important;
+  color:#ffffff!important;
+}
+
+/* Forms, tables and accordion */
+body.dark-mode .form-control,
+body.dark-mode .form-select,
+body.dark-mode .accordion-button,
+body.dark-mode .accordion-body,
+body.dark-mode .qty-btn,
+body.dark-mode .qty-control span,
+body.dark-mode .size-btn{
+  background:#151515!important;
+  color:#ffffff!important;
+  border-color:#333333!important;
+}
+body.dark-mode .form-control::placeholder{
+  color:#aaaaaa;
+}
+body.dark-mode .accordion-button:not(.collapsed){
+  background:#1d1d1d!important;
+  color:#ffffff!important;
+}
+body.dark-mode .accordion-button::after{
+  filter:invert(1);
+}
+body.dark-mode .table,
+body.dark-mode .table th,
+body.dark-mode .table td,
+body.dark-mode .admin-table th,
+body.dark-mode .admin-table td{
+  color:#ffffff!important;
+  border-color:#333333!important;
+}
+body.dark-mode .table{
+  --bs-table-color:#ffffff;
+  --bs-table-bg:#151515;
+  --bs-table-border-color:#333333;
+  --bs-table-striped-color:#ffffff;
+  --bs-table-striped-bg:#1d1d1d;
+  --bs-table-hover-color:#ffffff;
+  --bs-table-hover-bg:#222222;
+}
+body.dark-mode .cart-table tbody tr:hover{
+  background:#1d1d1d;
+}
+body.dark-mode .status-badge,
+body.dark-mode .category-pill,
+body.dark-mode .tag{
+  background:#222222!important;
+  color:#ffffff!important;
+}
+
+/* Auth side/banner panels */
+body.dark-mode .auth-side,
+body.dark-mode .auth-portal-side,
+body.dark-mode .sale-banner{
+  color:#ffffff!important;
+}
+body.dark-mode .auth-side h2,
+body.dark-mode .auth-side p,
+body.dark-mode .auth-portal-side h2,
+body.dark-mode .auth-portal-side p,
+body.dark-mode .auth-feature,
+body.dark-mode .auth-feature-item,
+body.dark-mode .sale-banner h2,
+body.dark-mode .sale-banner p{
+  color:#ffffff!important;
+}
+
+/* Keep badge and toast readable */
+body.dark-mode .cart-count-badge{
+  color:#000000!important;
+  border-color:#0f0f0f;
+}
+body.dark-mode #cartToast{
+  background:#ffffff;
+  color:#000000;
+}
+body.dark-mode .text-success-custom{
+  color:#6fdc8c!important;
+}
+
+/* Profile navbar/page dark-mode visibility fixes */
+body.dark-mode .profile-dropdown,
+body.dark-mode .profile-dropdown::before,
+body.dark-mode .profile-card,
+body.dark-mode .profile-details-card{background:var(--color-bg);color:var(--color-text);border-color:var(--color-border);}
+body.dark-mode .profile-page-avatar{background:var(--color-accent);color:#000;}
+body.dark-mode .profile-nav-btn .profile-avatar{background:var(--color-card-bg);color:var(--color-text);}
+body.dark-mode .profile-dropdown strong,
+body.dark-mode .profile-info-box strong,
+body.dark-mode .profile-details-card h2,
+body.dark-mode .profile-card h2{color:var(--color-text);}
+
+
+body.dark-mode .profile-dropdown-actions a,
+body.dark-mode .profile-dropdown-actions button{color:var(--color-bg);}
+body.dark-mode .profile-dropdown-actions button{color:var(--color-primary);}
+body.dark-mode .profile-dropdown-actions a:hover,
+body.dark-mode .profile-dropdown-actions button:hover{color:#000!important;}
+
+/* Final profile dropdown action visibility in dark mode */
+body.dark-mode .profile-dropdown-actions a{
+  background:#ffffff!important;
+  border-color:#ffffff!important;
+  color:#000000!important;
+}
+body.dark-mode .profile-dropdown-actions button{
+  background:transparent!important;
+  border-color:#ffffff!important;
+  color:#ffffff!important;
+}
+body.dark-mode .profile-dropdown-actions a:hover,
+body.dark-mode .profile-dropdown-actions button:hover{
+  background:var(--color-accent)!important;
+  border-color:var(--color-accent)!important;
+  color:#000000!important;
+}
+
+
+/* Checkout Dark Mode */
+body.dark-mode .checkout-card,
+body.dark-mode .checkout-alert,
+body.dark-mode .payment-note,
+body.dark-mode .checkout-item img,
+body.dark-mode .checkout-item-placeholder{background:var(--color-card-bg);border-color:var(--color-border);color:var(--color-text)}
+body.dark-mode .checkout-item strong,
+body.dark-mode .checkout-item b,
+body.dark-mode .checkout-card h2{color:var(--color-text)}
+body.dark-mode .checkout-item small,
+body.dark-mode .payment-note{color:var(--color-muted)}
+
+
+/* Home page dark mode price visibility fix */
+body.dark-mode .product-card .price,
+body.dark-mode .scroll-item .price,
+body.dark-mode .product-body .price,
+body.dark-mode .product-card .old-price,
+body.dark-mode .scroll-item .old-price,
+body.dark-mode .product-body .old-price {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+body.dark-mode .product-card .price,
+body.dark-mode .scroll-item .price {
+    font-weight: 800;
+}
+
+body.dark-mode .product-card .category-pill {
+    color: #111111;
+}
+
+/* Dark mode */
+body.dark-mode {
+  background:
+    linear-gradient(rgba(10, 10, 10, 0.88), rgba(10, 10, 10, 0.92)),
+    url("../images/site-bg.jpg") center center / cover no-repeat fixed;
+}
+
+body.dark-mode .product-card,
+body.dark-mode .blog-card,
+body.dark-mode .boutique-card,
+body.dark-mode .icon-box,
+body.dark-mode .filter-bar,
+body.dark-mode .newsletter,
+body.dark-mode .cart-summary,
+body.dark-mode .cart-table-wrap,
+body.dark-mode .checkout-card,
+body.dark-mode .profile-card,
+body.dark-mode .profile-details-card {
+  background: rgba(24, 24, 24, 0.9);
+}
+/* =====================================================
+   Premium UI Enhancement Pack - Dark Mode
+===================================================== */
+body.dark-mode {
+  --color-bg: #120d10;
+  --color-text: #f8f0f2;
+  --color-card-bg: #1a1417;
+  --color-border: rgba(255,255,255,.08);
+  --color-muted: #d0c0c7;
+  background:
+    radial-gradient(circle at top left, rgba(200,148,164,.14), transparent 24%),
+    radial-gradient(circle at top right, rgba(121,85,100,.18), transparent 22%),
+    linear-gradient(rgba(12, 8, 10, 0.92), rgba(12, 8, 10, 0.95)),
+    url("../images/site-bg.jpg") center center / cover no-repeat fixed;
+}
+
+body.dark-mode .navbar {
+  background: rgba(18,13,16,.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 14px 34px rgba(0,0,0,.25);
+}
+
+body.dark-mode .hero {
+  background:
+    linear-gradient(120deg, rgba(23,16,20,.96), rgba(34,24,29,.9)),
+    radial-gradient(circle at 16% 18%, rgba(200,148,164,.14), transparent 18%),
+    radial-gradient(circle at 85% 12%, rgba(232,180,184,.08), transparent 16%);
+}
+
+body.dark-mode .breadcrumb-section,
+body.dark-mode .auth-section,
+body.dark-mode .admin-body {
+  background:
+    linear-gradient(135deg, rgba(17,12,14,.96), rgba(27,20,24,.92)),
+    url("../images/site-bg.jpg") center/cover no-repeat fixed;
+}
+
+body.dark-mode .boutique-card,
+body.dark-mode .product-card,
+body.dark-mode .blog-card,
+body.dark-mode .icon-box,
+body.dark-mode .sidebar-box,
+body.dark-mode .newsletter,
+body.dark-mode .filter-bar,
+body.dark-mode .auth-card,
+body.dark-mode .profile-card,
+body.dark-mode .profile-details-card,
+body.dark-mode .admin-card,
+body.dark-mode .admin-topbar,
+body.dark-mode .brand-logo,
+body.dark-mode .coming-card,
+body.dark-mode .profile-info-box {
+  background: rgba(29, 22, 26, 0.82) !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.22);
+}
+
+body.dark-mode .top-offer-banner {
+  background: linear-gradient(90deg, #150f12, #5f4050, #150f12);
+}
+
+body.dark-mode .btn-boutique {
+  background: linear-gradient(135deg, #fff, #f0d8e0);
+  color: #130d10 !important;
+}
+
+body.dark-mode .btn-outline-boutique {
+  background: rgba(255,255,255,.02);
+}
+
+body.dark-mode .btn-outline-boutique:hover {
+  background: linear-gradient(135deg, #fff, #f0d8e0);
+  color: #130d10 !important;
+}
+
+body.dark-mode .table thead th,
+body.dark-mode .admin-table th {
+  background: rgba(200,148,164,.16);
+  color: #f3d8e1 !important;
+}
+
+body.dark-mode .table tbody tr:hover,
+body.dark-mode .admin-table tbody tr:hover {
+  background: rgba(200,148,164,.08);
+}
+
+body.dark-mode .category-pill,
+body.dark-mode .tag,
+body.dark-mode .status-badge,
+body.dark-mode .profile-status-badge,
+body.dark-mode .profile-order-count {
+  background: rgba(200,148,164,.14) !important;
+  color: #f8f0f2 !important;
+}
+
+body.dark-mode .profile-info-box {
+  background: rgba(255,255,255,.03) !important;
+}
+
+body.dark-mode .admin-sidebar {
+  background: linear-gradient(180deg, #120d10, #35222b 65%, #5c4050 100%);
+}
+
+
+
+/* Forgot Password dark mode */
+body.dark-mode .auth-link-small {
+  color: var(--color-accent) !important;
+}
+body.dark-mode .forgot-password-box {
+  border-top-color: var(--color-border);
+}

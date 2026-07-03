@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><!-- Head Section: page title, meta description, fonts, Bootstrap, Font Awesome and project CSS files -->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Your Cart | Rose &amp; Thread Boutique</title>
+<meta content="Review your selected Rose &amp; Thread boutique styles, update quantities, and proceed to checkout with free shipping on all orders." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/style.css" rel="stylesheet"/>
+<link href="../assets/css/dark-mode.css" rel="stylesheet"/>
+<link href="../assets/css/rtl.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- ══════════════════════════════
+       NAVBAR
+  ══════════════════════════════ -->
+<!-- Top Offer Banner: this banner is placed above the navbar --><div aria-label="Store offer banner" class="top-offer-banner" role="region">
+<div class="container d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 text-center">
+<span><i aria-hidden="true" class="fa-solid fa-truck-fast"></i> Free shipping on orders above ₹2,999</span>
+<span class="offer-divider d-none d-md-inline">|</span>
+<span>New boutique collection is live now</span>
+</div>
+</div><!-- Navigation Bar: logo, menu links, dark mode button and cart icon --><nav aria-label="Main navigation" class="navbar navbar-expand-lg sticky-top">
+<div class="container">
+<a class="navbar-brand" href="index.html">
+  Rose &amp; <span class="brand-thread">Thread</span>
+</a>
+<button aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#mainNav" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="mainNav">
+<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
+<li class="nav-item"><a class="nav-link" href="lookbook.html">Lookbook</a></li>
+<li class="nav-item"><a class="nav-link" href="size-guide.html">Size Guide</a></li>
+<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+</ul>
+<div class="d-flex gap-2 ms-lg-3 align-items-center navbar-actions"><button aria-label="Toggle dark mode" class="nav-icon-btn" data-theme-toggle="">
+<i class="fa-regular fa-moon"></i>
+</button>
+<button aria-label="Toggle text direction" class="nav-icon-btn" data-rtl-toggle type="button"><i class="fa-solid fa-right-left"></i> RTL</button>
+<span class="profile-nav-wrapper" data-profile-nav>
+<a aria-label="View profile" class="nav-icon-btn profile-nav-btn" data-profile-link href="profile.html" title="View profile">
+<span class="profile-avatar" data-profile-avatar><i class="fa-regular fa-user"></i></span>
+</a>
+<div class="profile-dropdown" data-profile-dropdown>
+<span class="profile-dropdown-label" data-profile-status>Guest Profile</span>
+<strong data-profile-name>Guest User</strong>
+<small data-profile-email>Login to view your profile</small>
+<div class="profile-dropdown-actions" data-profile-actions><a href="auth.html?role=customer&mode=login">Customer Login</a><a href="auth.html?role=admin&mode=login">Admin Login</a></div>
+</div>
+</span>
+<span class="cart-nav-wrapper">
+<a aria-label="View cart" class="nav-icon-btn" href="cart.html">
+<i class="fa-solid fa-bag-shopping"></i>
+</a>
+<span aria-label="Cart items" class="cart-count-badge">0</span>
+</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content: all visible page sections are written inside main tag --><main>
+<!-- ══════════════════════════════
+         CART HERO
+    ══════════════════════════════ -->
+<!-- Section: Your Cart --><section class="breadcrumb-section">
+<div class="container text-center">
+<span class="eyebrow">Shopping Bag</span>
+<h1>Your Cart</h1>
+<p class="lead text-muted-custom">Review your selected boutique styles before checkout.</p>
+</div>
+</section>
+<!-- ══════════════════════════════
+         EMPTY STATE
+    ══════════════════════════════ -->
+<div class="d-none" id="emptyCart">
+<div class="container" style="padding: 80px 0; text-align: center;">
+<div class="empty-cart-box">
+<i class="fa-solid fa-bag-shopping" style="font-size:3.5rem; color:var(--color-accent); display:block; margin-bottom:20px;"></i>
+<h2>Your cart is empty</h2>
+<p class="text-muted-custom mb-4">Looks like you haven't added anything yet.<br/>Explore our latest arrivals and trending styles.</p>
+<a class="btn-boutique me-2" href="collections.html">Browse Collections</a>
+<a class="btn-outline-boutique" href="index.html">Back to Home</a>
+</div>
+</div>
+</div>
+<!-- ══════════════════════════════
+         CART CONTENT
+    ══════════════════════════════ -->
+<div class="section-padding pt-4" id="cartContent">
+<div class="container">
+<div class="row g-4 align-items-start">
+<!-- Left: Cart Items Table -->
+<div class="col-lg-8">
+<div class="cart-table-wrap">
+<div class="d-flex justify-content-between align-items-center mb-3">
+<h2 class="mb-0" style="font-size:1.4rem;">Items</h2>
+<button aria-label="Clear all cart items" class="btn-clear-cart" id="clearCartBtn" type="button">
+<i class="fa-solid fa-trash-can"></i> Clear Cart
+                </button>
+</div>
+<div class="table-responsive">
+<table class="table cart-table align-middle">
+<thead>
+<tr>
+<th scope="col">Product</th>
+<th scope="col">Price</th>
+<th scope="col">Qty</th>
+<th scope="col">Total</th>
+<th scope="col"><span class="visually-hidden">Remove</span></th>
+</tr>
+</thead>
+<tbody id="cartItems"></tbody>
+</table>
+</div>
+<!-- Continue shopping -->
+<div class="mt-3 pt-2" style="border-top:1px solid var(--color-border);">
+<a class="btn-outline-boutique d-inline-flex" href="collections.html" style="font-size:.85rem;">
+<i class="fa-solid fa-arrow-left"></i>  Continue Shopping
+                </a>
+</div>
+</div>
+</div>
+<!-- Right: Order Summary -->
+<div class="col-lg-4">
+<aside class="cart-summary">
+<h2>Order Summary</h2>
+<div class="summary-row">
+<span>Subtotal</span>
+<strong id="cartSubtotal">₹0</strong>
+</div>
+<div class="summary-row">
+<span>Shipping</span>
+<strong class="text-success-custom"><i class="fa-solid fa-truck-fast fa-sm"></i> Free</strong>
+</div>
+<div class="summary-row">
+<span>Tax (2% GST)</span>
+<strong id="cartTax">₹0</strong>
+</div>
+<div class="summary-row total">
+<span>Grand Total</span>
+<strong id="cartTotal">₹0</strong>
+</div>
+<!-- Promo code -->
+<div class="promo-box mb-4">
+<label class="visually-hidden" for="promoCode">Promo code</label>
+<div class="d-flex gap-2">
+<input class="form-control" id="promoCode" placeholder="Promo code" type="text"/>
+<button class="btn-outline-boutique" style="white-space:nowrap;padding:10px 16px;" type="button">Apply</button>
+</div>
+</div>
+<!-- PAYMENT -->
+<a class="btn-boutique w-100 d-flex justify-content-center mb-3" id="placeOrderBtn" href="checkout.html" style="text-decoration:none;">
+<i class="fa-solid fa-lock"></i>  Proceed to Checkout
+              </a>
+<div class="payment-icons d-flex justify-content-center gap-3 mt-2">
+<i aria-label="Visa accepted" class="fa-brands fa-cc-visa fa-2x" title="Visa"></i>
+<i aria-label="Mastercard accepted" class="fa-brands fa-cc-mastercard fa-2x" title="Mastercard"></i>
+<i aria-label="PayPal accepted" class="fa-brands fa-cc-paypal fa-2x" title="PayPal"></i>
+<i aria-label="Stripe accepted" class="fa-brands fa-cc-stripe fa-2x" title="Stripe"></i>
+<i aria-label="Google Pay accepted" class="fa-brands fa-google-pay fa-2x" title="Google Pay"></i>
+</div>
+</aside>
+<!-- Trust strip -->
+<div class="trust-strip mt-3">
+<div class="trust-item"><i class="fa-solid fa-shield-halved"></i> Secure &amp; Encrypted</div>
+<div class="trust-item"><i class="fa-solid fa-rotate-left"></i> Easy 14-day Returns</div>
+<div class="trust-item"><i class="fa-solid fa-truck-fast"></i> Free Delivery</div>
+</div>
+</div>
+</div><!-- /row -->
+<!-- ── You May Also Like ── -->
+<div class="section-title mt-5 pt-3">
+<span class="eyebrow">While you're here</span>
+<h2>You May Also Like</h2>
+</div>
+<div class="row g-4">
+<div class="col-md-6 col-lg-3">
+<article class="product-card">
+<div class="image-wrap" style="height:240px;">
+<img alt="Blush Wrap Dress" src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=500&amp;q=80"/>
+</div>
+<div class="product-body">
+<span class="category-pill">Women</span>
+<h3>Blush Wrap Dress</h3>
+<p class="price">₹2,299</p>
+<div class="d-flex gap-2 flex-wrap">
+<a class="btn-boutique" href="product-details.html">View</a>
+<button class="btn-outline-boutique add-to-cart" data-id="blush-wrap-cart" data-image="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=400&amp;q=80" data-name="Blush Wrap Dress" data-price="2299">
+<i class="fa-solid fa-bag-shopping"></i> Add
+                  </button>
+</div>
+</div>
+</article>
+</div>
+<div class="col-md-6 col-lg-3">
+<article class="product-card">
+<div class="image-wrap" style="height:240px;">
+<img alt="Velvet Maxi Coat" src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=500&amp;q=80"/>
+</div>
+<div class="product-body">
+<span class="category-pill">Women</span>
+<h3>Velvet Maxi Coat</h3>
+<p class="price">₹4,199</p>
+<div class="d-flex gap-2 flex-wrap">
+<a class="btn-boutique" href="product-details.html">View</a>
+<button class="btn-outline-boutique add-to-cart" data-id="velvet-coat-cart" data-image="https://images.unsplash.com/photo-1591369822096-ffd140ec948f?w=400&amp;q=80" data-name="Velvet Maxi Coat" data-price="4199">
+<i class="fa-solid fa-bag-shopping"></i> Add
+                  </button>
+</div>
+</div>
+</article>
+</div>
+<div class="col-md-6 col-lg-3">
+<article class="product-card">
+<div class="image-wrap" style="height:240px;">
+<img alt="Quilted Chain Bag" src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&amp;q=80"/>
+</div>
+<div class="product-body">
+<span class="category-pill">Accessories</span>
+<h3>Quilted Chain Bag</h3>
+<p class="price">₹1,499</p>
+<div class="d-flex gap-2 flex-wrap">
+<a class="btn-boutique" href="product-details.html">View</a>
+<button class="btn-outline-boutique add-to-cart" data-id="chain-bag-cart" data-image="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&amp;q=80" data-name="Quilted Chain Bag" data-price="1499">
+<i class="fa-solid fa-bag-shopping"></i> Add
+                  </button>
+</div>
+</div>
+</article>
+</div>
+<div class="col-md-6 col-lg-3">
+<article class="product-card">
+<div class="image-wrap" style="height:240px;">
+<img alt="Linen Summer Blazer" src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=500&amp;q=80"/>
+</div>
+<div class="product-body">
+<span class="category-pill">Men</span>
+<h3>Linen Summer Blazer</h3>
+<p class="price">₹3,799</p>
+<div class="d-flex gap-2 flex-wrap">
+<a class="btn-boutique" href="product-details.html">View</a>
+<button class="btn-outline-boutique add-to-cart" data-id="linen-blazer-cart" data-image="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&amp;q=80" data-name="Linen Summer Blazer" data-price="3799">
+<i class="fa-solid fa-bag-shopping"></i> Add
+                  </button>
+</div>
+</div>
+</article>
+</div>
+</div>
+</div><!-- /container -->
+</div><!-- /#cartContent -->
+</main>
+<!-- ══════════════════════════════
+       FOOTER
+  ══════════════════════════════ -->
+<!-- Footer Section: brand details, quick links, support links and store info --><footer class="footer">
+<div class="container">
+<div class="row g-4">
+<div class="col-lg-3 col-md-6">
+<h3>Rose &amp; Thread</h3>
+<p class="opacity-75">Elegant clothing boutique for modern wardrobes, crafted with premium fabrics and thoughtful silhouettes.</p>
+<div class="social-icons">
+<a aria-label="Instagram" href="https://www.instagram.com/roseandthread/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+<a aria-label="Facebook" href="https://www.facebook.com/roseandthread/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+<a aria-label="Pinterest" href="https://www.pinterest.com/roseandthread/" target="_blank"><i class="fa-brands fa-pinterest-p"></i></a>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<h4>Shop</h4>
+<a href="collections.html?category=Women">Women</a>
+<a href="collections.html?category=Men">Men</a>
+<a href="collections.html?category=Kids">Kids</a>
+<a href="collections.html?category=Accessories">Accessories</a>
+</div>
+<div class="col-lg-3 col-md-6">
+<h4>Support</h4>
+<a href="size-guide.html">Size Guide</a>
+<a href="contact.html">Contact Us</a>
+<a href="product-details.html">Shipping Info</a>
+<a href="404.html">Returns</a>
+</div>
+<div class="col-lg-3 col-md-6">
+<h4>Visit Store</h4>
+<p class="opacity-75 mb-1">12 Fashion Street, Coimbatore</p>
+<p class="opacity-75 mb-1">Mon – Sat: 10 AM – 8 PM</p>
+<a href="mailto:hello@roseandthread.com">hello@roseandthread.com</a>
+</div>
+</div>
+<hr class="border-secondary my-4"/>
+<div class="d-flex flex-column flex-md-row justify-content-between">
+<p class="mb-0 opacity-75">© 2026 Rose &amp; Thread. All rights reserved.</p>
+<p class="mb-0 opacity-75">Bootstrap 5 HTML Template</p>
+</div>
+</div>
+</footer>
+<!-- Bootstrap JavaScript: navbar toggle, dropdowns and built-in Bootstrap components --><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Main JavaScript: dark mode, form validation and common interactions --><script src="../assets/js/main.js"></script>
+<!-- Cart JavaScript: add to cart, cart count, quantity update and remove item --><script src="../assets/js/cart.js"></script>
+  <script src="../assets/js/auth.js"></script>
+</body>
+</html>

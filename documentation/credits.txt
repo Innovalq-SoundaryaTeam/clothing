@@ -1,0 +1,9 @@
+Credits
+
+Bootstrap 5 - https://getbootstrap.com/
+Font Awesome - https://fontawesome.com/
+Google Fonts - Playfair Display and Lato
+Image placeholders - Generated local WebP placeholders inspired by Unsplash/Pexels fashion photography usage.
+Google Maps iframe placeholder - Google Maps embed URL.
+Formspree placeholder - https://formspree.io/
+Mailchimp placeholder - https://mailchimp.com/

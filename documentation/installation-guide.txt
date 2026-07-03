@@ -1,0 +1,7 @@
+Rose & Thread Boutique - Installation Guide
+
+1. Extract the clothing-boutique.zip file.
+2. Open pages/index.html in Chrome, Firefox, Safari, or Edge.
+3. For best local testing, use VS Code Live Server or any static server.
+4. No backend, build step, database, or package installation is required.
+5. Edit sitemap.xml and robots.txt before production upload.

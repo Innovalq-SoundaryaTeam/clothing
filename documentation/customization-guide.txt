@@ -1,0 +1,27 @@
+Customization Guide
+
+Colors:
+- Edit assets/css/style.css :root variables.
+- Main palette: black, white, blush accent, light grey cards.
+
+Fonts:
+- Google Fonts are loaded in every HTML page.
+- Headings use Playfair Display; body text uses Lato.
+
+Images:
+- Replace WebP files inside assets/images.
+- Keep unique images for different sections.
+- Update alt text when changing images.
+
+Forms:
+- Contact form uses action="https://formspree.io/f/XXXXX".
+- Replace XXXXX with your Formspree endpoint.
+- Newsletter forms use Mailchimp placeholder action.
+
+Dark Mode:
+- Toggle button adds body.dark-mode.
+- Overrides are in assets/css/dark-mode.css.
+
+RTL:
+- Add dir="rtl" to the html tag to test RTL layout.
+- RTL overrides are in assets/css/rtl.css.

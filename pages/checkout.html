@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Head Section: checkout page meta, fonts, Bootstrap, Font Awesome and project CSS files -->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Checkout | Rose &amp; Thread Boutique</title>
+<meta content="Complete your Rose &amp; Thread boutique checkout with customer validation, shipping details and payment method." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/style.css" rel="stylesheet"/>
+<link href="../assets/css/dark-mode.css" rel="stylesheet"/>
+<link href="../assets/css/rtl.css" rel="stylesheet"/>
+</head>
+<body data-checkout-page="true">
+<!-- Top Offer Banner --><div aria-label="Store offer banner" class="top-offer-banner" role="region">
+<div class="container d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 text-center">
+<span><i aria-hidden="true" class="fa-solid fa-truck-fast"></i> Free shipping on orders above ₹2,999</span>
+<span class="offer-divider d-none d-md-inline">|</span>
+<span>Secure checkout and easy 14-day returns</span>
+</div>
+</div>
+<!-- Navigation Bar --><nav aria-label="Main navigation" class="navbar navbar-expand-lg sticky-top">
+<div class="container">
+<a class="navbar-brand" href="index.html">
+  Rose &amp; <span class="brand-thread">Thread</span>
+</a>
+<button aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#mainNav" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="mainNav">
+<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
+<li class="nav-item"><a class="nav-link" href="lookbook.html">Lookbook</a></li>
+<li class="nav-item"><a class="nav-link" href="size-guide.html">Size Guide</a></li>
+<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+</ul>
+<div class="d-flex gap-2 ms-lg-3 align-items-center navbar-actions"><button aria-label="Toggle dark mode" class="nav-icon-btn" data-theme-toggle=""><i class="fa-regular fa-moon"></i></button><button aria-label="Toggle text direction" class="nav-icon-btn" data-rtl-toggle type="button"><i class="fa-solid fa-right-left"></i> RTL</button><span class="profile-nav-wrapper" data-profile-nav>
+<a aria-label="View profile" class="nav-icon-btn profile-nav-btn" data-profile-link href="profile.html" title="View profile"><span class="profile-avatar" data-profile-avatar><i class="fa-regular fa-user"></i></span></a>
+<div class="profile-dropdown" data-profile-dropdown>
+<span class="profile-dropdown-label" data-profile-status>Guest Profile</span>
+<strong data-profile-name>Guest User</strong>
+<small data-profile-email>Login to view your profile</small>
+<div class="profile-dropdown-actions" data-profile-actions><a href="auth.html?role=customer&amp;mode=login">Customer Login</a><a href="auth.html?role=admin&amp;mode=login">Admin Login</a></div>
+</div>
+</span>
+<span class="cart-nav-wrapper"><a aria-label="View cart" class="nav-icon-btn" href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a><span aria-label="Cart items" class="cart-count-badge">0</span></span>
+</div>
+</div>
+</div>
+</nav>
+<main>
+<section class="breadcrumb-section">
+<div class="container text-center">
+<span class="eyebrow">Secure Payment</span>
+<h1>Checkout</h1>
+<p class="lead text-muted-custom">Confirm your shipping details and complete payment for your cart items.</p>
+</div>
+</section>
+<section class="section-padding pt-4">
+<div class="container">
+<div class="d-none checkout-alert" id="checkoutEmpty"><i class="fa-solid fa-circle-info"></i> Your cart is empty. <a href="collections.html">Continue shopping</a>.</div>
+<div class="row g-4 align-items-start">
+<div class="col-lg-7">
+<form class="checkout-card" id="checkoutForm" novalidate>
+<h2><i class="fa-solid fa-location-dot"></i> Shipping Details</h2>
+<div class="row g-3">
+<div class="col-md-6"><label class="form-label" for="checkoutName">Full Name</label><input class="form-control" data-checkout-required id="checkoutName" type="text" placeholder="Enter full name"/></div>
+<div class="col-md-6"><label class="form-label" for="checkoutEmail">Email</label><input class="form-control" data-checkout-required id="checkoutEmail" type="email" placeholder="Enter email"/></div>
+<div class="col-md-6"><label class="form-label" for="checkoutPhone">Mobile Number</label><input class="form-control" data-checkout-required id="checkoutPhone" type="tel" placeholder="Enter mobile number"/></div>
+<div class="col-md-6"><label class="form-label" for="checkoutPincode">Pincode</label><input class="form-control" data-checkout-required id="checkoutPincode" type="text" placeholder="Enter pincode"/></div>
+<div class="col-12"><label class="form-label" for="checkoutAddress">Delivery Address</label><textarea class="form-control" data-checkout-required id="checkoutAddress" rows="3" placeholder="Door no, street, area"></textarea></div>
+<div class="col-md-6"><label class="form-label" for="checkoutCity">City</label><input class="form-control" data-checkout-required id="checkoutCity" type="text" placeholder="Enter city"/></div>
+<div class="col-md-6"><label class="form-label" for="paymentMethod">Payment Method</label><select class="form-select" data-checkout-required id="paymentMethod"><option value="">Choose payment method</option><option value="UPI">UPI</option><option value="Credit/Debit Card">Credit/Debit Card</option><option value="Net Banking">Net Banking</option><option value="Cash on Delivery">Cash on Delivery</option></select></div>
+</div>
+<div class="payment-note"><i class="fa-solid fa-shield-halved"></i> This is a front-end demo payment flow. Order details are stored in browser localStorage.</div>
+<div class="checkout-message" id="checkoutMessage" role="status" aria-live="polite"></div>
+<div class="d-flex flex-column flex-sm-row gap-2 mt-4">
+<a class="btn-outline-boutique" href="cart.html"><i class="fa-solid fa-arrow-left"></i> Back to Cart</a>
+<button class="btn-boutique flex-grow-1" id="checkoutPayBtn" type="submit"><i class="fa-solid fa-lock"></i> Pay &amp; Place Order</button>
+</div>
+</form>
+</div>
+<div class="col-lg-5">
+<aside class="checkout-card checkout-summary-card">
+<h2><i class="fa-solid fa-receipt"></i> Order Summary</h2>
+<div class="checkout-items" id="checkoutItems"></div>
+<div class="summary-row"><span>Subtotal</span><strong id="checkoutSubtotal">₹0</strong></div>
+<div class="summary-row"><span>Shipping</span><strong class="text-success-custom"><i class="fa-solid fa-truck-fast fa-sm"></i> Free</strong></div>
+<div class="summary-row"><span>Tax (2% GST)</span><strong id="checkoutTax">₹0</strong></div>
+<div class="summary-row total"><span>Grand Total</span><strong id="checkoutTotal">₹0</strong></div>
+<div class="payment-icons d-flex justify-content-center gap-3 mt-3">
+<i aria-label="Visa accepted" class="fa-brands fa-cc-visa fa-2x" title="Visa"></i>
+<i aria-label="Mastercard accepted" class="fa-brands fa-cc-mastercard fa-2x" title="Mastercard"></i>
+<i aria-label="PayPal accepted" class="fa-brands fa-cc-paypal fa-2x" title="PayPal"></i>
+<i aria-label="Google Pay accepted" class="fa-brands fa-google-pay fa-2x" title="Google Pay"></i>
+</div>
+</aside>
+<div class="trust-strip mt-3">
+<div class="trust-item"><i class="fa-solid fa-shield-halved"></i> Secure Demo Payment</div>
+<div class="trust-item"><i class="fa-solid fa-rotate-left"></i> Easy 14-day Returns</div>
+<div class="trust-item"><i class="fa-solid fa-truck-fast"></i> Free Delivery</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Section --><footer class="footer">
+<div class="container">
+<div class="row g-4">
+<div class="col-lg-3 col-md-6"><h3>Rose &amp; Thread</h3><p class="opacity-75">Elegant clothing boutique for modern wardrobes, crafted with premium fabrics and thoughtful silhouettes.</p><div class="social-icons"><a aria-label="Instagram" href="https://www.instagram.com/roseandthread/" target="_blank"><i class="fa-brands fa-instagram"></i></a><a aria-label="Facebook" href="https://www.facebook.com/roseandthread/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a><a aria-label="Pinterest" href="https://www.pinterest.com/roseandthread/" target="_blank"><i class="fa-brands fa-pinterest-p"></i></a></div></div>
+<div class="col-lg-3 col-md-6"><h4>Shop</h4><a href="collections.html?category=Women">Women</a><a href="collections.html?category=Men">Men</a><a href="collections.html?category=Kids">Kids</a><a href="collections.html?category=Accessories">Accessories</a></div>
+<div class="col-lg-3 col-md-6"><h4>Support</h4><a href="size-guide.html">Size Guide</a><a href="contact.html">Contact Us</a><a href="product-details.html">Shipping Info</a><a href="404.html">Returns</a></div>
+<div class="col-lg-3 col-md-6"><h4>Visit Store</h4><p class="opacity-75 mb-1">12 Fashion Street, Coimbatore</p><p class="opacity-75 mb-1">Mon – Sat: 10 AM – 8 PM</p><a href="mailto:hello@roseandthread.com">hello@roseandthread.com</a></div>
+</div>
+<hr class="border-secondary my-4"/>
+<div class="d-flex flex-column flex-md-row justify-content-between"><p class="mb-0 opacity-75">© 2026 Rose &amp; Thread. All rights reserved.</p><p class="mb-0 opacity-75">Bootstrap 5 HTML Template</p></div>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/cart.js"></script>
+<script src="../assets/js/auth.js"></script>
+</body>
+</html>

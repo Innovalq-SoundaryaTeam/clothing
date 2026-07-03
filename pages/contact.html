@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head><!-- Head Section: page title, meta description, fonts, Bootstrap, Font Awesome and project CSS files -->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Contact Rose &amp; Thread Boutique</title>
+<meta content="Contact Rose &amp; Thread boutique with a validated form, store address, hours, social links, and Google Maps location iframe." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/style.css" rel="stylesheet"/>
+<link href="../assets/css/dark-mode.css" rel="stylesheet"/>
+<link href="../assets/css/rtl.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- Top Offer Banner: this banner is placed above the navbar --><div aria-label="Store offer banner" class="top-offer-banner" role="region">
+<div class="container d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 text-center">
+<span><i aria-hidden="true" class="fa-solid fa-truck-fast"></i> Free shipping on orders above ₹2,999</span>
+<span class="offer-divider d-none d-md-inline">|</span>
+<span>New boutique collection is live now</span>
+</div>
+</div><!-- Navigation Bar: logo, menu links, dark mode button and cart icon --><nav aria-label="Main navigation" class="navbar navbar-expand-lg sticky-top">
+<div class="container"><a class="navbar-brand" href="index.html">
+  Rose &amp; <span class="brand-thread">Thread</span>
+</a><button aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#mainNav" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="mainNav">
+<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
+<li class="nav-item"><a class="nav-link" href="lookbook.html">Lookbook</a></li>
+<li class="nav-item"><a class="nav-link" href="size-guide.html">Size Guide</a></li>
+<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+</ul>
+<div class="d-flex gap-2 ms-lg-3 align-items-center navbar-actions"><button aria-label="Toggle dark mode" class="nav-icon-btn" data-theme-toggle=""><i class="fa-regular fa-moon"></i></button><button aria-label="Toggle text direction" class="nav-icon-btn" data-rtl-toggle type="button"><i class="fa-solid fa-right-left"></i> RTL</button><span class="profile-nav-wrapper" data-profile-nav>
+<a aria-label="View profile" class="nav-icon-btn profile-nav-btn" data-profile-link href="profile.html" title="View profile">
+<span class="profile-avatar" data-profile-avatar><i class="fa-regular fa-user"></i></span>
+</a>
+<div class="profile-dropdown" data-profile-dropdown>
+<span class="profile-dropdown-label" data-profile-status>Guest Profile</span>
+<strong data-profile-name>Guest User</strong>
+<small data-profile-email>Login to view your profile</small>
+<div class="profile-dropdown-actions" data-profile-actions><a href="auth.html?role=customer&mode=login">Customer Login</a><a href="auth.html?role=admin&mode=login">Admin Login</a></div>
+</div>
+</span>
+<span class="cart-nav-wrapper">
+<a aria-label="View cart" class="nav-icon-btn" href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+<span aria-label="Cart items" class="cart-count-badge" id="cartCount">0</span>
+</span></div>
+</div>
+</div>
+</nav>
+<!-- Main Content: all visible page sections are written inside main tag --><main>
+<!-- Section: Contact Us --><section class="breadcrumb-section">
+<div class="container"><span class="eyebrow">Rose &amp; Thread</span>
+<h1>Contact Us</h1>
+<p class="lead text-muted-custom">Visit our boutique, send a message, view store hours, and find us on
+                    the map.</p>
+</div>
+</section>
+<!-- Section: Send a Message --><section class="section-padding">
+<div class="container">
+<div class="row g-5">
+<div class="col-lg-6">
+<!-- Form Section: user input fields and submit button --><form action="https://formspree.io/f/XXXXX" class="boutique-card p-4" data-validate="true" method="post">
+<h2>Send a Message</h2>
+<div class="mb-3"><label class="form-label" for="name">Name</label><input class="form-control" data-required="true" id="name" name="name"/>
+<div class="error-message"></div>
+</div>
+<div class="mb-3"><label class="form-label" for="email">Email</label><input class="form-control" data-required="true" id="email" name="email" type="email"/>
+<div class="error-message"></div>
+</div>
+<div class="mb-3"><label class="form-label" for="message">Message</label><textarea class="form-control" data-required="true" id="message" name="message" rows="5"></textarea>
+<div class="error-message"></div>
+</div><button class="btn-boutique" type="submit">Send Message</button>
+</form>
+</div>
+<div class="col-lg-6">
+<div class="sidebar-box">
+<h2>Store Address</h2>
+<p>12 Fashion Street, Coimbatore, Tamil Nadu</p>
+<p><i class="fa-solid fa-phone me-2"></i>+91 90000 00000</p>
+<p><i class="fa-solid fa-envelope me-2"></i>hello@roseandthread.com</p>
+<h3>Store Hours</h3>
+<p>Monday - Saturday: 10 AM - 8 PM<br/>Sunday: 11 AM - 5 PM</p>
+<div class="social-icons"><a aria-label="Instagram" href="https://www.instagram.com/roseandthread/" target="_blank"><i class="fa-brands fa-instagram"></i></a><a aria-label="Facebook" href="https://www.facebook.com/roseandthread/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></div>
+</div><iframe class="map-frame" loading="lazy" src="https://www.google.com/maps?q=Coimbatore,Tamil%20Nadu&amp;output=embed" title="Google Maps store location"></iframe>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Section: brand details, quick links, support links and store info --><footer class="footer">
+<div class="container">
+<div class="row g-4">
+<div class="col-lg-3 col-md-6">
+<h3>Rose &amp; Thread</h3>
+<p class="opacity-75">Elegant clothing boutique for modern wardrobes, crafted with premium fabrics
+                        and thoughtful silhouettes.</p>
+<div class="social-icons"><a aria-label="Instagram" href="https://www.instagram.com/roseandthread/" target="_blank"><i class="fa-brands fa-instagram"></i></a><a aria-label="Facebook" href="https://www.facebook.com/roseandthread/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a><a aria-label="Pinterest" href="https://www.pinterest.com/roseandthread/" target="_blank"><i class="fa-brands fa-pinterest-p"></i></a></div>
+</div>
+<div class="col-lg-3 col-md-6">
+<h4>Shop</h4><a href="collections.html?category=Women">Women</a><a href="collections.html?category=Men">Men</a><a href="collections.html?category=Kids">Kids</a><a href="collections.html?category=Accessories">Accessories</a>
+</div>
+<div class="col-lg-3 col-md-6">
+<h4>Support</h4><a href="size-guide.html">Size Guide</a><a href="contact.html">Contact</a><a href="product-details.html">Shipping Info</a><a href="404.html">Returns</a>
+</div>
+<div class="col-lg-3 col-md-6">
+<h4>Visit Store</h4>
+<p class="opacity-75 mb-1">12 Fashion Street, Coimbatore</p>
+<p class="opacity-75 mb-1">Mon - Sat: 10 AM - 8 PM</p><a href="mailto:hello@roseandthread.com">hello@roseandthread.com</a>
+</div>
+</div>
+<hr class="border-secondary my-4"/>
+<div class="d-flex flex-column flex-md-row justify-content-between">
+<p class="mb-0 opacity-75">© 2026 Rose &amp; Thread. All rights reserved.</p>
+<p class="mb-0 opacity-75">Bootstrap 5 HTML Template</p>
+</div>
+</div>
+</footer>
+<!-- Bootstrap JavaScript: navbar toggle, dropdowns and built-in Bootstrap components --><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Main JavaScript: dark mode, form validation and common interactions --><script src="../assets/js/main.js"></script>
+<!-- Cart JavaScript: add to cart, cart count, quantity update and remove item --><script src="../assets/js/cart.js"></script>
+  <script src="../assets/js/auth.js"></script>
+</body>
+</html>

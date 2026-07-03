@@ -1,0 +1,146 @@
+/* =====================================================
+   Direction Support
+   Default direction is LTR. JavaScript sets <html dir="ltr">
+   for normal users and <html dir="rtl"> only for RTL users.
+===================================================== */
+
+html[dir="rtl"] body {
+  text-align: right;
+}
+
+/* ── Navbar: flip the row direction ── */
+html[dir="rtl"] .navbar .container {
+  flex-direction: row-reverse;
+}
+
+/* Nav links: ms-auto becomes mr-auto in RTL */
+html[dir="rtl"] .navbar-nav {
+  padding-right: 0;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+html[dir="rtl"] .ms-auto {
+  margin-right: auto !important;
+  margin-left: 0 !important;
+}
+
+/* Icon buttons group: ms-lg-3 flips side */
+html[dir="rtl"] .ms-lg-3 {
+  margin-right: 1rem !important;
+  margin-left: 0 !important;
+}
+
+/* Nav-link underline: flip from left to right */
+html[dir="rtl"] .nav-link::after {
+  left: auto;
+  right: 8px;
+}
+
+/* Mobile toggler stays on left, brand on right */
+html[dir="rtl"] .navbar-toggler {
+  order: -1;
+}
+html[dir="rtl"] .navbar-brand {
+  order: 1;
+}
+
+/* ── Utility margin overrides ── */
+html[dir="rtl"] .me-2  { margin-left: 0.5rem !important; margin-right: 0 !important; }
+html[dir="rtl"] .me-3  { margin-left: 1rem !important;   margin-right: 0 !important; }
+html[dir="rtl"] .ms-2  { margin-right: 0.5rem !important; margin-left: 0 !important; }
+html[dir="rtl"] .ms-3  { margin-right: 1rem !important;   margin-left: 0 !important; }
+html[dir="rtl"] .ps-3  { padding-right: 1rem !important;  padding-left: 0 !important; }
+html[dir="rtl"] .pe-3  { padding-left: 1rem !important;   padding-right: 0 !important; }
+
+/* ── Text alignment ── */
+html[dir="rtl"] .text-md-end { text-align: left !important; }
+html[dir="rtl"] .text-start  { text-align: right !important; }
+html[dir="rtl"] .text-end    { text-align: left !important; }
+
+/* ── Footer ── */
+html[dir="rtl"] .footer a:hover { transform: translateX(-4px); }
+html[dir="rtl"] .social-icons a { margin-left: 8px; margin-right: 0; }
+
+/* ── Misc components ── */
+html[dir="rtl"] .swatch          { margin-left: 8px; margin-right: 0; }
+html[dir="rtl"] .password-toggle { right: auto; left: 12px; }
+
+/* ── Auth portal ── */
+html[dir="rtl"] .role-switcher { direction: rtl; }
+html[dir="rtl"] .mode-tabs     { direction: rtl; }
+
+
+/* =====================================================
+   LTR Reset — keeps cart/navbar alignment normal after
+   switching back from RTL to LTR.
+===================================================== */
+html[dir="ltr"] body {
+  direction: ltr;
+  text-align: left;
+}
+
+html[dir="ltr"] .navbar .container {
+  flex-direction: row !important;
+}
+
+html[dir="ltr"] .navbar-brand {
+  order: 0 !important;
+  margin-right: 1rem !important;
+  margin-left: 0 !important;
+}
+
+html[dir="ltr"] .navbar-toggler {
+  order: 0 !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+html[dir="ltr"] .navbar-collapse {
+  text-align: left;
+}
+
+html[dir="ltr"] .navbar .d-flex.ms-lg-3 {
+  margin-right: 0 !important;
+}
+
+@media (min-width: 992px) {
+  html[dir="ltr"] .navbar-collapse {
+    flex-direction: row !important;
+  }
+
+  html[dir="ltr"] .navbar-nav {
+    flex-direction: row !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  html[dir="ltr"] .navbar .d-flex.ms-lg-3 {
+    margin-left: 1rem !important;
+    margin-right: 0 !important;
+  }
+}
+
+@media (max-width: 991.98px) {
+  html[dir="ltr"] .navbar-collapse {
+    direction: ltr;
+  }
+
+  html[dir="ltr"] .navbar-nav {
+    align-items: flex-start;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+
+/* Profile/cart icons alignment for both LTR and RTL nav states */
+html[dir="rtl"] .navbar-actions{margin-right:1rem!important;margin-left:0!important;}
+html[dir="rtl"] .cart-count-badge{right:auto;left:-8px;}
+html[dir="ltr"] .navbar-actions{direction:ltr;}
+html[dir="ltr"] .cart-count-badge{right:-8px;left:auto;}
+@media (max-width:991.98px){
+  html[dir="rtl"] .navbar-actions{margin-right:0!important;margin-left:0!important;justify-content:flex-start;}
+  html[dir="ltr"] .navbar-actions{margin-left:0!important;margin-right:0!important;justify-content:flex-start;}
+}

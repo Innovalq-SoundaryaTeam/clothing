@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/style.css" rel="stylesheet"/>
+<link href="../assets/css/dark-mode.css" rel="stylesheet"/>
+<link href="../assets/css/rtl.css" rel="stylesheet"/>
+<title>Collections | Rose &amp; Thread Boutique</title>
+<meta content="Browse Rose and Thread boutique products with search, category, price, and sort filters." name="description"/>
+</head>
+<body>
+<!-- Top Offer Banner: this banner is placed above the navbar -->
+<div aria-label="Store offer banner" class="top-offer-banner" role="region">
+  <div class="container d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 text-center">
+    <span><i aria-hidden="true" class="fa-solid fa-truck-fast"></i> Free shipping on orders above ₹2,999</span>
+    <span class="offer-divider d-none d-md-inline">|</span>
+    <span>New boutique collection is live now</span>
+  </div>
+</div>
+<nav aria-label="Main navigation" class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+  Rose &amp; <span class="brand-thread">Thread</span>
+</a>
+    <button aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#mainNav" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
+        <li class="nav-item"><a class="nav-link" href="lookbook.html">Lookbook</a></li>
+        <li class="nav-item"><a class="nav-link" href="size-guide.html">Size Guide</a></li>
+        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+      <div class="d-flex gap-2 ms-lg-3 align-items-center navbar-actions">
+        <button aria-label="Toggle dark mode" class="nav-icon-btn" data-theme-toggle=""><i class="fa-regular fa-moon"></i></button>
+        <button aria-label="Toggle text direction" class="nav-icon-btn" data-rtl-toggle type="button"><i class="fa-solid fa-right-left"></i> RTL</button>
+        <span class="profile-nav-wrapper" data-profile-nav>
+          <a aria-label="View profile" class="nav-icon-btn profile-nav-btn" data-profile-link href="profile.html" title="View profile">
+            <span class="profile-avatar" data-profile-avatar><i class="fa-regular fa-user"></i></span>
+          </a>
+          <div class="profile-dropdown" data-profile-dropdown>
+            <span class="profile-dropdown-label" data-profile-status>Guest Profile</span>
+            <strong data-profile-name>Guest User</strong>
+            <small data-profile-email>Login to view your profile</small>
+            <div class="profile-dropdown-actions" data-profile-actions>
+              <a href="auth.html?role=customer&mode=login">Customer Login</a>
+              <a href="auth.html?role=admin&mode=login">Admin Login</a>
+            </div>
+          </div>
+        </span>
+        <span class="cart-nav-wrapper">
+          <a aria-label="View cart" class="nav-icon-btn" href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+          <span aria-label="Cart items" class="cart-count-badge">0</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</nav>
+<main>
+  <section class="breadcrumb-section collection-hero-enhanced">
+    <div class="container">
+      <span class="eyebrow">Rose &amp; Thread</span>
+      <h1>Collections</h1>
+      <p class="lead text-muted-custom">Search and filter our latest boutique products by category, price, and name.</p>
+    </div>
+  </section>
+  <section class="section-padding collection-page-enhanced">
+    <div class="container">
+      <form class="filter-bar collection-filter-enhanced row g-3 mb-4" id="collectionFilterForm" role="search">
+        <div class="col-lg-5 col-md-12">
+          <label class="form-label fw-bold" for="collectionSearch">Search Product</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
+            <input aria-label="Search product by name or category" class="form-control" id="collectionSearch" placeholder="Search dress, shirt, watch..." type="search"/>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4">
+          <label class="form-label fw-bold" for="categoryFilter">Category Filter</label>
+          <select aria-label="Filter by category" class="form-select" id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="Women">Women</option>
+            <option value="Men">Men</option>
+            <option value="Kids">Kids</option>
+            <option value="Accessories">Accessories</option>
+          </select>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <label class="form-label fw-bold" for="priceFilter">Price</label>
+          <select aria-label="Filter by price" class="form-select" id="priceFilter">
+            <option value="all">All Prices</option>
+            <option value="under1500">Below ₹1,500</option>
+            <option value="1500to2500">₹1,500 - ₹2,500</option>
+            <option value="above2500">Above ₹2,500</option>
+          </select>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <label class="form-label fw-bold" for="sortFilter">Sort</label>
+          <select aria-label="Sort products" class="form-select" id="sortFilter">
+            <option value="default">Default</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+            <option value="az">Name: A to Z</option>
+          </select>
+        </div>
+      </form>
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4">
+        <p class="mb-0 text-muted-custom collection-count-pill" id="productCountText">Showing products</p>
+        <div class="focus-result-note d-none" id="focusResultNote"></div>
+        <button class="btn-outline-boutique enhanced-clear-btn" id="clearFiltersBtn" type="button"><i class="fa-solid fa-rotate-left"></i> Clear Filters</button>
+      </div>
+      <div class="row g-4" id="collectionProducts" aria-live="polite"></div>
+      <nav aria-label="Collection pagination" class="collection-pagination-wrap mt-5">
+        <div class="collection-pagination-controls" id="collectionPagination"></div>
+      </nav>
+      <div class="text-center py-5 d-none" id="noProductsFound">
+        <i class="fa-solid fa-shirt fa-3x mb-3 text-muted-custom"></i>
+        <h2>No products found</h2>
+        <p class="text-muted-custom">Try another search word or clear the filters.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <h3>Rose &amp; Thread</h3>
+        <p class="opacity-75">Elegant clothing boutique for modern wardrobes, crafted with premium fabrics and thoughtful silhouettes.</p>
+        <div class="social-icons">
+          <a aria-label="Instagram" href="https://www.instagram.com/roseandthread/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+          <a aria-label="Facebook" href="https://www.facebook.com/roseandthread/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+          <a aria-label="Pinterest" href="https://www.pinterest.com/roseandthread/" target="_blank"><i class="fa-brands fa-pinterest-p"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h4>Shop</h4>
+        <a href="collections.html?category=Women">Women</a><a href="collections.html?category=Men">Men</a>
+        <a href="collections.html?category=Kids">Kids</a><a href="collections.html?category=Accessories">Accessories</a>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h4>Support</h4>
+        <a href="size-guide.html">Size Guide</a><a href="contact.html">Contact</a>
+        <a href="product-details.html">Shipping Info</a><a href="404.html">Returns</a>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h4>Visit Store</h4>
+        <p class="opacity-75 mb-1">12 Fashion Street, Coimbatore</p>
+        <p class="opacity-75 mb-1">Mon – Sat: 10 AM – 8 PM</p>
+        <a href="mailto:hello@roseandthread.com">hello@roseandthread.com</a>
+      </div>
+    </div>
+    <hr class="border-secondary my-4"/>
+    <div class="d-flex flex-column flex-md-row justify-content-between">
+      <p class="mb-0 opacity-75">© 2026 Rose &amp; Thread. All rights reserved.</p>
+      <p class="mb-0 opacity-75">Bootstrap 5 HTML Template</p>
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/product-data.js"></script>
+<script>
+    (function () {
+      const products = window.RoseThreadProducts || [];
+      const productsPerPage = 6;
+      let currentPage = 1;
+
+      const urlParams = new URLSearchParams(window.location.search);
+      let activeFocusId = urlParams.get('focus') || '';
+
+      const productGrid = document.getElementById('collectionProducts');
+      const searchInput = document.getElementById('collectionSearch');
+      const categoryFilter = document.getElementById('categoryFilter');
+      const priceFilter = document.getElementById('priceFilter');
+      const sortFilter = document.getElementById('sortFilter');
+      const clearFiltersBtn = document.getElementById('clearFiltersBtn');
+      const productCountText = document.getElementById('productCountText');
+      const noProductsFound = document.getElementById('noProductsFound');
+      const paginationControls = document.getElementById('collectionPagination');
+      const focusResultNote = document.getElementById('focusResultNote');
+
+      const rawCategory = (urlParams.get('category') || '').trim().toLowerCase();
+
+      const categoryMap = {
+        women: 'Women',
+        woman: 'Women',
+        men: 'Men',
+        mens: 'Men',
+        kids: 'Kids',
+        kid: 'Kids',
+        accessories: 'Accessories',
+        accessory: 'Accessories',
+        accessorie: 'Accessories'
+      };
+
+      if (categoryMap[rawCategory]) {
+        categoryFilter.value = categoryMap[rawCategory];
+      }
+
+      function rupee(value) {
+        return '₹' + Number(value).toLocaleString('en-IN');
+      }
+
+      function matchesPrice(product, range) {
+        if (range === 'under1500') return product.price < 1500;
+        if (range === '1500to2500') return product.price >= 1500 && product.price <= 2500;
+        if (range === 'above2500') return product.price > 2500;
+        return true;
+      }
+
+      function getFocusedProduct() {
+        return products.find((product) => product.id === activeFocusId);
+      }
+
+      function getFilteredProducts() {
+        const keyword = searchInput.value.trim().toLowerCase();
+        const category = categoryFilter.value;
+        const price = priceFilter.value;
+        const sort = sortFilter.value;
+
+        let filtered = products.filter((product) => {
+          const content = `${product.name} ${product.category} ${product.shortDescription}`.toLowerCase();
+          const keywordMatch = !keyword || content.includes(keyword);
+
+          const categoryMatch =
+            category === 'all' ||
+            String(product.category).toLowerCase() === String(category).toLowerCase();
+
+          const priceMatch = matchesPrice(product, price);
+
+          return keywordMatch && categoryMatch && priceMatch;
+        });
+
+        if (activeFocusId) {
+          filtered = filtered.filter((product) => product.id === activeFocusId);
+        }
+
+        if (sort === 'low') filtered.sort((a, b) => a.price - b.price);
+        if (sort === 'high') filtered.sort((a, b) => b.price - a.price);
+        if (sort === 'az') filtered.sort((a, b) => a.name.localeCompare(b.name));
+
+        return filtered;
+      }
+
+      function goToTopOfProducts() {
+        document.querySelector('.collection-page-enhanced')
+          .scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      function renderPagination(totalProducts) {
+        paginationControls.innerHTML = '';
+
+        const totalPages = Math.ceil(totalProducts / productsPerPage);
+
+        if (totalProducts === 0 || totalPages <= 1 || activeFocusId) return;
+
+        const prevBtn = document.createElement('button');
+        prevBtn.type = 'button';
+        prevBtn.className = 'collection-page-btn collection-prev-btn';
+        prevBtn.innerHTML = '<i class="fa-solid fa-angle-left"></i> Prev';
+        prevBtn.disabled = currentPage === 1;
+
+        prevBtn.addEventListener('click', () => {
+          if (currentPage > 1) {
+            currentPage -= 1;
+            renderProducts();
+            goToTopOfProducts();
+          }
+        });
+
+        paginationControls.appendChild(prevBtn);
+
+        for (let page = 1; page <= totalPages; page += 1) {
+          const pageBtn = document.createElement('button');
+          pageBtn.type = 'button';
+          pageBtn.className = 'collection-page-btn collection-number-btn';
+          pageBtn.textContent = page;
+
+          if (page === currentPage) {
+            pageBtn.classList.add('active');
+          }
+
+          pageBtn.addEventListener('click', () => {
+            currentPage = page;
+            renderProducts();
+            goToTopOfProducts();
+          });
+
+          paginationControls.appendChild(pageBtn);
+        }
+
+        const nextBtn = document.createElement('button');
+        nextBtn.type = 'button';
+        nextBtn.className = 'collection-page-btn collection-next-btn';
+        nextBtn.innerHTML = 'Next <i class="fa-solid fa-angle-right"></i>';
+
+        nextBtn.addEventListener('click', () => {
+          if (currentPage < totalPages) {
+            currentPage += 1;
+            renderProducts();
+            goToTopOfProducts();
+          } else {
+            window.location.href = 'coming-soon.html';
+          }
+        });
+
+        paginationControls.appendChild(nextBtn);
+      }
+
+      function renderProducts() {
+        const filtered = getFilteredProducts();
+        const totalPages = Math.ceil(filtered.length / productsPerPage) || 1;
+
+        if (currentPage > totalPages) {
+          currentPage = totalPages;
+        }
+
+        const startIndex = (currentPage - 1) * productsPerPage;
+        const endIndex = startIndex + productsPerPage;
+        const currentProducts = activeFocusId ? filtered : filtered.slice(startIndex, endIndex);
+
+        productGrid.innerHTML = currentProducts.map((product) => `
+      <div class="col-md-6 col-lg-4">
+        <article class="product-card h-100 collection-product-card ${activeFocusId === product.id ? 'focused-product-card' : ''}" id="product-${product.id}">
+          <a class="collection-product-image-link" href="product-details.html?id=${encodeURIComponent(product.id)}" aria-label="View ${product.name} details">
+            <div class="image-wrap product-image-zoom" style="height:280px;">
+              <img alt="${product.name} fashion product" src="${product.image}" loading="lazy"/>
+            </div>
+          </a>
+
+          <div class="product-body">
+            <div class="d-flex justify-content-between align-items-start gap-2">
+              <span class="category-pill">${product.category}</span>
+              <span class="badge bg-danger" style="border-radius:999px;">${product.badge}</span>
+            </div>
+
+            <h3>${product.name}</h3>
+            <p class="text-muted-custom mb-2">${product.shortDescription}</p>
+            <p class="price">${rupee(product.price)} <span class="old-price">${rupee(product.oldPrice)}</span></p>
+            <p class="text-muted-custom small mb-3">Sizes: ${product.sizes.join(' • ')}</p>
+
+            <div class="d-flex gap-2 flex-wrap mt-2">
+              <a class="btn-boutique" href="product-details.html?id=${encodeURIComponent(product.id)}">
+                <i class="fa-regular fa-eye"></i> View
+              </a>
+
+              <button 
+                class="btn-outline-boutique collection-add-to-cart" 
+                type="button" 
+                data-id="${product.id}" 
+                data-image="${product.image}" 
+                data-name="${product.name}" 
+                data-price="${product.price}">
+                <i class="fa-solid fa-bag-shopping"></i> Add
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    `).join('');
+
+        const focusedProduct = getFocusedProduct();
+
+        if (focusedProduct && activeFocusId) {
+          productCountText.textContent = `Showing 1 product for "${focusedProduct.name}"`;
+          focusResultNote.classList.remove('d-none');
+          focusResultNote.innerHTML = `You selected <strong>${focusedProduct.name}</strong> from Lookbook. <a href="collections.html" class="focus-clear-link">View all products</a>`;
+        } else if (filtered.length === 0) {
+          productCountText.textContent = `Showing 0 of ${products.length} products`;
+          focusResultNote.classList.add('d-none');
+          focusResultNote.innerHTML = '';
+        } else {
+          const visibleStart = startIndex + 1;
+          const visibleEnd = Math.min(endIndex, filtered.length);
+          productCountText.textContent = `Showing ${visibleStart}-${visibleEnd} of ${filtered.length} products`;
+          focusResultNote.classList.add('d-none');
+          focusResultNote.innerHTML = '';
+        }
+
+        noProductsFound.classList.toggle('d-none', filtered.length !== 0);
+        renderPagination(filtered.length);
+      }
+
+      function resetToFirstPageAndRender() {
+        currentPage = 1;
+        renderProducts();
+      }
+
+      [searchInput, categoryFilter, priceFilter, sortFilter].forEach((element) => {
+        const resetFocus = () => {
+          activeFocusId = '';
+          resetToFirstPageAndRender();
+        };
+
+        element.addEventListener('input', resetFocus);
+        element.addEventListener('change', resetFocus);
+      });
+
+      clearFiltersBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        categoryFilter.value = 'all';
+        priceFilter.value = 'all';
+        sortFilter.value = 'default';
+        activeFocusId = '';
+        resetToFirstPageAndRender();
+      });
+
+      document.addEventListener('click', (event) => {
+        const button = event.target.closest('.collection-add-to-cart');
+
+        if (!button) return;
+
+        if (typeof addToCart === 'function') {
+          addToCart(button);
+        }
+      });
+
+      renderProducts();
+    })();
+  </script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/cart.js"></script>
+<script src="../assets/js/auth.js"></script>
+</body>
+</html>
