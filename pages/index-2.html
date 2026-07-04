@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- Head Section: page title, meta description, fonts, Bootstrap, Font Awesome and project CSS files -->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Rose &amp; Thread Boutique | Occasion &amp; Bridal Edit</title>
+<meta content="Rose and Thread's occasion and bridal edit: personal styling, made-to-measure tailoring, and curated occasion wear for weddings and events." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/style.css" rel="stylesheet"/>
+<link href="../assets/css/dark-mode.css" rel="stylesheet"/>
+<link href="../assets/css/rtl.css" rel="stylesheet"/>
+<style>
+  .home2-hero {
+    background: linear-gradient(135deg, rgba(0,0,0,.55), rgba(0,0,0,.15)), url('../assets/images/hero-fashion-model.webp') center/cover no-repeat;
+    color: #fff;
+    padding: 120px 0;
+    border-radius: 0 0 32px 32px;
+  }
+  .home2-hero .eyebrow { color: #f4d9c6; }
+  .home2-hero p.lead { color: rgba(255,255,255,.85); }
+  .home2-gallery img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 14px;
+    transition: transform .3s ease;
+  }
+  .home2-gallery a:hover img { transform: scale(1.03); }
+  .testimonial-card-2 {
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 28px;
+    height: 100%;
+    background: var(--color-card-bg);
+  }
+  .testimonial-card-2 img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 14px;
+  }
+  .testimonial-card-2 .stars { color: #d4a373; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<!-- Top Offer Banner: this banner is placed above the navbar --><div aria-label="Store offer banner" class="top-offer-banner" role="region">
+<div class="container d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 text-center">
+<span><i aria-hidden="true" class="fa-solid fa-truck-fast"></i> Free shipping on orders above ₹2,999</span>
+<span class="offer-divider d-none d-md-inline">|</span>
+<span>Bridal styling season is open — book your slot</span>
+</div>
+</div><!-- Navigation Bar: logo, menu links, dark mode button and cart icon --><nav aria-label="Main navigation" class="navbar navbar-expand-lg sticky-top">
+<div class="container"><a class="navbar-brand" href="index.html">
+  Rose &amp; <span class="brand-thread">Thread</span>
+</a><button aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#mainNav" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="mainNav">
+<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link active" href="index-2.html">Occasion Edit</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
+<li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+<li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+<li class="nav-item"><a class="nav-link" href="lookbook.html">Lookbook</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+</ul>
+<div class="d-flex gap-2 ms-lg-3 align-items-center navbar-actions"><button aria-label="Toggle dark mode" class="nav-icon-btn" data-theme-toggle=""><i class="fa-regular fa-moon"></i></button><button aria-label="Toggle text direction" class="nav-icon-btn" data-rtl-toggle type="button"><i class="fa-solid fa-right-left"></i> RTL</button><span class="profile-nav-wrapper" data-profile-nav>
+<a aria-label="View profile" class="nav-icon-btn profile-nav-btn" data-profile-link href="profile.html" title="View profile">
+<span class="profile-avatar" data-profile-avatar><i class="fa-regular fa-user"></i></span>
+</a>
+<div class="profile-dropdown" data-profile-dropdown>
+<span class="profile-dropdown-label" data-profile-status>Guest Profile</span>
+<strong data-profile-name>Guest User</strong>
+<small data-profile-email>Login to view your profile</small>
+<div class="profile-dropdown-actions" data-profile-actions><a href="auth.html?role=customer&mode=login">Customer Login</a><a href="auth.html?role=admin&mode=login">Admin Login</a></div>
+</div>
+</span>
+<span class="cart-nav-wrapper">
+<a aria-label="View cart" class="nav-icon-btn" href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+<span aria-label="Cart items" class="cart-count-badge" id="cartCount">0</span>
+</span></div>
+</div>
+</div>
+</nav>
+<!-- Main Content: all visible page sections are written inside main tag --><main>
+<!-- Section: Occasion & Bridal hero --><section class="home2-hero">
+<div class="container">
+<div class="row justify-content-center text-center">
+<div class="col-lg-8">
+<span class="eyebrow">Occasion &amp; Bridal Edit</span>
+<h1>Every occasion deserves a considered outfit.</h1>
+<p class="lead">From bridal parties to black-tie evenings, our stylists build coordinated looks around you, your event, and your guests.</p>
+<div class="d-flex flex-wrap gap-3 mt-4 justify-content-center">
+<a class="btn-boutique" href="service-details.html?service=bridal-occasion-styling">Book Bridal Styling</a>
+<a class="btn-outline-boutique border-white text-white" href="collections.html?category=Women">Shop Occasion Wear</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Section: Why book a stylist --><section class="section-padding">
+<div class="container">
+<div class="row g-4">
+<div class="col-md-4">
+<div class="icon-box p-4 h-100 text-center">
+<i class="fa-solid fa-gem"></i>
+<h3 class="mt-3">Coordinated Looks</h3>
+<p class="text-muted-custom">Colour palettes and silhouettes planned across your whole party, not just one outfit.</p>
+</div>
+</div>
+<div class="col-md-4">
+<div class="icon-box p-4 h-100 text-center">
+<i class="fa-solid fa-scissors"></i>
+<h3 class="mt-3">Made-to-Measure Fit</h3>
+<p class="text-muted-custom">In-house tailoring adjusts every piece so it fits exactly right on the day.</p>
+</div>
+</div>
+<div class="col-md-4">
+<div class="icon-box p-4 h-100 text-center">
+<i class="fa-solid fa-calendar-check"></i>
+<h3 class="mt-3">On-the-Day Support</h3>
+<p class="text-muted-custom">Optional styling touch-ups so everyone looks their best when it matters most.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Section: Featured occasion pieces --><section class="section-padding bg-card">
+<div class="container">
+<div class="section-title"><span class="eyebrow">Fresh edit</span>
+<h2>Featured Occasion Pieces</h2>
+</div>
+<div class="row g-4">
+<div class="col-md-6 col-lg-3">
+<article class="product-card">
+<div class="image-wrap"><img alt="Evening Rose Dress fashion product" src="../assets/images/arrival-evening-dress.webp"/></div>
+<div class="product-body"><span class="category-pill">Women</span>
+<h3>Evening Rose Dress</h3>
+<p class="price">₹3,199</p>
+<div class="d-flex gap-2 flex-wrap">
+<a class="btn-boutique" href="product-details.html?id=evening-dress-001">View Product</a>
+<button class="btn-outline-boutique add-to-cart" data-id="evening-dress-001" data-image="../assets/images/arrival-evening-dress.webp" data-name="Evening Rose Dress" data-price="3199"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+</div>
+</div>
+</article>
+</div>
+<div class="col-md-6 col-lg-3">
+<article class="product-card">
+<div class="image-wrap"><img alt="Velvet Dress fashion product" src="../assets/images/trend-velvet-dress.webp"/></div>
+<div class="product-body"><span class="category-pill">Occasion</span>
+<h3>Velvet Dress</h3>
+<p class="price">₹2,899</p>
+<div class="d-flex gap-2 flex-wrap">
+<a class="btn-boutique" href="product-details.html?id=velvet-dress-001">View Product</a>
+<button class="btn-outline-boutique add-to-cart" data-id="velvet-dress-001" data-image="../assets/images/trend-velvet-dress.webp" data-name="Velvet Dress" data-price="2899"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+</div>
+</div>
+</article>
+</div>
+<div class="col-md-6 col-lg-3">
+<article class="product-card">
+<div class="image-wrap"><img alt="Classic Trench fashion product" src="../assets/images/trend-trench-coat.webp"/></div>
+<div class="product-body"><span class="category-pill">Outerwear</span>
+<h3>Classic Trench</h3>
+<p class="price">₹3,499</p>
+<div class="d-flex gap-2 flex-wrap">
+<a class="btn-boutique" href="product-details.html?id=trench-coat-001">View Product</a>
+<button class="btn-outline-boutique add-to-cart" data-id="trench-coat-001" data-image="../assets/images/trend-trench-coat.webp" data-name="Classic Trench" data-price="3499"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+</div>
+</div>
+</article>
+</div>
+<div class="col-md-6 col-lg-3">
+<article class="product-card">
+<div class="image-wrap"><img alt="Pearl Mini Bag fashion product" src="../assets/images/trend-pearl-bag.webp"/></div>
+<div class="product-body"><span class="category-pill">Accessories</span>
+<h3>Pearl Mini Bag</h3>
+<p class="price">₹999</p>
+<div class="d-flex gap-2 flex-wrap">
+<a class="btn-boutique" href="product-details.html?id=pearl-mini-001">View Product</a>
+<button class="btn-outline-boutique add-to-cart" data-id="pearl-mini-001" data-image="../assets/images/trend-pearl-bag.webp" data-name="Pearl Mini Bag" data-price="999"><i class="fa-solid fa-bag-shopping"></i> Add to Cart</button>
+</div>
+</div>
+</article>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Section: Occasion lookbook gallery --><section class="section-padding">
+<div class="container">
+<div class="section-title text-center"><span class="eyebrow">Inspiration</span>
+<h2>Occasion Lookbook</h2>
+</div>
+<div class="row g-4 home2-gallery">
+<div class="col-md-4"><a href="lookbook.html"><img alt="Occasion look 1" src="../assets/images/look-1.webp"/></a></div>
+<div class="col-md-4"><a href="lookbook.html"><img alt="Occasion look 2" src="../assets/images/look-2.webp"/></a></div>
+<div class="col-md-4"><a href="lookbook.html"><img alt="Occasion look 3" src="../assets/images/look-3.webp"/></a></div>
+</div>
+<div class="text-center mt-4"><a class="btn-outline-boutique" href="lookbook.html">View Full Lookbook</a></div>
+</div>
+</section>
+
+<!-- Section: Styling service CTA --><section class="container pb-5">
+<div class="sale-banner">
+<div class="row align-items-center">
+<div class="col-lg-8"><span class="eyebrow text-white">Personal Service</span>
+<h2 class="text-white">Book a bridal or occasion styling session</h2>
+<p>One-on-one styling for the bride, groom, guests of honour, or the whole bridal party — including fittings and on-the-day support.</p>
+</div>
+<div class="col-lg-4 text-lg-end"><a class="btn-outline-boutique text-white border-white" href="service-details.html?service=bridal-occasion-styling">See Packages</a></div>
+</div>
+</div>
+</section>
+
+<!-- Section: Testimonials --><section class="section-padding bg-card">
+<div class="container">
+<div class="section-title text-center"><span class="eyebrow">Kind words</span>
+<h2>From Recent Occasions</h2>
+</div>
+<div class="row g-4">
+<div class="col-md-4">
+<div class="testimonial-card-2">
+<img alt="Customer portrait" src="../assets/images/founder-a.webp"/>
+<div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+<p class="text-muted-custom">"Our whole bridal party was coordinated without looking matchy. The stylist understood the brief immediately."</p>
+<strong>Ananya R.</strong>
+</div>
+</div>
+<div class="col-md-4">
+<div class="testimonial-card-2">
+<img alt="Customer portrait" src="../assets/images/founder-b.webp"/>
+<div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+<p class="text-muted-custom">"The made-to-measure blazer fit better than anything off the rack. Worth every rupee for the wedding."</p>
+<strong>Karthik S.</strong>
+</div>
+</div>
+<div class="col-md-4">
+<div class="testimonial-card-2">
+<img alt="Customer portrait" src="../assets/images/founder-c.webp"/>
+<div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+<p class="text-muted-custom">"On-the-day touch-ups saved us before photos. Highly recommend booking the full occasion package."</p>
+<strong>Meera V.</strong>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Section: Newsletter --><section class="pb-5">
+<div class="container">
+<form class="newsletter row g-3 align-items-center" id="subscribeForm" method="post">
+<div class="col-lg-6">
+<h2>Get occasion styling notes</h2>
+<p class="mb-0 text-muted-custom">Seasonal bridal and event styling tips, straight to your inbox.</p>
+</div>
+<div class="col-lg-4"><label class="visually-hidden" for="newsletterEmail2">Email</label><input class="form-control" id="newsletterEmail2" placeholder="Email address" required type="email"/></div>
+<div class="col-lg-2"><button class="btn-boutique w-100" type="submit">Subscribe</button></div>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer Section: brand details, quick links, support links and store info --><footer class="footer">
+<div class="container">
+<div class="row g-4">
+<div class="col-lg-3 col-md-6">
+<h3>Rose &amp; Thread</h3>
+<p class="opacity-75">Elegant clothing boutique for modern wardrobes, crafted with premium fabrics and thoughtful silhouettes.</p>
+<div class="social-icons">
+<a aria-label="Instagram" href="https://www.instagram.com/roseandthread/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+<a aria-label="Facebook" href="https://www.facebook.com/roseandthread/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+<a aria-label="Pinterest" href="https://www.pinterest.com/roseandthread/" target="_blank"><i class="fa-brands fa-pinterest-p"></i></a>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<h4>Shop</h4>
+<a href="collections.html?category=Women">Women</a><a href="collections.html?category=Men">Men</a>
+<a href="collections.html?category=Kids">Kids</a><a href="collections.html?category=Accessories">Accessories</a>
+</div>
+<div class="col-lg-3 col-md-6">
+<h4>Support</h4>
+<a href="size-guide.html">Size Guide</a><a href="contact.html">Contact</a>
+<a href="shipping-info.html">Shipping Info</a><a href="shipping-info.html#returns">Returns</a>
+</div>
+<div class="col-lg-3 col-md-6">
+<h4>Visit Store</h4>
+<p class="opacity-75 mb-1">12 Fashion Street, Coimbatore</p>
+<p class="opacity-75 mb-1">Mon – Sat: 10 AM – 8 PM</p>
+<a href="mailto:hello@roseandthread.com">hello@roseandthread.com</a>
+</div>
+</div>
+<hr class="border-secondary my-4"/>
+<div class="d-flex flex-column flex-md-row justify-content-between">
+<p class="mb-0 opacity-75">© 2026 Rose &amp; Thread. All rights reserved.</p>
+<p class="mb-0 opacity-75">Bootstrap 5 HTML Template</p>
+</div>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/cart.js"></script>
+<script src="../assets/js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head><!-- Head Section: page title, meta description, fonts, Bootstrap, Font Awesome and project CSS files -->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Pricing | Rose &amp; Thread Boutique</title>
+<meta content="Rose and Thread Boutique membership pricing: styling perks, tailoring discounts, and priority support tiers." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Lato:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+<link href="../assets/css/style.css" rel="stylesheet"/>
+<link href="../assets/css/dark-mode.css" rel="stylesheet"/>
+<link href="../assets/css/rtl.css" rel="stylesheet"/>
+<style>
+  .pricing-plan-card {
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 32px 28px;
+    background: var(--color-bg);
+    height: 100%;
+    transition: var(--transition);
+  }
+  .pricing-plan-card.is-highlighted {
+    border-color: var(--color-primary);
+    box-shadow: 0 20px 45px rgba(0,0,0,.08);
+    transform: translateY(-6px);
+  }
+  .pricing-plan-card .plan-price {
+    font-family: var(--font-heading);
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+  .pricing-plan-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  .pricing-plan-card ul li {
+    padding: 6px 0;
+    color: var(--color-muted);
+  }
+  .pricing-plan-card ul li i {
+    color: var(--color-primary);
+    margin-right: 8px;
+  }
+  .pricing-toggle-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 6px 18px;
+  }
+</style>
+</head>
+<body>
+<!-- Top Offer Banner: this banner is placed above the navbar --><div aria-label="Store offer banner" class="top-offer-banner" role="region">
+<div class="container d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 text-center">
+<span><i aria-hidden="true" class="fa-solid fa-truck-fast"></i> Free shipping on orders above ₹2,999</span>
+<span class="offer-divider d-none d-md-inline">|</span>
+<span>New boutique collection is live now</span>
+</div>
+</div><!-- Navigation Bar: logo, menu links, dark mode button and cart icon --><nav aria-label="Main navigation" class="navbar navbar-expand-lg sticky-top">
+<div class="container"><a class="navbar-brand" href="index.html">
+  Rose &amp; <span class="brand-thread">Thread</span>
+</a><button aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#mainNav" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="mainNav">
+<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
+<li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+<li class="nav-item"><a class="nav-link active" href="pricing.html">Pricing</a></li>
+<li class="nav-item"><a class="nav-link" href="lookbook.html">Lookbook</a></li>
+<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+</ul>
+<div class="d-flex gap-2 ms-lg-3 align-items-center navbar-actions"><button aria-label="Toggle dark mode" class="nav-icon-btn" data-theme-toggle=""><i class="fa-regular fa-moon"></i></button><button aria-label="Toggle text direction" class="nav-icon-btn" data-rtl-toggle type="button"><i class="fa-solid fa-right-left"></i> RTL</button><span class="profile-nav-wrapper" data-profile-nav>
+<a aria-label="View profile" class="nav-icon-btn profile-nav-btn" data-profile-link href="profile.html" title="View profile">
+<span class="profile-avatar" data-profile-avatar><i class="fa-regular fa-user"></i></span>
+</a>
+<div class="profile-dropdown" data-profile-dropdown>
+<span class="profile-dropdown-label" data-profile-status>Guest Profile</span>
+<strong data-profile-name>Guest User</strong>
+<small data-profile-email>Login to view your profile</small>
+<div class="profile-dropdown-actions" data-profile-actions><a href="auth.html?role=customer&mode=login">Customer Login</a><a href="auth.html?role=admin&mode=login">Admin Login</a></div>
+</div>
+</span>
+<span class="cart-nav-wrapper">
+<a aria-label="View cart" class="nav-icon-btn" href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+<span aria-label="Cart items" class="cart-count-badge" id="cartCount">0</span>
+</span></div>
+</div>
+</div>
+</nav>
+<!-- Main Content: all visible page sections are written inside main tag --><main>
+<section class="breadcrumb-section">
+<div class="container text-center">
+<span class="eyebrow">Rose &amp; Thread</span>
+<h1>Membership Pricing</h1>
+<p class="lead text-muted-custom">Join the inner circle for styling perks, tailoring discounts, and priority support — on top of everything in our shop.</p>
+</div>
+</section>
+<section class="section-padding">
+<div class="container">
+<div class="row g-4 justify-content-center">
+
+<div class="col-md-6 col-lg-4">
+<div class="pricing-plan-card">
+<h3>Essentials</h3>
+<div class="plan-price">₹499<span class="text-muted-custom" style="font-size:1rem;">/mo</span></div>
+<p class="text-muted-custom mb-0">For casual shoppers who want first access.</p>
+<ul>
+<li><i class="fa-solid fa-check"></i>Early access to new arrivals</li>
+<li><i class="fa-solid fa-check"></i>Monthly styling tips newsletter</li>
+<li><i class="fa-solid fa-check"></i>1 free basic alteration per month</li>
+<li><i class="fa-solid fa-check"></i>Birthday month discount</li>
+</ul>
+<a class="btn-outline-boutique w-100 text-center" href="contact.html">Get Started</a>
+</div>
+</div>
+
+<div class="col-md-6 col-lg-4">
+<div class="pricing-plan-card is-highlighted">
+<span class="badge bg-danger mb-2">Most Popular</span>
+<h3>Signature</h3>
+<div class="plan-price">₹1,499<span class="text-muted-custom" style="font-size:1rem;">/mo</span></div>
+<p class="text-muted-custom mb-0">For regulars who want styling support built in.</p>
+<ul>
+<li><i class="fa-solid fa-check"></i>Everything in Essentials</li>
+<li><i class="fa-solid fa-check"></i>1 personal styling session per quarter</li>
+<li><i class="fa-solid fa-check"></i>Free shipping on every order</li>
+<li><i class="fa-solid fa-check"></i>15% off custom tailoring</li>
+<li><i class="fa-solid fa-check"></i>Priority customer support</li>
+</ul>
+<a class="btn-boutique w-100 text-center" href="contact.html">Get Started</a>
+</div>
+</div>
+
+<div class="col-md-6 col-lg-4">
+<div class="pricing-plan-card">
+<h3>Elite</h3>
+<div class="plan-price">₹3,999<span class="text-muted-custom" style="font-size:1rem;">/mo</span></div>
+<p class="text-muted-custom mb-0">For customers who want a dedicated stylist on call.</p>
+<ul>
+<li><i class="fa-solid fa-check"></i>Everything in Signature</li>
+<li><i class="fa-solid fa-check"></i>Monthly personal styling session</li>
+<li><i class="fa-solid fa-check"></i>Dedicated stylist contact</li>
+<li><i class="fa-solid fa-check"></i>Free gift wrapping on every order</li>
+<li><i class="fa-solid fa-check"></i>Invitations to boutique preview events</li>
+</ul>
+<a class="btn-outline-boutique w-100 text-center" href="contact.html">Get Started</a>
+</div>
+</div>
+
+</div>
+<p class="text-center text-muted-custom mt-4">Looking for one-off services instead of a membership? See our <a href="services.html">Services</a> page for individual styling, tailoring, and bridal packages.</p>
+</div>
+</section>
+
+<section class="section-padding bg-card">
+<div class="container">
+<div class="section-title text-center">
+<span class="eyebrow">Good to know</span>
+<h2>Pricing FAQs</h2>
+</div>
+<div class="accordion" id="pricingFaqAccordion">
+<div class="accordion-item">
+<h3 class="accordion-header"><button class="accordion-button" data-bs-target="#pf0" data-bs-toggle="collapse" type="button">Can I cancel my membership anytime?</button></h3>
+<div class="accordion-collapse collapse show" data-bs-parent="#pricingFaqAccordion" id="pf0"><div class="accordion-body">Yes, memberships are billed monthly with no long-term contract. You can cancel anytime from your profile or by contacting us, effective at the end of your current billing cycle.</div></div>
+</div>
+<div class="accordion-item">
+<h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-target="#pf1" data-bs-toggle="collapse" type="button">Can I upgrade or downgrade my plan?</button></h3>
+<div class="accordion-collapse collapse" data-bs-parent="#pricingFaqAccordion" id="pf1"><div class="accordion-body">Yes, you can switch plans at any time. Upgrades apply immediately, and downgrades take effect from your next billing cycle.</div></div>
+</div>
+<div class="accordion-item">
+<h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-target="#pf2" data-bs-toggle="collapse" type="button">Do membership perks apply to sale items?</button></h3>
+<div class="accordion-collapse collapse" data-bs-parent="#pricingFaqAccordion" id="pf2"><div class="accordion-body">Free shipping and tailoring discounts apply store-wide, including sale items. Early access previews apply to new arrivals only.</div></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Section: brand details, quick links, support links and store info --><footer class="footer">
+<div class="container">
+<div class="row g-4">
+<div class="col-lg-3 col-md-6">
+<h3>Rose &amp; Thread</h3>
+<p class="opacity-75">Elegant clothing boutique for modern wardrobes, crafted with premium fabrics and thoughtful silhouettes.</p>
+<div class="social-icons">
+<a aria-label="Instagram" href="https://www.instagram.com/roseandthread/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+<a aria-label="Facebook" href="https://www.facebook.com/roseandthread/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+<a aria-label="Pinterest" href="https://www.pinterest.com/roseandthread/" target="_blank"><i class="fa-brands fa-pinterest-p"></i></a>
+</div>
+</div>
+<div class="col-lg-3 col-md-6">
+<h4>Shop</h4>
+<a href="collections.html?category=Women">Women</a><a href="collections.html?category=Men">Men</a>
+<a href="collections.html?category=Kids">Kids</a><a href="collections.html?category=Accessories">Accessories</a>
+</div>
+<div class="col-lg-3 col-md-6">
+<h4>Support</h4>
+<a href="size-guide.html">Size Guide</a><a href="contact.html">Contact</a>
+<a href="shipping-info.html">Shipping Info</a><a href="shipping-info.html#returns">Returns</a>
+</div>
+<div class="col-lg-3 col-md-6">
+<h4>Visit Store</h4>
+<p class="opacity-75 mb-1">12 Fashion Street, Coimbatore</p>
+<p class="opacity-75 mb-1">Mon – Sat: 10 AM – 8 PM</p>
+<a href="mailto:hello@roseandthread.com">hello@roseandthread.com</a>
+</div>
+</div>
+<hr class="border-secondary my-4"/>
+<div class="d-flex flex-column flex-md-row justify-content-between">
+<p class="mb-0 opacity-75">© 2026 Rose &amp; Thread. All rights reserved.</p>
+<p class="mb-0 opacity-75">Bootstrap 5 HTML Template</p>
+</div>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/cart.js"></script>
+<script src="../assets/js/auth.js"></script>
+</body>
+</html>
