@@ -3068,6 +3068,7 @@ body.dark-mode .blog-tab.active {
     object-fit: cover;
     object-position: center top;
     margin-bottom: 28px;
+    overflow: hidden;
 }
 
 .blog-detail-meta {
@@ -4447,8 +4448,9 @@ body.modal-open-custom {
     height: 460px;
     max-height: none;
     object-fit: cover;
-    object-position: center center;
+    object-position: center 20%;
     border-radius: 24px;
+    overflow: hidden;
     margin: 0 0 28px;
     background: var(--color-card-bg);
 }
