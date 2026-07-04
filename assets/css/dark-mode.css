@@ -332,6 +332,11 @@ body.dark-mode .product-card .category-pill {
     color: #111111;
 }
 
+/* Pricing / service-details plan price visibility fix (Services, Service Details, Pricing pages) */
+body.dark-mode .plan-price {
+    color: #ffffff !important;
+}
+
 /* Dark mode */
 body.dark-mode {
   background:
