@@ -1057,6 +1057,49 @@ function setupStoreSettingsForm() {
   });
 }
 
+/* ==============================
+   Contact Page Form
+   The form previously posted to a placeholder Formspree endpoint
+   (https://formspree.io/f/XXXXX), which navigated the visitor away to a
+   real "Form not found" error page on submit. This is a static demo site
+   with no backend, so instead the message is saved into the same
+   boutiqueMessages store the admin Messages page reads from, and a
+   success confirmation is shown in place.
+============================== */
+function setupContactForm() {
+  const form = document.getElementById("contactForm");
+  if (!form) return;
+  const statusBox = document.getElementById("contactFormStatus");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (form.querySelector(".is-invalid")) return;
+
+    const nameField = document.getElementById("name");
+    const emailField = document.getElementById("email");
+    const messageField = document.getElementById("message");
+
+    const messages = getData(MESSAGE_KEY);
+    messages.push({
+      id: "m" + Date.now(),
+      name: nameField ? nameField.value.trim() : "",
+      email: emailField ? emailField.value.trim() : "",
+      subject: "Website Contact Form",
+      message: messageField ? messageField.value.trim() : "",
+      replied: false,
+      replyText: ""
+    });
+    saveData(MESSAGE_KEY, messages);
+
+    form.reset();
+    if (statusBox) {
+      statusBox.classList.remove("d-none");
+      statusBox.textContent = "Message sent successfully. Our team will get back to you within one business day.";
+      setTimeout(() => { statusBox.classList.add("d-none"); }, 4000);
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   setupDefaultAdmin();
   setupDefaultCustomer();
@@ -1079,6 +1122,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderAdminMessages();
   setupAdminMessageActions();
   setupStoreSettingsForm();
+  setupContactForm();
   renderProfileNav();
   renderCustomerProfilePage();
   setupMobileProfileDropdown();

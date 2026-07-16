@@ -68,7 +68,7 @@
 <div class="container">
 <div class="row g-5">
 <div class="col-lg-6">
-<!-- Form Section: user input fields and submit button --><form action="https://formspree.io/f/XXXXX" class="boutique-card p-4" data-validate="true" method="post">
+<!-- Form Section: user input fields and submit button --><form id="contactForm" class="boutique-card p-4" data-validate="true" method="post">
 <h2>Send a Message</h2>
 <div class="mb-3"><label class="form-label" for="name">Name</label><input class="form-control" data-required="true" id="name" name="name"/>
 <div class="error-message"></div>
@@ -79,6 +79,7 @@
 <div class="mb-3"><label class="form-label" for="message">Message</label><textarea class="form-control" data-required="true" id="message" name="message" rows="5"></textarea>
 <div class="error-message"></div>
 </div><button class="btn-boutique" type="submit">Send Message</button>
+<div class="form-success d-none mt-3" id="contactFormStatus"></div>
 </form>
 </div>
 <div class="col-lg-6">
