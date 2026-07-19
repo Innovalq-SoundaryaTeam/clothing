@@ -14,6 +14,7 @@
 <link href="../assets/css/style.css" rel="stylesheet"/>
 <link href="../assets/css/dark-mode.css" rel="stylesheet"/>
 <link href="../assets/css/rtl.css" rel="stylesheet"/>
+<link rel="icon" type="image/svg+xml" href="../assets/images/logo.svg"/>
 </head>
 <body>
 <!-- Top Offer Banner: this banner is placed above the navbar --><div aria-label="Store offer banner" class="top-offer-banner" role="region">
@@ -33,7 +34,7 @@
 <li class="nav-item"><a class="nav-link" href="collections.html">Collections</a></li>
 <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
 <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
-<li class="nav-item"><a class="nav-link" href="lookbook.html">Lookbook</a></li>
+<li class="nav-item"><a class="nav-link active" href="lookbook.html">Lookbook</a></li>
 <li class="nav-item"><a class="nav-link" href="size-guide.html">Size Guide</a></li>
 <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
 <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
@@ -77,11 +78,19 @@
       <div class="section-title">
         <span class="eyebrow">Style Inspiration</span>
         <h2>Shop by Look</h2>
-        <p>Only your selected boutique products are shown here with unique images.</p>
+        <p>Ten curated looks across our collections. Filter by category or click any look to shop the exact
+          product in Collections.</p>
       </div>
-      <div class="row g-4">
+      <div class="d-flex flex-wrap gap-2 mb-4" id="lookbookFilters" role="group" aria-label="Filter looks by category">
+        <button class="btn-outline-boutique active" data-filter="all" type="button">All Looks</button>
+        <button class="btn-outline-boutique" data-filter="women" type="button">Women</button>
+        <button class="btn-outline-boutique" data-filter="men" type="button">Men</button>
+        <button class="btn-outline-boutique" data-filter="kids" type="button">Kids</button>
+        <button class="btn-outline-boutique" data-filter="accessories" type="button">Accessories</button>
+      </div>
+      <div class="row g-4" id="lookbookGrid">
 
-          <div class="col-md-6 col-lg-4 col-xl-3">
+          <div class="col-md-6 col-lg-4 col-xl-3" data-category="women">
             <a href="collections.html?focus=floral-maxi-dress" class="lookbook-link" aria-label="Look 1 Floral Maxi Dress open this product in collections page">
               <article class="look-card lookbook-product-card">
                 <img src="../assets/images/originals/women-dress.webp" alt="Floral Maxi Dress">
@@ -94,7 +103,7 @@
               </article>
             </a>
           </div>
-          <div class="col-md-6 col-lg-4 col-xl-3">
+          <div class="col-md-6 col-lg-4 col-xl-3" data-category="women">
             <a href="collections.html?focus=cotton-midi-dress" class="lookbook-link" aria-label="Look 2 Cotton Midi Dress open this product in collections page">
               <article class="look-card lookbook-product-card">
                 <img src="../assets/images/originals/party-gown.webp" alt="Cotton Midi Dress">
@@ -107,7 +116,7 @@
               </article>
             </a>
           </div>
-          <div class="col-md-6 col-lg-4 col-xl-3">
+          <div class="col-md-6 col-lg-4 col-xl-3" data-category="men">
             <a href="collections.html?focus=classic-white-shirt" class="lookbook-link" aria-label="Look 3 Classic White Shirt open this product in collections page">
               <article class="look-card lookbook-product-card">
                 <img src="../assets/images/originals/men-shirt.webp" alt="Classic White Shirt">
@@ -120,7 +129,7 @@
               </article>
             </a>
           </div>
-          <div class="col-md-6 col-lg-4 col-xl-3">
+          <div class="col-md-6 col-lg-4 col-xl-3" data-category="men">
             <a href="collections.html?focus=premium-polo-tshirt" class="lookbook-link" aria-label="Look 4 Premium Polo T-Shirt open this product in collections page">
               <article class="look-card lookbook-product-card">
                 <img src="../assets/images/originals/summer-top.webp" alt="Premium Polo T-Shirt">
@@ -133,7 +142,7 @@
               </article>
             </a>
           </div>
-          <div class="col-md-6 col-lg-4 col-xl-3">
+          <div class="col-md-6 col-lg-4 col-xl-3" data-category="men">
             <a href="collections.html?focus=slim-fit-formal-trousers" class="lookbook-link" aria-label="Look 5 Slim Fit Formal Trousers open this product in collections page">
               <article class="look-card lookbook-product-card">
                 <img src="../assets/images/originals/formal-pants.webp" alt="Slim Fit Formal Trousers">
@@ -146,7 +155,7 @@
               </article>
             </a>
           </div>
-          <div class="col-md-6 col-lg-4 col-xl-3">
+          <div class="col-md-6 col-lg-4 col-xl-3" data-category="men">
             <a href="collections.html?focus=tailored-black-blazer" class="lookbook-link" aria-label="Look 6 Tailored Black Blazer open this product in collections page">
               <article class="look-card lookbook-product-card">
                 <img src="../assets/images/originals/linen-blazer.webp" alt="Tailored Black Blazer">
@@ -159,7 +168,7 @@
               </article>
             </a>
           </div>
-          <div class="col-md-6 col-lg-4 col-xl-3">
+          <div class="col-md-6 col-lg-4 col-xl-3" data-category="kids">
             <a href="collections.html?focus=girls-floral-dress" class="lookbook-link" aria-label="Look 7 Girls Floral Dress open this product in collections page">
               <article class="look-card lookbook-product-card">
                 <img src="../assets/images/originals/kids-set.webp" alt="Girls Floral Dress">
@@ -172,7 +181,7 @@
               </article>
             </a>
           </div>
-          <div class="col-md-6 col-lg-4 col-xl-3">
+          <div class="col-md-6 col-lg-4 col-xl-3" data-category="accessories">
             <a href="collections.html?focus=premium-leather-handbag" class="lookbook-link" aria-label="Look 8 Premium Leather Handbag open this product in collections page">
               <article class="look-card lookbook-product-card">
                 <img src="../assets/images/originals/accessory-bag.webp" alt="Premium Leather Handbag">
@@ -185,7 +194,7 @@
               </article>
             </a>
           </div>
-          <div class="col-md-6 col-lg-4 col-xl-3">
+          <div class="col-md-6 col-lg-4 col-xl-3" data-category="accessories">
             <a href="collections.html?focus=white-sneakers" class="lookbook-link" aria-label="Look 9 White Sneakers open this product in collections page">
               <article class="look-card lookbook-product-card">
                 <img src="../assets/images/originals/sneakers.webp" alt="White Sneakers">
@@ -198,7 +207,7 @@
               </article>
             </a>
           </div>
-          <div class="col-md-6 col-lg-4 col-xl-3">
+          <div class="col-md-6 col-lg-4 col-xl-3" data-category="accessories">
             <a href="collections.html?focus=analog-wrist-watch" class="lookbook-link" aria-label="Look 10 Analog Wrist Watch open this product in collections page">
               <article class="look-card lookbook-product-card">
                 <img src="../assets/images/originals/watch.webp" alt="Analog Wrist Watch">
@@ -214,7 +223,34 @@
       </div>
     </div>
   </section>
+
+  <section class="section-padding bg-card">
+    <div class="container text-center">
+      <span class="eyebrow">Need a hand?</span>
+      <h2>Not sure which look fits you?</h2>
+      <p class="text-muted-custom mb-3">Book a personal styling session and we'll build a look around your
+        wardrobe, occasion, and budget.</p>
+      <a class="btn-boutique" href="services.html">Book a Styling Session</a>
+    </div>
+  </section>
 </main>
+
+<script>
+  (function () {
+    const filters = document.getElementById('lookbookFilters');
+    if (!filters) return;
+    filters.addEventListener('click', function (e) {
+      const btn = e.target.closest('[data-filter]');
+      if (!btn) return;
+      filters.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const category = btn.getAttribute('data-filter');
+      document.querySelectorAll('#lookbookGrid > [data-category]').forEach(card => {
+        card.style.display = (category === 'all' || card.getAttribute('data-category') === category) ? '' : 'none';
+      });
+    });
+  })();
+</script>
 
 
 <!-- Footer Section: brand details, quick links, support links and store info --><footer class="footer">

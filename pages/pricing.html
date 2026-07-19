@@ -20,6 +20,8 @@
     padding: 32px 28px;
     background: var(--color-bg);
     height: 100%;
+    display: flex;
+    flex-direction: column;
     transition: var(--transition);
   }
   .pricing-plan-card.is-highlighted {
@@ -37,6 +39,7 @@
     list-style: none;
     padding: 0;
     margin: 20px 0;
+    flex-grow: 1;
   }
   .pricing-plan-card ul li {
     padding: 6px 0;
@@ -45,6 +48,10 @@
   .pricing-plan-card ul li i {
     color: var(--color-primary);
     margin-right: 8px;
+  }
+  .pricing-plan-card > a.btn-boutique,
+  .pricing-plan-card > a.btn-outline-boutique {
+    margin-top: auto;
   }
   .pricing-toggle-wrap {
     display: inline-flex;
@@ -56,6 +63,7 @@
     padding: 6px 18px;
   }
 </style>
+<link rel="icon" type="image/svg+xml" href="../assets/images/logo.svg"/>
 </head>
 <body>
 <!-- Top Offer Banner: this banner is placed above the navbar --><div aria-label="Store offer banner" class="top-offer-banner" role="region">

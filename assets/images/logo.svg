@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Rose &amp; Thread logo mark">
+  <defs>
+    <linearGradient id="rtBadge" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2a1c22"/>
+      <stop offset="1" stop-color="#1f161a"/>
+    </linearGradient>
+    <linearGradient id="rtPetal" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f3d3d8"/>
+      <stop offset="1" stop-color="#E8B4B8"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="31" fill="url(#rtBadge)"/>
+  <circle cx="32" cy="32" r="31" fill="none" stroke="#E8B4B8" stroke-width="1.4" opacity="0.55"/>
+  <!-- Rose bloom: layered petal swirl -->
+  <g transform="translate(32,29)">
+    <path d="M0,-11 C6,-11 10,-6.5 10,-1 C10,4.5 5,9 0,9 C-5,9 -10,4.5 -10,-1 C-10,-6.5 -6,-11 0,-11 Z" fill="url(#rtPetal)" opacity="0.95"/>
+    <path d="M0,-6.5 C3.6,-6.5 6,-3.8 6,-0.3 C6,3.2 3,6 0,6 C-3,6 -6,3.2 -6,-0.3 C-6,-3.8 -3.6,-6.5 0,-6.5 Z" fill="#fbeaec"/>
+    <circle cx="0" cy="-0.6" r="2.1" fill="#c894a4"/>
+  </g>
+  <!-- Thread / stem accent -->
+  <path d="M32,38 C27,42 27,47 32,51" fill="none" stroke="#E8B4B8" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M32,38 C37,42 37,47 32,51" fill="none" stroke="#E8B4B8" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+</svg>

@@ -181,7 +181,61 @@
     html[dir="rtl"] .mode-tab.active {
       border-bottom-color: var(--color-primary);
     }
+
+    /* Social Sign-In */
+    .social-auth-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0 16px;
+      color: var(--color-muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .social-auth-divider::before,
+    .social-auth-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--color-border);
+    }
+
+    .social-auth-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .social-auth-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: 1.5px solid var(--color-border);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .social-auth-btn:hover {
+      border-color: var(--color-primary);
+      background: var(--color-card-bg);
+    }
+
+    .social-auth-btn i.fa-google { color: #db4437; }
+    .social-auth-btn i.fa-apple { color: var(--color-text); }
   </style>
+<link rel="icon" type="image/svg+xml" href="../assets/images/logo.svg"/>
 </head>
 
 <body>
@@ -303,6 +357,11 @@
                     <i class="fa-solid fa-right-to-bracket"></i> Customer Login
                   </button>
                 </form>
+                <div class="social-auth-divider">or continue with</div>
+                <div class="social-auth-buttons">
+                  <button class="social-auth-btn" type="button" onclick="alert('Demo only: social sign-in is not connected to a real provider.')"><i class="fa-brands fa-google"></i> Continue with Google</button>
+                  <button class="social-auth-btn" type="button" onclick="alert('Demo only: social sign-in is not connected to a real provider.')"><i class="fa-brands fa-apple"></i> Continue with Apple</button>
+                </div>
                 <p class="mt-3 mb-0 auth-note">Don't have an account? <a href="#"
                     onclick="switchMode('signup');return false;">Sign Up</a></p>
               </div>
@@ -388,6 +447,11 @@
                     <i class="fa-solid fa-user-plus"></i> Create Customer Account
                   </button>
                 </form>
+                <div class="social-auth-divider">or sign up with</div>
+                <div class="social-auth-buttons">
+                  <button class="social-auth-btn" type="button" onclick="alert('Demo only: social sign-in is not connected to a real provider.')"><i class="fa-brands fa-google"></i> Continue with Google</button>
+                  <button class="social-auth-btn" type="button" onclick="alert('Demo only: social sign-in is not connected to a real provider.')"><i class="fa-brands fa-apple"></i> Continue with Apple</button>
+                </div>
                 <p class="mt-3 mb-0 auth-note">Already have an account? <a href="#"
                     onclick="switchMode('login');return false;">Login</a></p>
               </div>

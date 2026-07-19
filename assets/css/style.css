@@ -4506,3 +4506,111 @@ body.modal-open-custom {
         height: 240px;
     }
 }
+
+/* =====================================================
+   Site-wide QA fixes: brand logo mark, hero sizing,
+   hamburger blink, New Arrivals CTA
+===================================================== */
+
+/* Brand logo mark next to the "Rose & Thread" wordmark in the navbar
+   and footer, injected via CSS so every page stays in sync automatically. */
+.navbar-brand {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 10px;
+}
+.navbar-brand::before {
+    content: "";
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    background: url("../images/logo.svg") center/contain no-repeat;
+}
+.footer h3:first-of-type {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+.footer h3:first-of-type::before {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    background: url("../images/logo.svg") center/contain no-repeat;
+}
+.admin-brand {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 10px;
+}
+.admin-brand::before {
+    content: "";
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    background: url("../images/logo.svg") center/contain no-repeat;
+}
+
+/* Reduce hero section height so content stays balanced above the fold
+   instead of forcing near-full-viewport height on every home page. */
+.hero {
+    min-height: auto !important;
+    padding: 64px 0 !important;
+}
+.hero-img {
+    min-height: auto !important;
+    max-height: 440px;
+}
+@media (max-width: 991.98px) {
+    .hero { padding: 48px 0 !important; }
+    .hero-img { max-height: 340px; }
+}
+@media (max-width: 640px) {
+    .hero { padding: 32px 0 !important; }
+    .hero-img { max-height: 260px; }
+}
+
+/* Fix hamburger menu blink: backdrop-filter recalculating every frame
+   during the Bootstrap collapse transition causes a visible flash on
+   small screens, so drop the blur below desktop width. */
+@media (max-width: 991.98px) {
+    .navbar {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: var(--color-bg) !important;
+    }
+    body.dark-mode .navbar {
+        background: var(--color-bg) !important;
+    }
+    .navbar-collapse.collapsing {
+        transition: height .28s ease;
+    }
+}
+
+/* New Arrivals / product card CTA: give the primary action (Add to Bag)
+   the solid brand-color treatment instead of an outline, and keep
+   product containers aligned via the existing equal-height grid rules. */
+.product-card .add-to-cart {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-bg);
+}
+.product-card .add-to-cart:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-primary);
+}
+
+/* Lookbook category filter buttons */
+#lookbookFilters .btn-outline-boutique {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+}
+#lookbookFilters .btn-outline-boutique.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-bg);
+}
