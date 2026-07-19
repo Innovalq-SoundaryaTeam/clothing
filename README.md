@@ -45,12 +45,9 @@ Update Notes:
 - Added beginner-friendly HTML comments across all pages for easy explanation.
 
 
-## Login & Signup Authentication
-- Login page: `pages/login.html`
-- Signup page: `pages/register.html`
-- Demo customer: `customer@roseandthread.com` / `12345`
-- Authentication is static front-end only and uses browser localStorage.
-- There is no admin dashboard in this project — customer accounts only.
+## Checkout
+- There is no login, signup, or account system on this site.
+- Checkout is guest-only: the shopper enters name, email, phone, and address directly on `pages/checkout.html` and the order is saved to browser localStorage.
 
 
 Updates in this version:
