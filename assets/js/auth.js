@@ -1,5 +1,5 @@
 
-/* Apply saved dark mode on admin pages that do not load main.js */
+/* Apply saved dark mode on pages that do not load main.js */
 (function applySavedThemeForAuthPages(){
   if (window.__roseThreadThemeReady) return;
   const themeKey = "rose-thread-theme";
@@ -105,16 +105,13 @@
 })();
 
 /* ==============================
-   Separate Customer + Admin Authentication
+   Customer Authentication
    Front-end only demo authentication using localStorage.
    Customer signup/login is for shopping and placing orders.
-   Admin signup/login is for dashboard access.
 ============================== */
 
 const CUSTOMER_KEY = "boutiqueCustomers";
-const ADMIN_KEY = "boutiqueAdmins";
 const CUSTOMER_SESSION_KEY = "boutiqueCustomerSession";
-const ADMIN_SESSION_KEY = "boutiqueAdminSession";
 const ORDER_KEY = "boutiqueOrders";
 const CART_STORAGE_KEY = "rosethread-cart";
 const BUY_NOW_KEY = "rosethread-buy-now";
@@ -126,15 +123,6 @@ function setError(id, message) { const el = document.getElementById(id); if (el)
 function clearErrors() { document.querySelectorAll(".form-error").forEach((el) => { el.textContent = ""; }); }
 function showAuthMessage(message) { const box = document.getElementById("authMessage"); if (box) { box.classList.remove("d-none"); box.textContent = message; } }
 function isEmail(value) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); }
-
-function setupDefaultAdmin() {
-  const admins = getData(ADMIN_KEY);
-  const defaultAdmin = { name: "Sarath", email: "admin@roseandthread.com", password: "12345", role: "Admin" };
-  if (!admins.some((admin) => admin.email === defaultAdmin.email)) {
-    admins.push(defaultAdmin);
-    saveData(ADMIN_KEY, admins);
-  }
-}
 
 function setupDefaultCustomer() {
   const customers = getData(CUSTOMER_KEY);
@@ -158,19 +146,6 @@ function getCustomerSession() {
   }
 }
 
-function getAdminSession() {
-  try {
-    const session = JSON.parse(localStorage.getItem(ADMIN_SESSION_KEY));
-    if (!session) return null;
-    if (session.email && session.name && session.loggedIn !== false) {
-      return { name: session.name, email: session.email, role: session.role || "Admin", loggedIn: true };
-    }
-    return null;
-  } catch {
-    return null;
-  }
-}
-
 function getInitials(name) {
   return (name || "User")
     .split(" ")
@@ -182,10 +157,7 @@ function getInitials(name) {
 
 function renderProfileNav() {
   const customer = getCustomerSession();
-  const admin = getAdminSession();
-  const activeUser = customer || admin;
-  const isAdmin = Boolean(admin && !customer);
-  const loginActions = '<a href="auth.html?role=customer&mode=login">Customer Login</a><a href="auth.html?role=admin&mode=login">Admin Login</a>';
+  const loginActions = '<a href="auth.html?mode=login">Customer Login</a>';
 
   /* Remove old text based auth links if any old page still contains them. */
   document.querySelectorAll("[data-auth-link]").forEach((link) => {
@@ -194,22 +166,20 @@ function renderProfileNav() {
   });
 
   document.querySelectorAll("[data-profile-link]").forEach((link) => {
-    link.href = activeUser ? (isAdmin ? "admin/dashboard.html" : "profile.html") : "auth.html?role=customer&mode=login";
-    link.setAttribute("aria-label", activeUser ? (isAdmin ? "Open admin dashboard" : "View logged in customer profile") : "Login from profile menu");
-    link.title = activeUser ? (isAdmin ? "Open admin dashboard" : "View logged in customer profile") : "Login from profile menu";
+    link.href = customer ? "profile.html" : "auth.html?mode=login";
+    link.setAttribute("aria-label", customer ? "View logged in customer profile" : "Login from profile menu");
+    link.title = customer ? "View logged in customer profile" : "Login from profile menu";
   });
 
   document.querySelectorAll("[data-profile-avatar]").forEach((avatar) => {
-    avatar.innerHTML = activeUser ? getInitials(activeUser.name) : '<i class="fa-regular fa-user"></i>';
+    avatar.innerHTML = customer ? getInitials(customer.name) : '<i class="fa-regular fa-user"></i>';
   });
-  document.querySelectorAll("[data-profile-status]").forEach((el) => { el.textContent = activeUser ? (isAdmin ? "Logged In Admin" : "Logged In Customer") : "Guest Profile"; });
-  document.querySelectorAll("[data-profile-name]").forEach((el) => { el.textContent = activeUser ? activeUser.name : "Guest User"; });
-  document.querySelectorAll("[data-profile-email]").forEach((el) => { el.textContent = activeUser ? activeUser.email : "Choose customer or admin login"; });
+  document.querySelectorAll("[data-profile-status]").forEach((el) => { el.textContent = customer ? "Logged In Customer" : "Guest Profile"; });
+  document.querySelectorAll("[data-profile-name]").forEach((el) => { el.textContent = customer ? customer.name : "Guest User"; });
+  document.querySelectorAll("[data-profile-email]").forEach((el) => { el.textContent = customer ? customer.email : "Login to view your profile"; });
   document.querySelectorAll("[data-profile-actions]").forEach((el) => {
-    el.innerHTML = activeUser
-      ? (isAdmin
-        ? '<a href="admin/dashboard.html">Dashboard</a><button type="button" data-admin-nav-logout>Logout</button>'
-        : '<a href="profile.html">View Profile</a><button type="button" data-customer-logout>Logout</button>')
+    el.innerHTML = customer
+      ? '<a href="profile.html">View Profile</a><button type="button" data-customer-logout>Logout</button>'
       : loginActions;
   });
 }
@@ -217,7 +187,7 @@ function renderProfileNav() {
 /* Profile dropdown only opens on hover/focus by default, which touch screens
    never trigger. On mobile, tapping the avatar used to just navigate straight
    to the default link and the login options were never seen. This makes the
-   first tap open the dropdown (so Customer/Admin Login are visible) and a
+   first tap open the dropdown (so Customer Login is visible) and a
    second tap or an outside tap continues/closes as normal. */
 function setupMobileProfileDropdown() {
   document.addEventListener("click", (event) => {
@@ -471,76 +441,8 @@ function setupCustomerForgotPassword() {
 }
 
 
-/* Admin Signup */
-function setupAdminRegister() {
-  const form = document.getElementById("adminRegisterForm");
-  if (!form || !document.getElementById("fullName") || !document.getElementById("email")) return;
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    clearErrors();
-    const name = document.getElementById("fullName").value.trim();
-    const email = document.getElementById("email").value.trim().toLowerCase();
-    const password = document.getElementById("password").value.trim();
-    const confirmPassword = document.getElementById("confirmPassword").value.trim();
-    let valid = true;
-    if (name.length < 3) { setError("nameError", "Enter admin name."); valid = false; }
-    if (!isEmail(email)) { setError("emailError", "Enter a valid admin email."); valid = false; }
-    if (password.length < 5) { setError("passwordError", "Password must have at least 5 characters."); valid = false; }
-    if (password !== confirmPassword) { setError("confirmError", "Passwords do not match."); valid = false; }
-    if (!valid) return;
-    const admins = getData(ADMIN_KEY);
-    if (admins.some((admin) => admin.email === email)) { setError("emailError", "This admin email is already registered."); return; }
-    admins.push({ name, email, password, role: "Admin" });
-    saveData(ADMIN_KEY, admins);
-    showAuthMessage("Admin account created successfully. Please login.");
-    setTimeout(() => { window.location.href = "admin-login.html"; }, 900);
-  });
-}
-
-/* Admin Login */
-function setupAdminLogin() {
-  const form = document.getElementById("adminLoginForm");
-  if (!form || !document.getElementById("email") || !document.getElementById("password")) return;
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    clearErrors();
-    const email = document.getElementById("email").value.trim().toLowerCase();
-    const password = document.getElementById("password").value.trim();
-    if (!isEmail(email)) { setError("emailError", "Enter your admin email."); return; }
-    if (!password) { setError("passwordError", "Enter your password."); return; }
-    const admin = getData(ADMIN_KEY).find((item) => item.email === email && item.password === password);
-    if (!admin) { setError("passwordError", "Invalid admin email or password."); return; }
-    localStorage.setItem(ADMIN_SESSION_KEY, JSON.stringify({ name: admin.name, email: admin.email, role: "Admin", loggedIn: true }));
-    showAuthMessage("Admin login successful. Opening dashboard...");
-    setTimeout(() => { window.location.href = "admin/dashboard.html"; }, 700);
-  });
-}
-
-/* Protect admin dashboard pages */
-function protectAdminPages() {
-  if (!document.body.dataset.adminPage) return;
-  const session = JSON.parse(localStorage.getItem(ADMIN_SESSION_KEY));
-  if (!session || !session.loggedIn) { window.location.href = "../admin-login.html"; return; }
-  document.querySelectorAll("[data-admin-name]").forEach((el) => { el.textContent = session.name; });
-}
-
 function setupLogout() {
   document.addEventListener("click", (event) => {
-    const adminLogout = event.target.closest("[data-logout]");
-    if (adminLogout) {
-      localStorage.removeItem(ADMIN_SESSION_KEY);
-      window.location.href = "../admin-login.html";
-      return;
-    }
-
-    const adminNavLogout = event.target.closest("[data-admin-nav-logout]");
-    if (adminNavLogout) {
-      localStorage.removeItem(ADMIN_SESSION_KEY);
-      renderProfileNav();
-      window.location.href = "auth.html?role=admin&mode=login";
-      return;
-    }
-
     const customerLogout = event.target.closest("[data-customer-logout]");
     if (customerLogout) {
       localStorage.removeItem(CUSTOMER_SESSION_KEY);
@@ -757,314 +659,15 @@ function setupCheckoutPayment() {
 }
 
 
-function renderAdminOrders() {
-  const table = document.getElementById("adminOrdersTable");
-  if (!table) return;
-  const orders = getData(ORDER_KEY);
-  if (orders.length === 0) {
-    table.innerHTML = '<tr><td colspan="5" class="text-muted-custom">No orders placed yet.</td></tr>';
-    return;
-  }
-  table.innerHTML = "";
-  orders.forEach((order) => {
-    const productNames = order.items.map((item) => item.name + " x" + item.quantity).join(", ");
-    table.innerHTML += `<tr><td>#${order.orderId}</td><td>${order.customerName}</td><td>${productNames}</td><td>₹${Number(order.amount).toLocaleString("en-IN")}</td><td><span class="status-badge">${order.status}</span></td></tr>`;
-  });
-}
-
-/* ==============================
-   Admin Products Management
-   Stores products the admin adds/edits/deletes in localStorage so the
-   Products page actually works instead of being static placeholder text.
-============================== */
-const PRODUCT_KEY = "boutiqueAdminProducts";
-
-function setupDefaultProducts() {
-  if (!document.getElementById("adminProductsTable")) return;
-  const products = getData(PRODUCT_KEY);
-  if (products.length === 0) {
-    saveData(PRODUCT_KEY, [
-      { id: "p1", name: "Silk Blend Blazer", category: "Women", price: 2499, stock: 24, status: "Active" },
-      { id: "p2", name: "Linen Casual Shirt", category: "Men", price: 1699, stock: 18, status: "Active" },
-      { id: "p3", name: "Pearl Mini Bag", category: "Accessories", price: 999, stock: 35, status: "Active" }
-    ]);
-  }
-}
-
-function renderAdminProducts() {
-  const table = document.getElementById("adminProductsTable");
-  if (!table) return;
-  const products = getData(PRODUCT_KEY);
-  if (products.length === 0) {
-    table.innerHTML = '<tr><td colspan="6" class="text-muted-custom">No products yet. Click "Add Product" to create one.</td></tr>';
-    return;
-  }
-  table.innerHTML = products.map((product) => `
-    <tr>
-      <td>${product.name}</td>
-      <td>${product.category}</td>
-      <td>₹${Number(product.price).toLocaleString("en-IN")}</td>
-      <td>${product.stock}</td>
-      <td><span class="status-badge">${product.status}</span></td>
-      <td><a href="#" data-edit-product="${product.id}">Edit</a> / <a href="#" data-delete-product="${product.id}">Delete</a></td>
-    </tr>`).join("");
-}
-
-function setupAdminProductActions() {
-  const modalEl = document.getElementById("productModal");
-  const addBtn = document.getElementById("addProductBtn");
-  const form = document.getElementById("productForm");
-  const closeBtn = document.getElementById("productModalClose");
-  if (!modalEl || !addBtn || !form) return;
-
-  const titleEl = document.getElementById("productModalTitle");
-  const idField = document.getElementById("productId");
-  const nameField = document.getElementById("productName");
-  const categoryField = document.getElementById("productCategory");
-  const priceField = document.getElementById("productPrice");
-  const stockField = document.getElementById("productStock");
-  const statusField = document.getElementById("productStatus");
-
-  /* Plain, self-contained overlay: no Bootstrap JS modal component involved,
-     so there is no dependency on the CDN bundle loading correctly or any
-     stacking-context conflict with the rest of the page. Just a CSS class. */
-  function showModal() { modalEl.classList.add("show"); }
-  function hideModal() { modalEl.classList.remove("show"); }
-
-  function openForAdd() {
-    form.reset();
-    idField.value = "";
-    titleEl.textContent = "Add Product";
-    showModal();
-  }
-
-  function openForEdit(id) {
-    const product = getData(PRODUCT_KEY).find((item) => item.id === id);
-    if (!product) return;
-    idField.value = product.id;
-    nameField.value = product.name;
-    categoryField.value = product.category;
-    priceField.value = product.price;
-    stockField.value = product.stock;
-    statusField.value = product.status;
-    titleEl.textContent = "Edit Product";
-    showModal();
-  }
-
-  addBtn.addEventListener("click", openForAdd);
-  if (closeBtn) closeBtn.addEventListener("click", hideModal);
-
-  /* Click on the dark backdrop (outside the box) closes it */
-  modalEl.addEventListener("click", (event) => {
-    if (event.target === modalEl) hideModal();
-  });
-
-  /* Escape key closes it */
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && modalEl.classList.contains("show")) hideModal();
-  });
-
-  document.addEventListener("click", (event) => {
-    const editLink = event.target.closest("[data-edit-product]");
-    if (editLink) {
-      event.preventDefault();
-      openForEdit(editLink.dataset.editProduct);
-      return;
-    }
-    const deleteLink = event.target.closest("[data-delete-product]");
-    if (deleteLink) {
-      event.preventDefault();
-      if (window.confirm("Delete this product? This cannot be undone.")) {
-        saveData(PRODUCT_KEY, getData(PRODUCT_KEY).filter((item) => item.id !== deleteLink.dataset.deleteProduct));
-        renderAdminProducts();
-      }
-    }
-  });
-
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const name = nameField.value.trim();
-    if (!name) { nameField.focus(); return; }
-
-    const products = getData(PRODUCT_KEY);
-    const payload = {
-      name,
-      category: categoryField.value,
-      price: Number(priceField.value) || 0,
-      stock: Number(stockField.value) || 0,
-      status: statusField.value
-    };
-
-    if (idField.value) {
-      const existing = products.find((item) => item.id === idField.value);
-      if (existing) Object.assign(existing, payload);
-    } else {
-      products.push({ id: "p" + Date.now(), ...payload });
-    }
-
-    saveData(PRODUCT_KEY, products);
-    renderAdminProducts();
-    hideModal();
-  });
-}
-
-/* ==============================
-   Admin Messages / Enquiries
-   Stores enquiries in localStorage so "Reply" is a real, working action
-   instead of static text, and marks a message as Replied once sent.
-============================== */
 const MESSAGE_KEY = "boutiqueMessages";
-
-function setupDefaultMessages() {
-  if (!document.getElementById("adminMessagesTable")) return;
-  const messages = getData(MESSAGE_KEY);
-  if (messages.length === 0) {
-    saveData(MESSAGE_KEY, [
-      { id: "m1", name: "Sarath", email: "sarath@example.com", subject: "Size Help", message: "Need help with blazer size.", replied: false, replyText: "" },
-      { id: "m2", name: "Priya", email: "priya@example.com", subject: "Order", message: "When will my order ship?", replied: false, replyText: "" }
-    ]);
-  }
-}
-
-function renderAdminMessages() {
-  const table = document.getElementById("adminMessagesTable");
-  if (!table) return;
-  const messages = getData(MESSAGE_KEY);
-  if (messages.length === 0) {
-    table.innerHTML = '<tr><td colspan="5" class="text-muted-custom">No messages yet.</td></tr>';
-    return;
-  }
-  table.innerHTML = messages.map((msg) => `
-    <tr>
-      <td>${msg.name}</td>
-      <td>${msg.email}</td>
-      <td>${msg.subject}</td>
-      <td>${msg.message}</td>
-      <td>${msg.replied
-        ? '<span class="status-badge">Replied</span>'
-        : `<a href="#" data-reply-message="${msg.id}">Reply</a>`}</td>
-    </tr>`).join("");
-}
-
-function setupAdminMessageActions() {
-  const modalEl = document.getElementById("messageReplyModal");
-  const form = document.getElementById("messageReplyForm");
-  const closeBtn = document.getElementById("messageReplyClose");
-  if (!modalEl || !form) return;
-
-  const idField = document.getElementById("replyMessageId");
-  const nameEl = document.getElementById("replyToName");
-  const emailEl = document.getElementById("replyToEmail");
-  const subjectEl = document.getElementById("replySubject");
-  const originalEl = document.getElementById("replyOriginalMessage");
-  const replyField = document.getElementById("replyText");
-  const statusBox = document.getElementById("messageReplyStatus");
-
-  function showModal() { modalEl.classList.add("show"); }
-  function hideModal() { modalEl.classList.remove("show"); }
-
-  function openReply(id) {
-    const msg = getData(MESSAGE_KEY).find((item) => item.id === id);
-    if (!msg) return;
-    idField.value = msg.id;
-    nameEl.textContent = msg.name;
-    emailEl.textContent = msg.email;
-    subjectEl.textContent = "Subject: " + msg.subject;
-    originalEl.textContent = msg.message;
-    replyField.value = msg.replyText || "";
-    showModal();
-  }
-
-  if (closeBtn) closeBtn.addEventListener("click", hideModal);
-  modalEl.addEventListener("click", (event) => { if (event.target === modalEl) hideModal(); });
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && modalEl.classList.contains("show")) hideModal();
-  });
-
-  document.addEventListener("click", (event) => {
-    const replyLink = event.target.closest("[data-reply-message]");
-    if (replyLink) {
-      event.preventDefault();
-      openReply(replyLink.dataset.replyMessage);
-    }
-  });
-
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const text = replyField.value.trim();
-    if (!text) { replyField.focus(); return; }
-
-    const messages = getData(MESSAGE_KEY);
-    const msg = messages.find((item) => item.id === idField.value);
-    if (msg) {
-      msg.replied = true;
-      msg.replyText = text;
-      saveData(MESSAGE_KEY, messages);
-    }
-
-    renderAdminMessages();
-    hideModal();
-
-    if (statusBox) {
-      statusBox.classList.remove("d-none");
-      statusBox.textContent = `Reply sent successfully to ${msg ? msg.name : "customer"}.`;
-      setTimeout(() => { statusBox.classList.add("d-none"); }, 3000);
-    }
-  });
-}
-
-/* ==============================
-   Admin Store Settings
-   Persists the Settings page fields to localStorage so "Save Settings"
-   actually saves instead of being a static, non-functional button.
-============================== */
-const STORE_SETTINGS_KEY = "boutiqueStoreSettings";
-
-function setupStoreSettingsForm() {
-  const form = document.getElementById("storeSettingsForm");
-  if (!form) return;
-
-  const nameField = document.getElementById("settingsStoreName");
-  const emailField = document.getElementById("settingsEmail");
-  const phoneField = document.getElementById("settingsPhone");
-  const addressField = document.getElementById("settingsAddress");
-  const message = document.getElementById("settingsMessage");
-
-  let storedSettings = null;
-  try { storedSettings = JSON.parse(localStorage.getItem(STORE_SETTINGS_KEY)); } catch { storedSettings = null; }
-
-  if (storedSettings) {
-    if (nameField && storedSettings.name) nameField.value = storedSettings.name;
-    if (emailField && storedSettings.email) emailField.value = storedSettings.email;
-    if (phoneField && storedSettings.phone) phoneField.value = storedSettings.phone;
-    if (addressField && storedSettings.address) addressField.value = storedSettings.address;
-  }
-
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const settings = {
-      name: nameField ? nameField.value.trim() : "",
-      email: emailField ? emailField.value.trim() : "",
-      phone: phoneField ? phoneField.value.trim() : "",
-      address: addressField ? addressField.value.trim() : ""
-    };
-    localStorage.setItem(STORE_SETTINGS_KEY, JSON.stringify(settings));
-    if (message) {
-      message.classList.remove("d-none");
-      message.textContent = "Settings saved successfully.";
-      setTimeout(() => { message.classList.add("d-none"); }, 2500);
-    }
-  });
-}
 
 /* ==============================
    Contact Page Form
    The form previously posted to a placeholder Formspree endpoint
    (https://formspree.io/f/XXXXX), which navigated the visitor away to a
    real "Form not found" error page on submit. This is a static demo site
-   with no backend, so instead the message is saved into the same
-   boutiqueMessages store the admin Messages page reads from, and a
-   success confirmation is shown in place.
+   with no backend, so instead the message is saved into the boutiqueMessages
+   localStorage store and a success confirmation is shown in place.
 ============================== */
 function setupContactForm() {
   const form = document.getElementById("contactForm");
@@ -1101,27 +704,15 @@ function setupContactForm() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  setupDefaultAdmin();
   setupDefaultCustomer();
   setupPasswordToggles();
   setupCustomerRegister();
   setupCustomerLogin();
   setupCustomerForgotPassword();
-  setupAdminRegister();
-  setupAdminLogin();
-  protectAdminPages();
   setupLogout();
   setupCustomerOrderProtection();
   renderCheckoutPage();
   setupCheckoutPayment();
-  renderAdminOrders();
-  setupDefaultProducts();
-  renderAdminProducts();
-  setupAdminProductActions();
-  setupDefaultMessages();
-  renderAdminMessages();
-  setupAdminMessageActions();
-  setupStoreSettingsForm();
   setupContactForm();
   renderProfileNav();
   renderCustomerProfilePage();

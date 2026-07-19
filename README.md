@@ -48,11 +48,9 @@ Update Notes:
 ## Login & Signup Authentication
 - Login page: `pages/login.html`
 - Signup page: `pages/register.html`
-- Demo admin: `admin@roseandthread.com` / `12345`
+- Demo customer: `customer@roseandthread.com` / `12345`
 - Authentication is static front-end only and uses browser localStorage.
-
-## Admin Dashboard
-Admin pages are inside `pages/admin/` and include dashboard, products, orders, customers, messages and settings.
+- There is no admin dashboard in this project — customer accounts only.
 
 
 Updates in this version:

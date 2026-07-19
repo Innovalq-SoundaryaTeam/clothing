@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sign In | Rose & Thread</title>
   <meta name="description"
-    content="Unified login and signup portal for Rose and Thread Boutique. Choose between Customer or Admin access.">
+    content="Customer login and signup portal for Rose and Thread Boutique.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -25,45 +25,6 @@
       align-items: center;
       background: var(--color-card-bg);
       padding: 110px 0 64px;
-    }
-
-    /* Role Switcher Toggle */
-    .role-switcher {
-      display: inline-flex;
-      background: var(--color-card-bg);
-      border: 1.5px solid var(--color-border);
-      border-radius: 999px;
-      padding: 4px;
-      gap: 4px;
-      margin-bottom: 28px;
-    }
-
-    .role-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 24px;
-      border-radius: 999px;
-      border: none;
-      background: transparent;
-      font-family: var(--font-body);
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: var(--color-muted);
-      cursor: pointer;
-      transition: all 0.25s ease;
-      white-space: nowrap;
-    }
-
-    .role-btn.active {
-      background: var(--color-primary);
-      color: var(--color-bg);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-    }
-
-    .role-btn:not(.active):hover {
-      color: var(--color-text);
-      background: var(--color-border);
     }
 
     /* Mode Switcher (Login / Signup) */
@@ -280,8 +241,7 @@
               <strong data-profile-name>Guest User</strong>
               <small data-profile-email>Login to view your profile</small>
               <div class="profile-dropdown-actions" data-profile-actions><a
-                  href="auth.html?role=customer&mode=login">Customer Login</a><a
-                  href="auth.html?role=admin&mode=login">Admin Login</a></div>
+                  href="auth.html?mode=login">Customer Login</a></div>
             </div>
           </span>
         </div>
@@ -301,22 +261,9 @@
 
               <div id="authMessage" class="form-success d-none mb-3"></div>
 
-              <!-- Role Switcher: single pill toggle -->
-              <div class="text-center mb-2">
-                <div class="role-switcher" role="group" aria-label="Select account type">
-                  <button class="role-btn active" id="roleCustomer" onclick="switchRole('customer')"
-                    aria-pressed="true">
-                    <i class="fa-solid fa-user"></i> Customer
-                  </button>
-                  <button class="role-btn" id="roleAdmin" onclick="switchRole('admin')" aria-pressed="false">
-                    <i class="fa-solid fa-shield-halved"></i> Admin
-                  </button>
-                </div>
-              </div>
-
-              <!-- Dynamic heading -->
+              <!-- Heading -->
               <div class="text-center mb-1">
-                <span class="eyebrow" id="portalEyebrow">Customer Account</span>
+                <span class="eyebrow">Customer Account</span>
               </div>
 
               <!-- Mode Tabs: Login / Sign Up -->
@@ -331,7 +278,7 @@
               </div>
 
               <!-- ── CUSTOMER LOGIN ── -->
-              <div class="auth-panel active" id="panel-customer-login">
+              <div class="auth-panel active" id="panel-login">
                 <p class="auth-note mb-3">Sign in to your customer account to shop and place orders.</p>
                 <p class="auth-note mb-3">Demo customer: <strong>customer@roseandthread.com</strong> / <strong>12345</strong></p>
                 <form id="customerLoginForm" novalidate>
@@ -367,7 +314,7 @@
               </div>
 
               <!-- ── CUSTOMER FORGOT PASSWORD ── -->
-              <div class="auth-panel" id="panel-customer-forgot">
+              <div class="auth-panel" id="panel-forgot">
                 <p class="auth-note mb-3">Reset your customer password using your registered email.</p>
                 <form id="customerForgotPortalForm" novalidate>
                   <div class="mb-3">
@@ -402,7 +349,7 @@
               </div>
 
               <!-- ── CUSTOMER SIGNUP ── -->
-              <div class="auth-panel" id="panel-customer-signup">
+              <div class="auth-panel" id="panel-signup">
                 <p class="auth-note mb-3">Create your customer account to start shopping.</p>
                 <form id="customerRegisterForm" novalidate>
                   <div class="mb-3">
@@ -456,34 +403,6 @@
                     onclick="switchMode('login');return false;">Login</a></p>
               </div>
 
-              <!-- ── ADMIN LOGIN ── -->
-              <div class="auth-panel" id="panel-admin-login">
-                <p class="auth-note mb-3">Demo admin: <strong>admin@roseandthread.com</strong> / <strong>12345</strong>
-                </p>
-                <form id="adminLoginForm" novalidate>
-                  <div class="mb-3">
-                    <label class="form-label" for="al-email">Admin Email</label>
-                    <input class="form-control" id="al-email" type="email" placeholder="admin@roseandthread.com">
-                    <div class="form-error" id="al-emailError"></div>
-                  </div>
-                  <div class="mb-3">
-                    <label class="form-label" for="al-password">Password</label>
-                    <div class="password-wrap">
-                      <input class="form-control" id="al-password" type="password" placeholder="Enter password">
-                      <button class="password-toggle" type="button" data-password-toggle="al-password"
-                        aria-label="Show password"><i class="fa-regular fa-eye"></i></button>
-                    </div>
-                    <div class="form-error" id="al-passwordError"></div>
-                  </div>
-                  <div class="mb-3">
-                    <label class="auth-note"><input type="checkbox"> Remember me</label>
-                  </div>
-                  <button class="btn-boutique w-100" type="submit">
-                    <i class="fa-solid fa-shield-halved"></i> Admin Login
-                  </button>
-                </form>
-              </div>
-
             </div><!-- /auth-portal-card -->
           </div><!-- /col-lg-7 -->
 
@@ -493,14 +412,12 @@
               <h2 id="sideTitle">Welcome Back, Customer</h2>
               <p id="sideDesc">Login to your customer account to browse our latest collections, track orders, and enjoy
                 a seamless shopping experience.</p>
-              <div class="auth-feature-item"><i class="fa-solid fa-user-check"></i><span>Separate customer and admin
-                  accounts</span></div>
+              <div class="auth-feature-item"><i class="fa-solid fa-user-check"></i><span>One account for orders,
+                  wishlist, and profile</span></div>
               <div class="auth-feature-item"><i class="fa-solid fa-cart-shopping"></i><span>Place orders after customer
                   login</span></div>
               <div class="auth-feature-item"><i class="fa-solid fa-lock"></i><span>DOM form validation + localStorage
                   credentials</span></div>
-              <div class="auth-feature-item" id="sideAdminFeature" style="display:none"><i
-                  class="fa-solid fa-gauge-high"></i><span>Access the admin dashboard</span></div>
             </aside>
           </div>
 
@@ -521,61 +438,25 @@
   <script src="../assets/js/auth.js"></script>
 
   <script>
-    /* ── Portal Role & Mode Switching ── */
-    let currentRole = 'customer';
+    /* ── Portal Mode Switching ── */
     let currentMode = 'login';
 
     function initAuthFromUrl() {
       const params = new URLSearchParams(window.location.search);
-      const role = params.get('role');
       const mode = params.get('mode');
-      if (role === 'admin' || role === 'customer') currentRole = role;
       if (mode === 'signup' || mode === 'login' || mode === 'forgot') currentMode = mode;
     }
 
     const sideTitles = {
-      'customer-login': 'Welcome Back, Customer',
-      'customer-signup': 'Join Rose & Thread',
-      'customer-forgot': 'Reset Customer Password',
-      'admin-login': 'Admin Dashboard Access',
-      'admin-signup': 'Create Admin Account',
+      'login': 'Welcome Back, Customer',
+      'signup': 'Join Rose & Thread',
+      'forgot': 'Reset Customer Password',
     };
     const sideDescs = {
-      'customer-login': 'Login to browse our latest collections, track orders, and enjoy seamless shopping.',
-      'customer-signup': 'Create your free account and unlock exclusive offers, order tracking, and more.',
-      'customer-forgot': 'Enter your registered email and set a new password for your customer account.',
-      'admin-login': 'Login to manage products, orders, customers, and boutique settings.',
-      'admin-signup': 'Create an admin account to get access to the Rose & Thread dashboard.',
+      'login': 'Login to browse our latest collections, track orders, and enjoy seamless shopping.',
+      'signup': 'Create your free account and unlock exclusive offers, order tracking, and more.',
+      'forgot': 'Enter your registered email and set a new password for your customer account.',
     };
-    const eyebrows = {
-      customer: 'Customer Account',
-      admin: 'Admin Account',
-    };
-
-    function switchRole(role) {
-      currentRole = role;
-
-      document.getElementById('roleCustomer').classList.toggle('active', role === 'customer');
-      document.getElementById('roleAdmin').classList.toggle('active', role === 'admin');
-
-      document.getElementById('roleCustomer').setAttribute('aria-pressed', role === 'customer');
-      document.getElementById('roleAdmin').setAttribute('aria-pressed', role === 'admin');
-
-      document.getElementById('portalEyebrow').textContent = eyebrows[role];
-      document.getElementById('sideAdminFeature').style.display = role === 'admin' ? 'flex' : 'none';
-
-      // Show Sign Up only for Customer
-      const signupTab = document.getElementById('tabSignup');
-
-      if (role === 'admin') {
-        signupTab.style.display = 'none';
-        if (currentMode === 'signup' || currentMode === 'forgot') currentMode = 'login';
-      } else {
-        signupTab.style.display = 'block';
-      }
-
-      updatePanel();
-    }
 
     function switchMode(mode) {
       currentMode = mode;
@@ -587,12 +468,11 @@
     }
 
     function updatePanel() {
-      const key = `${currentRole}-${currentMode}`;
       document.querySelectorAll('.auth-panel').forEach(p => p.classList.remove('active'));
-      const target = document.getElementById(`panel-${key}`);
+      const target = document.getElementById(`panel-${currentMode}`);
       if (target) target.classList.add('active');
-      document.getElementById('sideTitle').textContent = sideTitles[key] || '';
-      document.getElementById('sideDesc').textContent = sideDescs[key] || '';
+      document.getElementById('sideTitle').textContent = sideTitles[currentMode] || '';
+      document.getElementById('sideDesc').textContent = sideDescs[currentMode] || '';
       // Clear messages
       const msg = document.getElementById('authMessage');
       if (msg) { msg.classList.add('d-none'); msg.textContent = ''; }
@@ -603,10 +483,8 @@
     // by mapping the inputs manually after DOM ready.
     document.addEventListener('DOMContentLoaded', () => {
       initAuthFromUrl();
-      switchRole(currentRole);
       switchMode(currentMode);
       setupPasswordToggles();
-      setupDefaultAdmin();
       setupDefaultCustomer();
 
       /* Customer Login */
@@ -648,71 +526,6 @@
         customers.push({ name, email, phone, password, role: 'Customer' });
         saveData(CUSTOMER_KEY, customers);
         showMsg('Account created! Please login to continue.');
-        setTimeout(() => { switchMode('login'); }, 900);
-      });
-
-      /* Admin Login */
-      document.getElementById('adminLoginForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-        clearAllErrors();
-
-        const email = document.getElementById('al-email').value.trim().toLowerCase();
-        const password = document.getElementById('al-password').value.trim();
-
-        if (!isEmail(email)) {
-          setErr('al-emailError', 'Enter your admin email.');
-          return;
-        }
-
-        if (!password) {
-          setErr('al-passwordError', 'Enter your password.');
-          return;
-        }
-
-        // Fixed Admin Credentials
-        const ADMIN_EMAIL = "admin@roseandthread.com";
-        const ADMIN_PASSWORD = "12345";
-        const ADMIN_NAME = "Administrator";
-
-        if (email !== ADMIN_EMAIL || password !== ADMIN_PASSWORD) {
-          setErr('al-emailError', 'Invalid admin credentials.');
-          return;
-        }
-
-        saveData(ADMIN_SESSION_KEY, {
-          name: ADMIN_NAME,
-          email: ADMIN_EMAIL,
-          role: 'Admin',
-          loggedIn: true
-        });
-
-        showMsg('Admin login successful. Redirecting to dashboard...');
-
-        setTimeout(() => {
-          window.location.href = 'admin/dashboard.html';
-        }, 900);
-      });
-
-      /* Admin Signup */
-      const adminRegisterForm = document.getElementById('adminRegisterForm');
-      if (adminRegisterForm) adminRegisterForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        clearAllErrors();
-        const name = document.getElementById('as-name').value.trim();
-        const email = document.getElementById('as-email').value.trim().toLowerCase();
-        const password = document.getElementById('as-password').value.trim();
-        const confirm = document.getElementById('as-confirm').value.trim();
-        let ok = true;
-        if (name.length < 3) { setErr('as-nameError', 'Enter at least 3 characters.'); ok = false; }
-        if (!isEmail(email)) { setErr('as-emailError', 'Enter a valid email address.'); ok = false; }
-        if (password.length < 5) { setErr('as-passwordError', 'Password must be at least 5 characters.'); ok = false; }
-        if (password !== confirm) { setErr('as-confirmError', 'Passwords do not match.'); ok = false; }
-        if (!ok) return;
-        const admins = getData(ADMIN_KEY);
-        if (admins.some(a => a.email === email)) { setErr('as-emailError', 'This admin email is already registered.'); return; }
-        admins.push({ name, email, password, role: 'Admin' });
-        saveData(ADMIN_KEY, admins);
-        showMsg('Admin account created! Please login.');
         setTimeout(() => { switchMode('login'); }, 900);
       });
     });
