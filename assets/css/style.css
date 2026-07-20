@@ -4575,7 +4575,10 @@ body.modal-open-custom {
 
 /* Fix hamburger menu blink: backdrop-filter recalculating every frame
    during the Bootstrap collapse transition causes a visible flash on
-   small screens, so drop the blur below desktop width. */
+   small screens, so drop the blur below desktop width. This also covers
+   the remaining .nav-icon-btn buttons (theme/RTL toggle), which had
+   their own uncovered blur causing the same flicker, and neutralizes
+   the default Bootstrap focus ring flash on the toggler itself. */
 @media (max-width: 991.98px) {
     .navbar {
         backdrop-filter: none !important;
@@ -4585,8 +4588,72 @@ body.modal-open-custom {
     body.dark-mode .navbar {
         background: var(--color-bg) !important;
     }
+    .nav-icon-btn {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    .navbar-toggler {
+        transition: none !important;
+    }
+    .navbar-toggler:focus {
+        box-shadow: none !important;
+    }
     .navbar-collapse.collapsing {
         transition: height .28s ease;
+    }
+}
+
+/* Navbar alignment across screen sizes: keep the brand, links and icon
+   buttons on a consistent baseline whether the menu is collapsed or
+   expanded, and give the collapsed mobile menu clear, even spacing
+   instead of the links and icon row sitting flush against each other. */
+.navbar .container {
+    flex-wrap: nowrap;
+}
+
+.navbar-toggler {
+    flex: 0 0 auto;
+    line-height: 1;
+}
+
+@media (max-width: 991.98px) {
+    .navbar .navbar-collapse {
+        align-items: stretch;
+    }
+    .navbar .navbar-nav {
+        align-items: flex-start;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        row-gap: 4px;
+    }
+    .navbar .navbar-nav .nav-link {
+        width: 100%;
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+    }
+    .navbar-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px !important;
+        margin-top: 14px;
+        margin-left: 0 !important;
+        padding-top: 14px;
+        border-top: 1px solid var(--color-border);
+        width: 100%;
+    }
+}
+
+@media (max-width: 360px) {
+    .navbar .container {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+    .navbar-brand {
+        font-size: 1.25rem;
+    }
+    .navbar-toggler {
+        padding: 6px 10px;
     }
 }
 
