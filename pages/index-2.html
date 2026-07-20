@@ -45,10 +45,25 @@
     margin-bottom: 14px;
   }
   .testimonial-card-2 .stars { color: #d4a373; margin-bottom: 10px; }
+  @media (max-width: 991.98px) {
+    .home2-hero { padding: 72px 0; }
+  }
+  @media (max-width: 640px) {
+    .home2-hero {
+      padding: 48px 0;
+      border-radius: 0 0 20px 20px;
+    }
+    .home2-hero h1 { font-size: 1.9rem; }
+  }
+  @media (max-width: 767.98px) {
+    .home2-gallery img { height: 200px; }
+  }
 </style>
 <link rel="icon" type="image/svg+xml" href="../assets/images/logo.svg"/>
 </head>
 <body>
+<!-- SEO JSON-LD: helps search engines understand this occasion/bridal landing page -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ClothingStore","name":"Rose & Thread Boutique","address":{"@type":"PostalAddress","streetAddress":"12 Fashion Street","addressLocality":"Coimbatore","addressCountry":"IN"},"url":"https://example.com/pages/index-2.html","telephone":"+91-90000-00000","priceRange":"₹₹"}</script>
 <!-- Top Offer Banner: this banner is placed above the navbar --><div aria-label="Store offer banner" class="top-offer-banner" role="region">
 <div class="container d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 text-center">
 <span><i aria-hidden="true" class="fa-solid fa-truck-fast"></i> Free shipping on orders above ₹2,999</span>
