@@ -4684,6 +4684,13 @@ body.modal-open-custom {
     color: var(--color-bg);
 }
 
+/* Evening Rose Dress product photo: default center object-position cropped
+   into the top of the subject's head inside the fixed-height card frame.
+   Anchor the crop toward the top of the photo instead. */
+.image-wrap img[src*="arrival-evening-dress"] {
+    object-position: top !important;
+}
+
 /* =====================================================
    Home dropdown (Home / Occasion & Bridal Edit)
    Keeps the nav at 9 top-level items instead of adding a
