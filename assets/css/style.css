@@ -4682,6 +4682,97 @@ body.modal-open-custom {
     color: var(--color-bg);
 }
 
+/* =====================================================
+   Login / Sign Up
+   Reuses .checkout-card for the form container. Adds a
+   labeled divider and social sign-in buttons (Google/Apple).
+===================================================== */
+.auth-page-wrap {
+    max-width: 460px;
+    margin: 0 auto;
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 22px 0;
+    color: var(--color-muted);
+    font-size: .82rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--color-border);
+}
+
+.btn-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 11px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-weight: 700;
+    font-size: .92rem;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.btn-social:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-social i {
+    font-size: 1.05rem;
+}
+
+.btn-social.google i {
+    color: #ea4335;
+}
+
+.btn-social.apple i {
+    color: var(--color-text);
+}
+
+.auth-social-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: 22px;
+    color: var(--color-muted);
+    font-size: .92rem;
+}
+
+.auth-switch a {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.auth-note {
+    background: var(--color-bg);
+    border: 1px dashed var(--color-border);
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin-top: 18px;
+    color: var(--color-muted);
+    font-size: .88rem;
+}
+
 /* Home 2 promo link, used on the main Home page to surface the Occasion
    & Bridal Edit variant so it isn't an orphaned, unreachable page. */
 .home2-promo-banner {

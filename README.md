@@ -46,8 +46,8 @@ Update Notes:
 
 
 ## Checkout
-- There is no login, signup, or account system on this site.
-- Checkout is guest-only: the shopper enters name, email, phone, and address directly on `pages/checkout.html` and the order is saved to browser localStorage.
+- Checkout does not require an account: the shopper can enter name, email, phone, and address directly on `pages/checkout.html` and the order is saved to browser localStorage.
+- An optional account system is available via the sign-in icon in the navbar (`pages/login.html`, `pages/register.html`), including simulated Google/Apple sign-in. Accounts are stored in browser localStorage; this is a front-end demo with no real backend or OAuth.
 
 
 Updates in this version:

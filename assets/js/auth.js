@@ -288,6 +288,178 @@ function setupCheckoutPayment() {
 }
 
 
+/* ==============================
+   Customer Accounts (Login / Sign Up)
+   Demo-only, front-end auth: accounts are stored in localStorage, not on
+   a real server. Google/Apple sign-in buttons are simulated (there is no
+   backend to complete real OAuth) and create/sign in a demo account so
+   the flow is fully clickable end to end.
+============================== */
+const CUSTOMER_KEY = "boutiqueCustomers";
+const CUSTOMER_SESSION_KEY = "boutiqueCustomerSession";
+
+function getCustomers() { return getData(CUSTOMER_KEY); }
+
+function getCustomerSession() {
+  const email = localStorage.getItem(CUSTOMER_SESSION_KEY);
+  if (!email) return null;
+  return getCustomers().find((c) => c.email === email) || null;
+}
+
+function setCustomerSession(email) {
+  localStorage.setItem(CUSTOMER_SESSION_KEY, email);
+}
+
+function logoutCustomer() {
+  localStorage.removeItem(CUSTOMER_SESSION_KEY);
+}
+
+function getInitials(name) {
+  const parts = String(name || "").trim().split(/\s+/).filter(Boolean);
+  if (!parts.length) return "?";
+  return (parts[0][0] + (parts[1] ? parts[1][0] : "")).toUpperCase();
+}
+
+function registerCustomer({ name, email, password, provider }) {
+  const customers = getCustomers();
+  const existing = customers.find((c) => c.email === email);
+  if (existing) {
+    existing.name = name || existing.name;
+    if (password) existing.password = password;
+    if (provider) existing.provider = provider;
+  } else {
+    customers.push({ name, email, password: password || "", provider: provider || "email", joinedAt: new Date().toISOString() });
+  }
+  saveData(CUSTOMER_KEY, customers);
+  setCustomerSession(email);
+}
+
+function setupCustomerLogin() {
+  const form = document.getElementById("loginForm");
+  if (!form) return;
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (form.querySelector(".is-invalid")) return;
+
+    const emailField = document.getElementById("loginEmail");
+    const passwordField = document.getElementById("loginPassword");
+    const message = document.getElementById("authMessage");
+    const email = emailField.value.trim().toLowerCase();
+    const password = passwordField.value;
+
+    const customer = getCustomers().find((c) => c.email === email);
+    if (!customer || customer.password !== password) {
+      if (message) {
+        message.className = "checkout-message error";
+        message.textContent = "We couldn't find a matching account. Check your details or create a new account.";
+      }
+      return;
+    }
+
+    setCustomerSession(email);
+    if (message) {
+      message.className = "checkout-message success";
+      message.textContent = "Signed in successfully! Redirecting you home...";
+    }
+    form.classList.add("checkout-disabled");
+    setTimeout(() => { window.location.href = "index.html"; }, 1400);
+  });
+}
+
+function setupCustomerRegister() {
+  const form = document.getElementById("registerForm");
+  if (!form) return;
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (form.querySelector(".is-invalid")) return;
+
+    const nameField = document.getElementById("registerName");
+    const emailField = document.getElementById("registerEmail");
+    const passwordField = document.getElementById("registerPassword");
+    const confirmField = document.getElementById("registerConfirmPassword");
+    const message = document.getElementById("authMessage");
+    const email = emailField.value.trim().toLowerCase();
+
+    if (passwordField.value !== confirmField.value) {
+      confirmField.classList.add("is-invalid");
+      if (message) {
+        message.className = "checkout-message error";
+        message.textContent = "Passwords do not match.";
+      }
+      return;
+    }
+
+    if (getCustomers().some((c) => c.email === email)) {
+      emailField.classList.add("is-invalid");
+      if (message) {
+        message.className = "checkout-message error";
+        message.textContent = "An account with this email already exists. Try signing in instead.";
+      }
+      return;
+    }
+
+    registerCustomer({ name: nameField.value.trim(), email, password: passwordField.value, provider: "email" });
+    if (message) {
+      message.className = "checkout-message success";
+      message.textContent = "Account created! Redirecting you home...";
+    }
+    form.classList.add("checkout-disabled");
+    setTimeout(() => { window.location.href = "index.html"; }, 1400);
+  });
+}
+
+/* Simulated Google/Apple sign-in: no real backend to hand off to, so this
+   creates (or reuses) a demo account for the chosen provider and signs in. */
+function setupSocialSignIn() {
+  document.querySelectorAll("[data-social-provider]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const provider = button.getAttribute("data-social-provider");
+      const email = `demo.${provider}@roseandthread.com`;
+      const name = provider === "google" ? "Google User" : "Apple User";
+      const message = document.getElementById("authMessage");
+
+      if (!getCustomers().some((c) => c.email === email)) {
+        registerCustomer({ name, email, provider });
+      } else {
+        setCustomerSession(email);
+      }
+
+      if (message) {
+        message.className = "checkout-message success";
+        message.textContent = `Signed in with ${provider === "google" ? "Google" : "Apple"} (demo). Redirecting you home...`;
+      }
+      setTimeout(() => { window.location.href = "index.html"; }, 1400);
+    });
+  });
+}
+
+/* Sitewide nav icon: shows a Sign In link when logged out, or the
+   customer's initials (click to sign out) when logged in. */
+function renderNavAuthIcon() {
+  document.querySelectorAll("#navAuthIcon").forEach((icon) => {
+    const customer = getCustomerSession();
+    if (customer) {
+      icon.innerHTML = `<span aria-hidden="true">${getInitials(customer.name)}</span>`;
+      icon.setAttribute("aria-label", `Signed in as ${customer.name}. Click to sign out.`);
+      icon.title = `Signed in as ${customer.name} — click to sign out`;
+      icon.href = "#";
+      icon.onclick = (event) => {
+        event.preventDefault();
+        if (confirm("Sign out of your account?")) {
+          logoutCustomer();
+          renderNavAuthIcon();
+        }
+      };
+    } else {
+      icon.innerHTML = '<i class="fa-regular fa-user"></i>';
+      icon.setAttribute("aria-label", "Sign In");
+      icon.title = "Sign In";
+      icon.href = "login.html";
+      icon.onclick = null;
+    }
+  });
+}
+
 const MESSAGE_KEY = "boutiqueMessages";
 
 /* ==============================
@@ -337,4 +509,8 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCheckoutPage();
   setupCheckoutPayment();
   setupContactForm();
+  renderNavAuthIcon();
+  setupCustomerLogin();
+  setupCustomerRegister();
+  setupSocialSignIn();
 });
