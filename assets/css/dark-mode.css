@@ -483,3 +483,15 @@ body.dark-mode .btn-social:hover {
   box-shadow: none;
   border-color: var(--color-accent);
 }
+
+/* Home nav dropdown dark mode: same --color-primary issue as above, so the
+   hover fill would otherwise show near-black text on a near-black chip. */
+body.dark-mode .navbar .dropdown-item:hover,
+body.dark-mode .navbar .dropdown-item:focus {
+  background: var(--color-accent) !important;
+  color: #000 !important;
+}
+body.dark-mode .navbar .dropdown-item.active {
+  background: var(--color-accent) !important;
+  color: #000 !important;
+}

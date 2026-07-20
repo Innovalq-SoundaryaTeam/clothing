@@ -4024,7 +4024,9 @@ section,
 .row.g-4 > [class*="col-"] > .blog-card,
 .row.g-4 > [class*="col-"] > .boutique-card,
 .row.g-4 > [class*="col-"] > .category-card,
-.row.g-4 > [class*="col-"] > a.category-card {
+.row.g-4 > [class*="col-"] > a.category-card,
+.row.g-4 > [class*="col-"] > a.lookbook-link,
+.row.g-4 > [class*="col-"] > .testimonial-card-2 {
   width: 100%;
 }
 
@@ -4680,6 +4682,51 @@ body.modal-open-custom {
     background: var(--color-primary);
     border-color: var(--color-primary);
     color: var(--color-bg);
+}
+
+/* =====================================================
+   Home dropdown (Home / Occasion & Bridal Edit)
+   Keeps the nav at 9 top-level items instead of adding a
+   10th, avoiding the tablet-width overflow already fixed.
+===================================================== */
+.navbar .nav-item.dropdown .dropdown-toggle {
+    cursor: pointer;
+}
+.navbar .dropdown-menu {
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: var(--color-card-bg);
+    box-shadow: var(--shadow-soft);
+    padding: 8px;
+    margin-top: 10px;
+    min-width: 220px;
+}
+.navbar .dropdown-item {
+    border-radius: 8px;
+    padding: 9px 14px;
+    font-weight: 700;
+    font-size: .92rem;
+    color: var(--color-text);
+    white-space: normal;
+}
+.navbar .dropdown-item:hover,
+.navbar .dropdown-item:focus {
+    background: var(--color-primary);
+    color: var(--color-bg);
+}
+.navbar .dropdown-item.active {
+    background: var(--color-accent);
+    color: var(--color-primary);
+}
+@media (max-width: 991.98px) {
+    .navbar .dropdown-menu {
+        position: static;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+        padding: 4px 0 4px 14px;
+        margin-top: 0;
+    }
 }
 
 /* =====================================================
