@@ -4691,6 +4691,17 @@ body.modal-open-custom {
     object-position: top !important;
 }
 
+/* About page "Our story began" image: the text column is taller than the
+   image's natural size, so top-align the row (default flex stretch) and
+   have the image fill the full stretched column height instead of the
+   image ending well above the "Explore Collections" button. */
+.story-img {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    object-fit: cover;
+}
+
 /* =====================================================
    Home dropdown (Home / Occasion & Bridal Edit)
    Keeps the nav at 9 top-level items instead of adding a
