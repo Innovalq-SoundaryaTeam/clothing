@@ -25,6 +25,8 @@
   .home2-gallery a {
     display: block;
     width: 100%;
+    overflow: hidden;
+    border-radius: 14px;
   }
   .home2-gallery img {
     width: 100%;
@@ -34,6 +36,14 @@
     transition: transform .3s ease;
   }
   .home2-gallery a:hover img { transform: scale(1.03); }
+  /* look-3 (lehenga product photo) has built-in white padding around the
+     garment; the default cover crop leaves that padding visible instead
+     of filling the frame, so zoom in further to crop it out. */
+  .home2-gallery img[src*="look-3"] {
+    transform: scale(1.55);
+    object-position: center 38%;
+  }
+  .home2-gallery a:hover img[src*="look-3"] { transform: scale(1.6); }
   .testimonial-card-2 {
     border: 1px solid var(--color-border);
     border-radius: 16px;
