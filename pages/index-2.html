@@ -36,6 +36,13 @@
     transition: transform .3s ease;
   }
   .home2-gallery a:hover img { transform: scale(1.03); }
+  /* look-1 (teal dress) and look-2 (printed suit): default center crop
+     cuts into the top of the head in the fixed-height frame. Anchor the
+     crop to the top of the photo so the face stays fully visible. */
+  .home2-gallery img[src*="look-1"],
+  .home2-gallery img[src*="look-2"] {
+    object-position: top;
+  }
   /* look-3 (lehenga product photo): a zoomed cover crop was cutting off
      the mannequin's head/face. Show the whole photo uncropped instead,
      even though that means some white background shows on the sides. */
