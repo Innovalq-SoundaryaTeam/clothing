@@ -74,6 +74,20 @@ html[dir="rtl"] .password-toggle { right: auto; left: 12px; }
 html[dir="rtl"] .role-switcher { direction: rtl; }
 html[dir="rtl"] .mode-tabs     { direction: rtl; }
 
+/* ── Breadcrumbs ── Bootstrap's divider (::before) uses a physical
+   float:left, which doesn't mirror under dir="rtl" on its own and makes
+   consecutive crumbs (e.g. "Blog" / "Home") collide with no visible
+   divider between them. */
+html[dir="rtl"] .breadcrumb-item + .breadcrumb-item {
+  padding-left: 0;
+  padding-right: 0.5rem;
+}
+html[dir="rtl"] .breadcrumb-item + .breadcrumb-item::before {
+  float: right;
+  padding-right: 0;
+  padding-left: 0.5rem;
+}
+
 /* ── Directional icons (back/next arrows, chevrons) ──
    Repositioning via bidi isn't enough on its own: an arrow that still
    points left but now sits on the right of "Back to Cart" reads as
