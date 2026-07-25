@@ -4043,7 +4043,8 @@ section,
 .row.g-4 > [class*="col-"] > .category-card,
 .row.g-4 > [class*="col-"] > a.category-card,
 .row.g-4 > [class*="col-"] > a.lookbook-link,
-.row.g-4 > [class*="col-"] > .testimonial-card-2 {
+.row.g-4 > [class*="col-"] > .testimonial-card-2,
+.row.g-4 > [class*="col-"] > .blog-related-card {
   width: 100%;
 }
 
