@@ -66,6 +66,23 @@ html[dir="rtl"] .text-end      { text-align: left !important; }
 html[dir="rtl"] .footer a:hover { transform: translateX(-4px); }
 html[dir="rtl"] .social-icons a { margin-left: 8px; margin-right: 0; }
 
+/* ── Input groups (search bar icon + input) ──
+   Bootstrap strips/keeps border-radius by DOM position (first-child /
+   last-child), not by visual position. Flexbox auto-reverses the visual
+   order under dir="rtl" (icon ends up on the right, input on the left),
+   so the rounded/flat corners end up on the wrong sides — the outer
+   edges look flat and the seam in the middle looks rounded, making the
+   icon button look disconnected from the input. Swap them back. */
+html[dir="rtl"] .input-group > .input-group-text {
+  border-radius: 0 12px 12px 0 !important;
+}
+html[dir="rtl"] .input-group > .form-control,
+html[dir="rtl"] .input-group > .form-select {
+  border-radius: 12px 0 0 12px !important;
+  margin-left: 0 !important;
+  margin-right: -1px !important;
+}
+
 /* ── Misc components ── */
 html[dir="rtl"] .swatch          { margin-left: 8px; margin-right: 0; }
 html[dir="rtl"] .password-toggle { right: auto; left: 12px; }
