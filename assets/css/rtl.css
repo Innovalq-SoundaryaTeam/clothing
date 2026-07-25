@@ -53,9 +53,14 @@ html[dir="rtl"] .ps-3  { padding-right: 1rem !important;  padding-left: 0 !impor
 html[dir="rtl"] .pe-3  { padding-left: 1rem !important;   padding-right: 0 !important; }
 
 /* ── Text alignment ── */
-html[dir="rtl"] .text-md-end { text-align: left !important; }
-html[dir="rtl"] .text-start  { text-align: right !important; }
-html[dir="rtl"] .text-end    { text-align: left !important; }
+html[dir="rtl"] .text-md-end   { text-align: left !important; }
+html[dir="rtl"] .text-md-start { text-align: right !important; }
+html[dir="rtl"] .text-lg-end   { text-align: left !important; }
+html[dir="rtl"] .text-lg-start { text-align: right !important; }
+html[dir="rtl"] .text-sm-end   { text-align: left !important; }
+html[dir="rtl"] .text-sm-start { text-align: right !important; }
+html[dir="rtl"] .text-start    { text-align: right !important; }
+html[dir="rtl"] .text-end      { text-align: left !important; }
 
 /* ── Footer ── */
 html[dir="rtl"] .footer a:hover { transform: translateX(-4px); }
@@ -68,6 +73,22 @@ html[dir="rtl"] .password-toggle { right: auto; left: 12px; }
 /* ── Auth portal ── */
 html[dir="rtl"] .role-switcher { direction: rtl; }
 html[dir="rtl"] .mode-tabs     { direction: rtl; }
+
+/* ── Directional icons (back/next arrows, chevrons) ──
+   Repositioning via bidi isn't enough on its own: an arrow that still
+   points left but now sits on the right of "Back to Cart" reads as
+   pointing away from the direction of travel. Mirror the glyph itself. */
+html[dir="rtl"] .fa-arrow-left,
+html[dir="rtl"] .fa-arrow-right,
+html[dir="rtl"] .fa-chevron-left,
+html[dir="rtl"] .fa-chevron-right,
+html[dir="rtl"] .fa-angle-left,
+html[dir="rtl"] .fa-angle-right,
+html[dir="rtl"] .fa-long-arrow-alt-left,
+html[dir="rtl"] .fa-long-arrow-alt-right {
+  display: inline-block;
+  transform: scaleX(-1);
+}
 
 
 /* =====================================================
