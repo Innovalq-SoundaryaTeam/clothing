@@ -662,9 +662,15 @@ h3 {
     margin-right: 0 !important;
     flex-shrink: 0;
 }
+/* RTL: keep the question text pinned at the right edge, but pin the
+   arrow to the far left edge (the standard FAQ pattern) instead of
+   pulling it in next to the text. */
+html[dir="rtl"] .accordion-button {
+    justify-content: space-between;
+}
 html[dir="rtl"] .accordion-button::after {
     margin-left: 0 !important;
-    margin-right: 14px !important;
+    margin-right: 0 !important;
 }
 
 .accordion-body {
