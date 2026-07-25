@@ -650,6 +650,23 @@ h3 {
     color: var(--color-text)
 }
 
+/* Accordion arrow: Bootstrap's default pushes the arrow all the way to
+   the far right (margin-left:auto), leaving a big gap after the question
+   text. Keep the text at the left and bring the arrow in close instead
+   of spreading them to opposite edges. */
+.accordion-button {
+    justify-content: flex-start;
+}
+.accordion-button::after {
+    margin-left: 14px !important;
+    margin-right: 0 !important;
+    flex-shrink: 0;
+}
+html[dir="rtl"] .accordion-button::after {
+    margin-left: 0 !important;
+    margin-right: 14px !important;
+}
+
 .accordion-body {
     background: var(--color-bg);
     color: var(--color-text)
