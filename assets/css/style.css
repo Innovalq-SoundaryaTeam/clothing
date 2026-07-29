@@ -650,27 +650,18 @@ h3 {
     color: var(--color-text)
 }
 
-/* Accordion arrow: Bootstrap's default pushes the arrow all the way to
-   the far right (margin-left:auto), leaving a big gap after the question
-   text. Keep the text at the left and bring the arrow in close instead
-   of spreading them to opposite edges. */
+/* Accordion arrow: pin the question text to the leading edge and the
+   arrow to the far trailing edge of the container (standard FAQ
+   pattern), for both LTR (arrow at right corner) and RTL (arrow at
+   left corner). space-between keeps this consistent regardless of
+   question text length. */
 .accordion-button {
-    justify-content: flex-start;
-}
-.accordion-button::after {
-    margin-left: 14px !important;
-    margin-right: 0 !important;
-    flex-shrink: 0;
-}
-/* RTL: keep the question text pinned at the right edge, but pin the
-   arrow to the far left edge (the standard FAQ pattern) instead of
-   pulling it in next to the text. */
-html[dir="rtl"] .accordion-button {
     justify-content: space-between;
 }
-html[dir="rtl"] .accordion-button::after {
+.accordion-button::after {
     margin-left: 0 !important;
     margin-right: 0 !important;
+    flex-shrink: 0;
 }
 
 .accordion-body {
@@ -698,8 +689,13 @@ html[dir="rtl"] .accordion-button::after {
         grid-template-columns: repeat(3, 1fr)
     }
 
+    /* !important needed: a later unconditional .hero-img rule
+       (min-height:560px) has equal specificity and would otherwise win
+       by source order even inside this range, leaving the hero image at
+       full desktop height between the 992px lg breakpoint and 1024px
+       and causing the tablet-width alignment issue. */
     .hero-img {
-        min-height: 420px
+        min-height: 420px !important;
     }
 }
 
@@ -983,12 +979,6 @@ html[dir="rtl"] .accordion-button::after {
 .auth-card .form-control {
     min-height: 48px;
     border-radius: 10px;
-}
-
-.auth-note {
-    font-size: 14px;
-    color: var(--color-text);
-    opacity: .75;
 }
 
 .password-wrap {
@@ -3621,6 +3611,7 @@ section,
 }
 
 .hero-img {
+    width: 100%;
     border-radius: 34px;
     min-height: 560px;
     border: 10px solid rgba(255,255,255,.76);
@@ -3691,6 +3682,28 @@ section,
 .blog-card,
 .boutique-card {
     border-radius: 24px;
+}
+
+/* Testimonial card (photo + star rating + quote): originally only defined
+   inline on index-2.html. Promoted to the global stylesheet so any page
+   (e.g. about.html) can use the same component consistently. */
+.testimonial-card-2 {
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 28px;
+    height: 100%;
+    background: var(--color-card-bg);
+}
+.testimonial-card-2 img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 14px;
+}
+.testimonial-card-2 .stars {
+    color: #d4a373;
+    margin-bottom: 10px;
 }
 
 .image-wrap {
@@ -4769,97 +4782,6 @@ body.modal-open-custom {
         padding: 4px 0 4px 14px;
         margin-top: 0;
     }
-}
-
-/* =====================================================
-   Login / Sign Up
-   Reuses .checkout-card for the form container. Adds a
-   labeled divider and social sign-in buttons (Google/Apple).
-===================================================== */
-.auth-page-wrap {
-    max-width: 460px;
-    margin: 0 auto;
-}
-
-.auth-divider {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 22px 0;
-    color: var(--color-muted);
-    font-size: .82rem;
-    text-transform: uppercase;
-    letter-spacing: .04em;
-}
-
-.auth-divider::before,
-.auth-divider::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: var(--color-border);
-}
-
-.btn-social {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 11px 16px;
-    border-radius: 10px;
-    border: 1px solid var(--color-border);
-    background: var(--color-bg);
-    color: var(--color-text);
-    font-weight: 700;
-    font-size: .92rem;
-    transition: var(--transition);
-    cursor: pointer;
-}
-
-.btn-social:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-soft);
-}
-
-.btn-social i {
-    font-size: 1.05rem;
-}
-
-.btn-social.google i {
-    color: #ea4335;
-}
-
-.btn-social.apple i {
-    color: var(--color-text);
-}
-
-.auth-social-group {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.auth-switch {
-    text-align: center;
-    margin-top: 22px;
-    color: var(--color-muted);
-    font-size: .92rem;
-}
-
-.auth-switch a {
-    color: var(--color-primary);
-    font-weight: 700;
-}
-
-.auth-note {
-    background: var(--color-bg);
-    border: 1px dashed var(--color-border);
-    border-radius: 14px;
-    padding: 12px 14px;
-    margin-top: 18px;
-    color: var(--color-muted);
-    font-size: .88rem;
 }
 
 /* Home 2 promo link, used on the main Home page to surface the Occasion

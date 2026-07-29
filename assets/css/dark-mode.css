@@ -43,7 +43,6 @@ body.dark-mode th{
 
 body.dark-mode .text-muted,
 body.dark-mode .text-muted-custom,
-body.dark-mode .auth-note,
 body.dark-mode .eyebrow,
 body.dark-mode .old-price,
 body.dark-mode .cart-product small,
@@ -471,17 +470,6 @@ body.dark-mode .auth-link-small {
 }
 body.dark-mode .forgot-password-box {
   border-top-color: var(--color-border);
-}
-
-/* Login / Sign Up dark mode: --color-primary stays a near-black charcoal
-   in dark mode (it's never redefined there), so text/links using it turn
-   invisible against the dark background. Swap to the lighter accent color. */
-body.dark-mode .auth-switch a {
-  color: var(--color-accent) !important;
-}
-body.dark-mode .btn-social:hover {
-  box-shadow: none;
-  border-color: var(--color-accent);
 }
 
 /* Home nav dropdown dark mode: same --color-primary issue as above, so the
