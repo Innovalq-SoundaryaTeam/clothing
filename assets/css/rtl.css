@@ -8,6 +8,17 @@ html[dir="rtl"] body {
   text-align: right;
 }
 
+/* ── Lookbook grid: keep natural left-to-right scan order ──
+   Bootstrap's .row is a wrapping flex container, so under RTL each row
+   reverses independently while the row order top-to-bottom stays the
+   same. With a 4-per-row grid that fragments the numbered sequence
+   (Look 1-4, 5-8...) into a confusing zig-zag instead of a clean order.
+   A numbered photo gallery isn't text that needs mirroring, so pin this
+   grid to LTR layout regardless of site direction. */
+html[dir="rtl"] #lookbookGrid {
+  direction: ltr;
+}
+
 /* ── Navbar: flip the row direction ── */
 html[dir="rtl"] .navbar .container {
   flex-direction: row-reverse;
