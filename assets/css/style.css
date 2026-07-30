@@ -641,6 +641,15 @@ h3 {
     background: var(--color-card-bg)
 }
 
+/* Center the breadcrumb, eyebrow, heading and description in every page
+   hero that uses .breadcrumb-section, site-wide, for consistency. */
+.breadcrumb-section .container {
+    text-align: center;
+}
+.breadcrumb-section .breadcrumb {
+    justify-content: center;
+}
+
 .table {
     color: var(--color-text)
 }
