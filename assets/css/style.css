@@ -2817,6 +2817,7 @@ body.dark-mode .collection-next-btn {
 
 .blog-hero-content {
     max-width: 780px;
+    margin: 0 auto;
 }
 
 .blog-hero-content h1 {
